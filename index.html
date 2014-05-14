@@ -5,6 +5,8 @@
   <title>Driver Registration</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/animations.css">
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
 
@@ -23,6 +25,7 @@
     <script src="bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
 
   <script src="js/notifications.js"></script>
+  <script src="js/animations.js"></script>
 
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
@@ -30,7 +33,7 @@
   <script src="js/services.js"></script>
 </head>
 <body ng-controller="drAppCtrl">
-<!--  <div ng-include="'header.tpl.html'"></div> -->
+  <div ng-include="'header.tpl.html'"></div>
   <div ng-include="'notifications.tpl.html'" class="container-fluid" ng-show="notifications.getCurrent().length"></div>
 
   <div class="view-container container-fluid">

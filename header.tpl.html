@@ -1,24 +1,52 @@
-<div class="navbar" ng-controller="HeaderCtrl">
-  <div class="navbar-inner">
-    <a class="brand" ng-click="home()">AScrum</a>
-    <ul class="nav">
-      <li ng-class="{active:isNavbarActive('projectsinfo')}"><a href="/projectsinfo">Current Projects</a></li>
-    </ul>
+<div class="header" ng-controller="HeaderCtrl">
+  <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation" bs-navbar>
+    <div class="">
 
-    <ul class="nav" ng-show="isAuthenticated()">
-      <li ng-class="{active:isNavbarActive('projects')}"><a href="/projects">My Projects</a></li>
-      <li class="dropdown" ng-class="{active:isNavbarActive('admin'), open:isAdminOpen}" ng-show="isAdmin()">
-        <a id="adminmenu" role="button" class="dropdown-toggle" ng-click="isAdminOpen=!isAdminOpen">Admin<b class="caret"></b></a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="adminmenu">
-          <li><a tabindex="-1" href="/admin/projects" ng-click="isAdminOpen=false">Manage Projects</a></li>
-          <li><a tabindex="-1" href="/admin/users" ng-click="isAdminOpen=false">Manage Users</a></li>
-        </ul>
-      </li>
-    </ul>
-    <ul class="nav pull-right" ng-show="hasPendingRequests()">
+      <div class="list-group">
+        <a href="#/about" class="list-group-item list-group-item-success">
+          <span ng-show="isNavbarActive('about_you')" class="glyphicon glyphicon-ok pull-right lead"></span>
+          <h4 class="list-group-item-heading">About You </h4>
+          <p class="list-group-item-text small">100% filled in.</p>
+        </a>
+        <a href="#/vehicle" class="list-group-item list-group-item-danger">
+          <span ng-show="isNavbarActive('vehicle')" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
+          <h4 class="list-group-item-heading">Vehicle</h4>
+          <p class="list-group-item-text text-danger small">Almost done. Fill in few more fields.</p>
+        </a>
+        <a href="#/services" class="list-group-item disabled">
+          <h4 class="list-group-item-heading">Services</h4>
+        </a>
+        <a href="#/prices" class="list-group-item disabled">
+          <h4 class="list-group-item-heading">Price</h4>
+        </a>
+        <a href="#/licensing" class="list-group-item disabled">
+          <h4 class="list-group-item-heading">Licensing</h4>
+        </a>
+      </div>
+<!--
+      <ul class="nav navbar-nav">
+        <li ng-class="{active:isNavbarActive('about_you')}" data-match-route="#/about_you">
+          <a href="#/about_you">About You <span ng-show="isNavbarActive('about_you')" class="glyphicon glyphicon-ok"></span></a>
+          <div class="help-text small text-muted">100% filled in.</div>
+        </li>
+        <li ng-class="{active:isNavbarActive('about_you')}" data-match-route="#/vehicle">
+          <a href="#/vehicle">Vehicle <span ng-show="isNavbarActive('vehicle')" class="glyphicon glyphicon-remove"></span></a>
+          <div class="help-text small text-danger">Almost done. Fill in few more fields to finish.</div>
+        </li>
+      </ul>
+-->
+    </div>
+  </nav>
+
+  <div class="navbar navbar-default navbar-fixed-top navmenu-inverse">
+    <button type="button" class="navbar-toggle pull-left" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <ul class="nav pull-right" ng-show="!hasPendingRequests()">
       <li class="divider-vertical"></li>
-      <li><a href="#">spinner...</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-refresh refresh-animate"></span></a></li>
     </ul>
-    <login-toolbar></login-toolbar>
   </div>
 </div>
