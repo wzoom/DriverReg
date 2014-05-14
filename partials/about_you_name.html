@@ -1,0 +1,16 @@
+<div class="form-group">
+    <label for="firstName" class="control-label">First Name </label>
+    <span class="label label-danger" data-ng-show="submitted && helpForm.firstName.$error.required">Required!</span>
+    <input type="text" name="firstName" data-ng-model="firstName" class="form-control" required />
+
+    <label for="lastName" class="control-label">Last Name </label>
+    <span class="label label-danger" data-ng-show="submitted && helpForm.lastName.$error.required">Required!</span>
+    <input type="text" name="lastName" data-ng-model="lastName" class="form-control" required />
+
+
+    <div class="btn-group" data-ng-model="button.radio" bs-radio-group>
+        <label class="btn btn-default"><input type="radio" class="btn btn-default" value="0"> First</label>
+        <label class="btn btn-default"><input type="radio" class="btn btn-default" value="1"> Second</label>
+        <label class="btn btn-default"><input type="radio" class="btn btn-default" value="2"> Third</label>
+    </div>
+</div>
