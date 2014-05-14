@@ -4,7 +4,7 @@
 
 var drApp = angular.module('driverRegApp', [
   'ngRoute',
-  //'mgcrea.ngStrap',
+  'mgcrea.ngStrap',
   //'drAnimations',
   'drControllers',
   'drFilters',
@@ -31,6 +31,25 @@ drApp.config(['$routeProvider', function ($routeProvider) {
 
 
 drApp.controller('drAppCtrl', ['$scope', function($scope) {
+  $scope.button = {
+    "visibility": 'yes',
+    "gender" : 'male'
+  };
+
+  $scope.steps = ['one', 'two', 'three', 'four', 'five', 'six'];
+  $scope.step = 0;
+
+  $scope.isCurrentStep = function(step) {
+    return $scope.step === step;
+  };
+
+  $scope.setCurrentStep = function(step) {
+    $scope.step = step;
+  };
+
+  $scope.getCurrentStep = function() {
+    return $scope.steps[$scope.step];
+  };
 
   $scope.notifications = {};
 
