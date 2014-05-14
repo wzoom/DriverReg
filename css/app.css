@@ -4,3 +4,6 @@ body {
   padding-top: 20px;
 }
 
+button.navbar-toggle {
+  margin-left: 15px;
+}

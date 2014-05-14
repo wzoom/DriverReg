@@ -3,15 +3,24 @@
     <div class="">
 
       <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-success">
+        <a href="#/about" class="list-group-item list-group-item-success">
           <span ng-show="isNavbarActive('about_you')" class="glyphicon glyphicon-ok pull-right lead"></span>
           <h4 class="list-group-item-heading">About You </h4>
           <p class="list-group-item-text small">100% filled in.</p>
         </a>
-        <a href="#" class="list-group-item">
-          <span ng-show="isNavbarActive('vehicle')" class="glyphicon glyphicon-remove pull-right lead"></span>
+        <a href="#/vehicle" class="list-group-item list-group-item-danger">
+          <span ng-show="isNavbarActive('vehicle')" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
           <h4 class="list-group-item-heading">Vehicle</h4>
-          <p class="list-group-item-text text-danger small">Almost done. Fill in few more fields to finish.</p>
+          <p class="list-group-item-text text-danger small">Almost done. Fill in few more fields.</p>
+        </a>
+        <a href="#/services" class="list-group-item disabled">
+          <h4 class="list-group-item-heading">Services</h4>
+        </a>
+        <a href="#/prices" class="list-group-item disabled">
+          <h4 class="list-group-item-heading">Price</h4>
+        </a>
+        <a href="#/licensing" class="list-group-item disabled">
+          <h4 class="list-group-item-heading">Licensing</h4>
         </a>
       </div>
 <!--
@@ -30,14 +39,14 @@
   </nav>
 
   <div class="navbar navbar-default navbar-fixed-top navmenu-inverse">
-    <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+    <button type="button" class="navbar-toggle pull-left" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <ul class="nav pull-right" ng-show="hasPendingRequests()">
+    <ul class="nav pull-right" ng-show="!hasPendingRequests()">
       <li class="divider-vertical"></li>
-      <li><a href="#"><i class="icon-refresh icon-refresh-animate"></i></a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-refresh refresh-animate"></span></a></li>
     </ul>
   </div>
 </div>

@@ -4,7 +4,7 @@
 
 
 
-.icon-refresh.icon-refresh-animate {
+.glyphicon-refresh.refresh-animate {
     animation-name: rotateThis;
     animation-duration: 1s;
     animation-iteration-count: infinite;
