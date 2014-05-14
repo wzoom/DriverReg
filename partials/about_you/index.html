@@ -1,0 +1,33 @@
+<div class="page-header center-block"><div class="btn-group">
+    <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(0)}" ng-click="setCurrentStep(0)">Photo</button>
+    <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(1)}" ng-click="setCurrentStep(1)">Name</button>
+    <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(2)}" ng-click="setCurrentStep(2)">Gender</button>
+    <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(3)}" ng-click="setCurrentStep(3)">Phone</button>
+    <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(4)}" ng-click="setCurrentStep(4)">Language</button>
+    <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(5)}" ng-click="setCurrentStep(5)">Dispatch</button>
+</div></div>
+
+<div ng-switch="getCurrentStep()" class="slide-frame">
+    <div ng-switch-when="one">
+        <div ng-include="'partials/about_you/photo.html'"></div>
+    </div>
+    <div ng-switch-when="two">
+        <div ng-include="'partials/about_you/name.html'"></div>
+    </div>
+    <div ng-switch-when="three">
+        <div ng-include="'partials/about_you/gender.html'"></div>
+    </div>
+    <div ng-switch-when="four">
+        <div ng-include="'partials/about_you/phone.html'"></div>
+    </div>
+    <div ng-switch-when="five">
+        <div ng-include="'partials/about_you/language.html'"></div>
+    </div>
+    <div ng-switch-when="six">
+        <div ng-include="'partials/about_you/dispatch.html'"></div>
+    </div>
+</div>
+
+<footer class="page-footer center-block">
+    <button class="btn btn-default btn-primary pull-right" ng-click="setCurrentStep(5)">Next</button>
+</footer>
