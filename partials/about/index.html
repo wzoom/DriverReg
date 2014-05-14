@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{width: getCurrentProgress()}">
+        </div>
+    </div>
+
+    <div ng-repeat="(key, formItem) in items" ng-show="getCurrentStep() == key">
+        <div ng-include="formItem.tpl"></div>
+        <button class="btn btn-default btn-primary pull-right" ng-click="setNextStep()" ng-show="getCurrentStep() < getMaxStep()">Next</button>
+    </div>
+</div>

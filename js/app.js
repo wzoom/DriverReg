@@ -36,7 +36,21 @@ drApp.controller('drAppCtrl', ['$scope', function($scope) {
     "gender" : 'male'
   };
 
-  $scope.steps = ['one', 'two', 'three', 'four', 'five', 'six'];
+  $scope.items = [
+      { 'name' : 'photo',
+        'tpl'  : 'partials/about/photo.html'},
+      { 'name' : 'name',
+        'tpl'  : 'partials/about/name.html'},
+      { 'name' : 'phone',
+          'tpl'  : 'partials/about/phone.html'},
+      { 'name' : 'gender',
+        'tpl'  : 'partials/about/gender.html'},
+      { 'name' : 'language',
+        'tpl'  : 'partials/about/language.html'},
+      { 'name' : 'dispatch',
+        'tpl'  : 'partials/about/dispatch.html'},
+  ];
+
   $scope.step = 0;
 
   $scope.isCurrentStep = function(step) {
@@ -48,7 +62,23 @@ drApp.controller('drAppCtrl', ['$scope', function($scope) {
   };
 
   $scope.getCurrentStep = function() {
-    return $scope.steps[$scope.step];
+    return $scope.step;
+  };
+
+  $scope.getMaxStep = function() {
+    return $scope.items.length - 1;
+  };
+
+  $scope.getCurrentProgress = function() {
+    var perc = $scope.getMaxStep() / 100;
+    return $scope.step / perc + '%';
+  };
+
+  $scope.setNextStep = function() {
+    var nextStep = $scope.step + 1;
+    var maxValue = $scope.getMaxStep();
+    if(nextStep > maxValue) nextStep = maxValue;
+    $scope.step = nextStep;
   };
 
   $scope.notifications = {};
