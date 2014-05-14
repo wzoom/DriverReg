@@ -37,17 +37,17 @@ drApp.controller('drAppCtrl', ['$scope', function($scope) {
   };
 
   $scope.items = [
-      { 'name' : 'photo',
+      { 'name' : 'Photo',
         'tpl'  : 'partials/about/photo.html'},
-      { 'name' : 'name',
+      { 'name' : 'Name',
         'tpl'  : 'partials/about/name.html'},
-      { 'name' : 'phone',
+      { 'name' : 'Phone',
           'tpl'  : 'partials/about/phone.html'},
-      { 'name' : 'gender',
+      { 'name' : 'Gender',
         'tpl'  : 'partials/about/gender.html'},
-      { 'name' : 'language',
+      { 'name' : 'Language',
         'tpl'  : 'partials/about/language.html'},
-      { 'name' : 'dispatch',
+      { 'name' : 'Dispatching',
         'tpl'  : 'partials/about/dispatch.html'},
   ];
 

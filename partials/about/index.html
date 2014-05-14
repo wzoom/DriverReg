@@ -1,11 +1,19 @@
-<div class="container">
+<div class="container col-md-6 col-md-offset-3">
+    <div data-ng-repeat="(key, formItem) in items" class="clearfix" data-ng-show="getCurrentStep() == key">
+        <h2>{{formItem.name}} {{getCurrentStep() + 1}}/{{getMaxStep() + 1}}</h2>
+    </div>
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{width: getCurrentProgress()}">
         </div>
     </div>
-
-    <div ng-repeat="(key, formItem) in items" ng-show="getCurrentStep() == key">
-        <div ng-include="formItem.tpl"></div>
-        <button class="btn btn-default btn-primary pull-right" ng-click="setNextStep()" ng-show="getCurrentStep() < getMaxStep()">Next</button>
+    <div data-ng-repeat="(key, formItem) in items">
+        <div data-ng-show="getCurrentStep() == key" data-ng-animate="'fade'">
+            <div class="clearfix">
+                <div data-ng-include="formItem.tpl"></div>
+            </div>
+            <div class="clearfix">
+                <button class="btn btn-default btn-primary pull-right" data-ng-click="setNextStep()" data-ng-show="getCurrentStep() < getMaxStep()">Next</button>
+            </div>
+        </div>
     </div>
 </div>
