@@ -2,10 +2,10 @@ var formAbout = angular.module('formAbout', []);
 
 formAbout.controller('formAboutCtrl', ['$scope', function($scope) {
     $scope.formItems = [
-        { 'name' : 'Photo',
-            'tpl'  : 'components/about/tpl/photo.tpl.html'},
         { 'name' : 'Name',
             'tpl'  : 'components/about/tpl/name.tpl.html'},
+        { 'name' : 'Photo',
+            'tpl'  : 'components/about/tpl/photo.tpl.html'},
         { 'name' : 'Phone',
             'tpl'  : 'components/about/tpl/phone.tpl.html'},
         { 'name' : 'Gender',
