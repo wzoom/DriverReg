@@ -9,6 +9,7 @@ var drApp = angular.module('driverRegApp', [
   'drControllers',
   'drFilters',
   'drServices',
+  'UserService',
   'formValidation',
   'formAbout'
 ]);
@@ -32,7 +33,9 @@ drApp.config(['$routeProvider', function ($routeProvider) {
   }]);
 
 
-drApp.controller('drAppCtrl', ['$scope', function($scope) {
+drApp.controller('drAppCtrl', ['$scope', 'User', function($scope, User) {
+
+  $scope.user =  User();
 
   $scope.notifications = {};
 
@@ -70,7 +73,6 @@ var formValidation = angular.module('formValidation', []);
 formValidation.controller('formValidationCtrl', ['$scope', function($scope) {
 // function to submit the form after all validation has occurred
     $scope.submitForm = function(isValid) {
-        console.log(isValid + 'cccc');
 
         // check to make sure the form is completely valid
         if (isValid) {

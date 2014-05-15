@@ -1,6 +1,8 @@
 var formAbout = angular.module('formAbout', []);
 
-formAbout.controller('formAboutCtrl', ['$scope', function($scope) {
+formAbout.controller('formAboutCtrl', ['$scope', '$rootScope',function($scope, $rootScope) {
+  var user = $rootScope.user;
+
     $scope.formItems = [
         { 'name' : 'Name',
             'tpl'  : 'components/about/tpl/name.tpl.html'},
@@ -13,8 +15,13 @@ formAbout.controller('formAboutCtrl', ['$scope', function($scope) {
         { 'name' : 'Language',
             'tpl'  : 'components/about/tpl/language.tpl.html'},
         { 'name' : 'Dispatching',
-            'tpl'  : 'components/about/tpl/dispatch.tpl.html'},
+            'tpl'  : 'components/about/tpl/dispatch.tpl.html'}
     ];
+
+  // Testing purposes add random string at the end of URL
+  angular.forEach($scope.formItems, function(value, key){
+    $scope.formItems[key]['tpl'] = value['tpl'] + '?random=' + Math.random();
+  });
 
     $scope.button = {
         "visibility": 'yes',
