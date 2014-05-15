@@ -8,7 +8,8 @@ var drApp = angular.module('driverRegApp', [
   //'drAnimations',
   'drControllers',
   'drFilters',
-  'drServices'
+  'drServices',
+  'formAbout'
 ]);
 
 //drApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -31,55 +32,6 @@ drApp.config(['$routeProvider', function ($routeProvider) {
 
 
 drApp.controller('drAppCtrl', ['$scope', function($scope) {
-  $scope.button = {
-    "visibility": 'yes',
-    "gender" : 'male'
-  };
-
-  $scope.items = [
-      { 'name' : 'Photo',
-        'tpl'  : 'partials/about/photo.html'},
-      { 'name' : 'Name',
-        'tpl'  : 'partials/about/name.html'},
-      { 'name' : 'Phone',
-          'tpl'  : 'partials/about/phone.html'},
-      { 'name' : 'Gender',
-        'tpl'  : 'partials/about/gender.html'},
-      { 'name' : 'Language',
-        'tpl'  : 'partials/about/language.html'},
-      { 'name' : 'Dispatching',
-        'tpl'  : 'partials/about/dispatch.html'},
-  ];
-
-  $scope.step = 0;
-
-  $scope.isCurrentStep = function(step) {
-    return $scope.step === step;
-  };
-
-  $scope.setCurrentStep = function(step) {
-    $scope.step = step;
-  };
-
-  $scope.getCurrentStep = function() {
-    return $scope.step;
-  };
-
-  $scope.getMaxStep = function() {
-    return $scope.items.length - 1;
-  };
-
-  $scope.getCurrentProgress = function() {
-    var perc = $scope.getMaxStep() / 100;
-    return $scope.step / perc + '%';
-  };
-
-  $scope.setNextStep = function() {
-    var nextStep = $scope.step + 1;
-    var maxValue = $scope.getMaxStep();
-    if(nextStep > maxValue) nextStep = maxValue;
-    $scope.step = nextStep;
-  };
 
   $scope.notifications = {};
 

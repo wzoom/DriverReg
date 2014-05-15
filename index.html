@@ -22,7 +22,7 @@
   <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
   <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
 
-    <script src="bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
+  <script src="bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
 
   <script src="js/notifications.js"></script>
   <script src="js/animations.js"></script>
@@ -31,6 +31,8 @@
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/services.js"></script>
+
+  <script src="components/about/about.js"></script>
 </head>
 <body ng-controller="drAppCtrl">
   <div ng-include="'header.tpl.html'"></div>
@@ -41,7 +43,7 @@
   </div>
 
   <div class="container center-block">
-    <div ng-include="'partials/about/index.html'"></div>
+    <div ng-include="'components/about/about.tpl.html'"></div>
   </div>
 
 </body>
