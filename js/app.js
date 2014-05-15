@@ -8,7 +8,8 @@ var drApp = angular.module('driverRegApp', [
   //'drAnimations',
   'drControllers',
   'drFilters',
-  'drServices'
+  'drServices',
+  'UserService'
 ]);
 
 //drApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -30,17 +31,15 @@ drApp.config(['$routeProvider', function ($routeProvider) {
   }]);
 
 
-drApp.controller('drAppCtrl', ['$scope', function($scope) {
-  $scope.button = {
-    "visibility": 'yes',
-    "gender" : 'male'
-  };
+drApp.controller('drAppCtrl', ['$scope', 'User', function($scope, User) {
+
+  $scope.user =  User();
 
   $scope.items = [
       { 'name' : 'Photo',
         'tpl'  : 'partials/about/photo.html'},
       { 'name' : 'Name',
-        'tpl'  : 'partials/about/name.html'},
+        'tpl'  : 'partials/about/name.html?noCache=' + Math.random()},
       { 'name' : 'Phone',
           'tpl'  : 'partials/about/phone.html'},
       { 'name' : 'Gender',
@@ -48,7 +47,7 @@ drApp.controller('drAppCtrl', ['$scope', function($scope) {
       { 'name' : 'Language',
         'tpl'  : 'partials/about/language.html'},
       { 'name' : 'Dispatching',
-        'tpl'  : 'partials/about/dispatch.html'},
+        'tpl'  : 'partials/about/dispatch.html'}
   ];
 
   $scope.step = 0;
