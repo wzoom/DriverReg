@@ -3,6 +3,12 @@ var formAbout = angular.module('formAbout', []);
 formAbout.controller('formAboutCtrl', ['$scope', '$rootScope',function($scope, $rootScope) {
   var user = $rootScope.user;
 
+  $rootScope.$on('$routeChangeStart', function(next, current) {
+    $scope.step = 0;
+  });
+
+  $rootScope.stepTitle = 'About You';
+
     $scope.formItems = [
         { 'name' : 'Photo',
             'tpl'  : 'components/about/tpl/photo.tpl.html'},
