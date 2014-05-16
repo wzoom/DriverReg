@@ -10,10 +10,10 @@ formAbout.controller('formAboutCtrl', ['$scope', '$rootScope',function($scope, $
   $rootScope.stepTitle = 'About You';
 
     $scope.formItems = [
-        { 'name' : 'Name',
-            'tpl'  : 'components/about/tpl/name.tpl.html'},
         { 'name' : 'Photo',
             'tpl'  : 'components/about/tpl/photo.tpl.html'},
+        { 'name' : 'Name',
+            'tpl'  : 'components/about/tpl/name.tpl.html'},
         { 'name' : 'Phone',
             'tpl'  : 'components/about/tpl/phone.tpl.html'},
         { 'name' : 'Gender',
@@ -21,7 +21,9 @@ formAbout.controller('formAboutCtrl', ['$scope', '$rootScope',function($scope, $
         { 'name' : 'Language',
             'tpl'  : 'components/about/tpl/language.tpl.html'},
         { 'name' : 'Dispatching',
-            'tpl'  : 'components/about/tpl/dispatch.tpl.html'}
+            'tpl'  : 'components/about/tpl/dispatch.tpl.html'},
+        { 'name' : 'Summary',
+            'tpl'  : 'components/about/tpl/summary.tpl.html'}
     ];
 
   // Testing purposes add random string at the end of URL
