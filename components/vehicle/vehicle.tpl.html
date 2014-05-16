@@ -1,0 +1,9 @@
+<div class="container col-md-6 col-md-offset-3" data-ng-controller="formVehicleCtrl">
+    <div data-ng-repeat="(key, formItem) in formItems" class="clearfix" data-ng-show="getCurrentStep() == key">
+        <h2>{{formItem.name}} {{getCurrentStep() + 1}}/{{getMaxStep() + 1}}</h2>
+    </div>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{width: getCurrentProgress()}">
+        </div>
+    </div>
+</div>

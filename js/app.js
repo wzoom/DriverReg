@@ -10,7 +10,8 @@ var drApp = angular.module('driverRegApp', [
   'drFilters',
   'drServices',
   'formValidation',
-  'formAbout'
+  'formAbout',
+  'formVehicle'
 ]);
 
 //drApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
@@ -18,17 +19,18 @@ drApp.config(['$routeProvider', function ($routeProvider) {
   //$locationProvider.html5Mode(true);
 
   $routeProvider.
-    when('/phones', {
-      templateUrl: 'partials/phone-list.html',
-      controller: 'PhoneListCtrl'
+    when('/about', {
+      templateUrl: 'components/about/about.tpl.html?random=' + Math.random(),
+      controller: 'formAboutCtrl'
     }).
-    when('/phones/:phoneId', {
-      templateUrl: 'partials/phone-detail.html',
-      controller: 'PhoneDetailCtrl'
+    when('/vehicle', {
+      templateUrl: 'components/vehicle/vehicle.tpl.html?random=' + Math.random(),
+      controller: 'formVehicleCtrl'
     }).
     otherwise({
-      redirectTo: '/'
+      redirectTo: '/about'
     });
+
   }]);
 
 
@@ -58,6 +60,10 @@ drApp.controller('HeaderCtrl', ['$scope', '$location', '$route',
     $scope.home = function () {
       $location.path('/');
     };
+
+    $scope.hideNavbar = function() {
+      angular.element('nav.navmenu.offcanvas').offcanvas('hide');
+    }
 
     $scope.isNavbarActive = function (navBarPath) {
       return true;//navBarPath === breadcrumbs.getFirst().name;
