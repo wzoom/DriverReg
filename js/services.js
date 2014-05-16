@@ -22,8 +22,8 @@ drServices.factory('User', function () {
     user.fullNameVisible = 'yes';
     user.gender = 'male';
 
-    user.getFullName = function(short) {
-      if (typeof short == 'undefined' || !short) {
+    user.getFullName = function() {
+      if (this.fullNameVisible == 'yes') {
         return this.firstName + ' ' + this.lastName;
       }
       else {
