@@ -12,9 +12,7 @@ drServices.factory('Phone', ['$resource',
   }]);
 
 
-var UserService = angular.module('UserService', []);
-
-UserService.factory('User', function () {
+drServices.factory('User', function () {
 
   return function() {
     var user = {};
@@ -38,5 +36,66 @@ UserService.factory('User', function () {
     }
 
     return user;
+  }
+});
+
+
+drServices.factory('ProgressSteps', function () {
+
+  return function() {
+    var sections = {
+      about : {
+        title : "About You",
+        steps : {
+          photo : {
+            title : "Photo",
+            tpl  : "components/about/tpl/photo.tpl.html"
+          },
+          name : {
+            title : 'Name',
+            tpl  : 'components/about/tpl/name.tpl.html'
+          },
+          phone : {
+            title : 'Phone',
+            tpl  : 'components/about/tpl/phone.tpl.html'
+          },
+          gender : {
+            title : 'Gender',
+            tpl  : 'components/about/tpl/gender.tpl.html'
+          },
+          language : {
+            title : 'Language',
+            tpl  : 'components/about/tpl/language.tpl.html'
+          },
+          dispatching : {
+            title : 'Dispatching',
+            tpl  : 'components/about/tpl/dispatch.tpl.html'
+          }
+        }
+      },
+      vehicle : {
+        title : "Vehicle",
+        steps : {}
+      },
+      services : {
+        title : "Services",
+        steps : {}
+      },
+      price : {
+        title : "Price",
+        steps : {}
+      },
+      license : {
+        title : "Licensing",
+        steps : {}
+      }
+    };
+
+    sections.listSections = function() {
+      return sections;
+    }
+
+
+    return sections;
   }
 });

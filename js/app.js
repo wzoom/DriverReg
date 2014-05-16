@@ -9,7 +9,6 @@ var drApp = angular.module('driverRegApp', [
   'drControllers',
   'drFilters',
   'drServices',
-  'UserService',
   'formAbout'
 ]);
 
