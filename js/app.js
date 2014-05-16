@@ -9,6 +9,7 @@ var drApp = angular.module('driverRegApp', [
   'drControllers',
   'drFilters',
   'drServices',
+  'formValidation',
   'formAbout'
 ]);
 
@@ -66,4 +67,17 @@ drApp.controller('HeaderCtrl', ['$scope', '$location', '$route',
       return false;//httpRequestTracker.hasPendingRequests();
     };
   }]);
+
+var formValidation = angular.module('formValidation', []);
+formValidation.controller('formValidationCtrl', ['$scope', function($scope) {
+// function to submit the form after all validation has occurred
+    $scope.submitForm = function(isValid) {
+
+        // check to make sure the form is completely valid
+        if (isValid) {
+            alert('our form is amazing');
+        }
+
+    };
+}]);
 

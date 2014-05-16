@@ -4,10 +4,10 @@ formAbout.controller('formAboutCtrl', ['$scope', '$rootScope',function($scope, $
   var user = $rootScope.user;
 
     $scope.formItems = [
-        { 'name' : 'Photo',
-            'tpl'  : 'components/about/tpl/photo.tpl.html'},
         { 'name' : 'Name',
             'tpl'  : 'components/about/tpl/name.tpl.html'},
+        { 'name' : 'Photo',
+            'tpl'  : 'components/about/tpl/photo.tpl.html'},
         { 'name' : 'Phone',
             'tpl'  : 'components/about/tpl/phone.tpl.html'},
         { 'name' : 'Gender',
