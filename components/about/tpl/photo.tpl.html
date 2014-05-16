@@ -1,7 +1,9 @@
 <div class="help-block">Passengers want to see who they are riding with, add a profile photo.</div>
 
 <div class="fileinput fileinput-new" data-provides="fileinput">
-    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+    <div class="fileinput-preview thumbnail col-xs-6 col-md-6" data-trigger="fileinput">
+        <img src="components/about/images/default.jpg" alt="default-avatar">
+    </div>
     <div>
         <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..." ng-model="user.photo"></span>
         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
