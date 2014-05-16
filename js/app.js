@@ -35,7 +35,6 @@ drApp.config(['$routeProvider', function ($routeProvider) {
 
 
 drApp.controller('drAppCtrl', ['$scope', 'User', function($scope, User) {
-
   $scope.user =  User();
 
   $scope.notifications = {};
