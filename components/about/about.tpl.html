@@ -1,4 +1,4 @@
-<div class="container col-md-6 col-md-offset-3" data-ng-controller="formAboutCtrl">
+<div class="col-md-6 col-md-offset-3" data-ng-controller="formAboutCtrl">
     <div data-ng-repeat="(key, formItem) in formItems" class="clearfix" data-ng-show="getCurrentStep() == key">
         <h2>{{formItem.name}} {{getCurrentStep() + 1}}/{{getMaxStep() + 1}}</h2>
     </div>
@@ -10,9 +10,6 @@
     <div data-ng-controller="formValidationCtrl">
 
         <form name="regForm" data-ng-submit="submitForm()" novalidate>
-            <script>
-                console.log('uf');
-            </script>
             <div data-ng-repeat="(key, formItem) in formItems">
                 <div data-ng-show="getCurrentStep() == key" data-ng-animate="'fade'">
                     <div class="clearfix">
