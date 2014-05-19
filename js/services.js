@@ -27,7 +27,7 @@ drServices.factory('User', function () {
         return this.firstName + ' ' + this.lastName;
       }
       else {
-        return this.firstName + ' ' + this.lastName.charAt(0);
+        return this.firstName + ' ' + this.lastName.charAt(0) + '.';
       }
     }
 
