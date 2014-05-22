@@ -1,4 +1,4 @@
-<div class="col-md-6 col-md-offset-3" data-ng-controller="formAboutCtrl">
+<div class="col-md-6 col-md-offset-3 view" data-ng-controller="formAboutCtrl">
     <div data-ng-repeat="(key, formItem) in formItems" class="clearfix" data-ng-show="getCurrentStep() == key">
         <h2>{{formItem.name}} {{getCurrentStep() + 1}}/{{getMaxStep() + 1}}</h2>
     </div>
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="clearfix">
+            <div class="clearfix form-submit">
                 <button type="submit" data-ng-click="setNextStep()" class="btn btn-default btn-primary pull-right" data-ng-show="getCurrentStep() < getMaxStep()">Next</button>
             </div>
         </form>

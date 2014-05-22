@@ -6,3 +6,18 @@
 .alert {
     margin: 40px 0px;
 }
+
+.row,
+.container,
+body,
+html,
+.view {
+    height: 100%;
+    position: relative;
+}
+
+.form-submit {
+    bottom: 15px;
+    right: 15px;
+    position: absolute;
+}
