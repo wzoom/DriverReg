@@ -24,19 +24,19 @@
       <script src="bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
       <script src="js/notifications.js"></script>
       <script src="js/animations.js"></script>
-      <script src="js/controllers.js"></script>
       <script src="js/filters.js"></script>
       <script src="js/services.js"></script>
       <script src="js/app.js"></script>
 
+      <script src="components/start/start.js"></script>
       <script src="components/about/about.js"></script>
       <script src="components/vehicle/vehicle.js"></script>
     </head>
 
     <body data-ng-controller="drAppCtrl">
         <div class="container">
-            <div data-ng-include="'header.tpl.html'"></div>
-            <div data-ng-include="'notifications.tpl.html'" class="container-fluid" data-ng-show="notifications.getCurrent().length"></div>
+            <div ng-include="'header.html'"></div>
+            <div ng-include="'notifications.html'" class="container-fluid" data-ng-show="notifications.getCurrent().length"></div>
             <div class="row">
                 <div ui-view class="view"></div>
             </div>
