@@ -3,7 +3,7 @@
 /* App Module */
 
 var drApp = angular.module('driverRegApp', [
-  'ngRoute',
+  'ui.router',
   'mgcrea.ngStrap',
   //'drAnimations',
   'drControllers',
@@ -14,24 +14,24 @@ var drApp = angular.module('driverRegApp', [
   'formVehicle'
 ]);
 
-//drApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-drApp.config(['$routeProvider', function ($routeProvider) {
-  //$locationProvider.html5Mode(true);
+drApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-  $routeProvider.
-    when('/about', {
-      templateUrl: 'components/about/about.tpl.html?random=' + Math.random(),
+  // Default state
+  $urlRouterProvider.otherwise("/about");
+
+  $stateProvider
+    .state('about', {
+      url: "/about",
+      templateUrl: 'components/about/about.html?random=' + Math.random(),
       controller: 'formAboutCtrl'
-    }).
-    when('/vehicle', {
-      templateUrl: 'components/vehicle/vehicle.tpl.html?random=' + Math.random(),
-      controller: 'formVehicleCtrl'
-    }).
-    otherwise({
-      redirectTo: '/about'
-    });
+    })
+    .state('vehicle', {
+      url: "/vehicle",
+      templateUrl: 'components/vehicle/vehicle.html?random=' + Math.random(),
+        controller: 'formVehicleCtrl'
+    })
 
-  }]);
+}]);
 
 
 drApp.controller('drAppCtrl', ['$scope', 'User', function($scope, User) {
