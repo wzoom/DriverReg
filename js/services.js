@@ -23,6 +23,14 @@ drServices.factory('User', function () {
     user.gender = 'male';
 
     user.getFullName = function() {
+      if (angular.isUndefined(this.firstName)) {
+        return '';
+      }
+
+      if (angular.isUndefined(this.lastName)) {
+        return this.firstName;
+      }
+
       if (this.fullNameVisible == 'yes') {
         return this.firstName + ' ' + this.lastName;
       }
