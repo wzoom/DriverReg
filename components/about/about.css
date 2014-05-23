@@ -3,10 +3,6 @@
     clear: both;
 }
 
-.alert {
-    margin: 40px 0px;
-}
-
 .row,
 .container,
 body,
@@ -17,7 +13,33 @@ html,
 }
 
 .form-submit {
-    bottom: 15px;
+    top: 10px;
     right: 15px;
     position: absolute;
+}
+
+.upload-set {
+    width: 50%;
+}
+
+.thumbnail > canvas,
+.thumbnail a > canvas {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.thumbnail > canvas,
+.thumbnail a > canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.queue {
+    position: absolute;
+    display: block;
+    height: 155px;
+    bottom: 15px;
+    right: 15px;
+    margin-bottom: 0px;
 }
