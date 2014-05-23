@@ -11,13 +11,9 @@
         <div data-ng-controller="formValidationCtrl">
 
             <form name="regForm" data-ng-submit="submitForm()" novalidate>
-                <div data-ng-repeat="(key, formItem) in formItems">
-                    <div data-ng-show="getCurrentStep() == key" data-ng-animate="'fade'">
-                        <div class="clearfix">
-                            <div data-ng-include="formItem.tpl"></div>
-                        </div>
-                    </div>
-                </div>
+                <a ui-sref="photo">State 1</a>
+                <a ui-sref="state2">State 2</a>
+                <div ui-view></div>
                 <div class="clearfix form-submit">
                     <button type="submit" data-ng-click="setNextStep()" class="btn btn-default btn-primary pull-right" data-ng-show="getCurrentStep() < getMaxStep()">Next</button>
                 </div>

@@ -12,8 +12,7 @@ var drApp = angular.module('driverRegApp', [
   'formValidation',
   'formAbout',
   'formVehicle',
-  'angularFileUpload',
-  'ui.router'
+  'angularFileUpload'
 ]);
 
 //drApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {

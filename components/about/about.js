@@ -1,4 +1,6 @@
-var formAbout = angular.module('formAbout', []);
+var formAbout = angular.module('formAbout', [
+  'ui.router'
+]);
 
 formAbout.controller('formAboutCtrl', ['$scope', '$rootScope',function($scope, $rootScope) {
   var user = $rootScope.user;
@@ -67,3 +69,40 @@ formAbout.controller('formAboutCtrl', ['$scope', '$rootScope',function($scope, $
     };
 
 }]);
+
+formAbout.config(function($stateProvider, $urlRouterProvider) {
+  //
+  // For any unmatched url, redirect to /state1
+  $urlRouterProvider.otherwise("/state1");
+  //
+  // Now set up the states
+  $stateProvider
+    .state('photo', {
+      url: "/photo",
+      templateUrl: "components/about/tpl/photo.tpl.html"
+    })
+    .state('name', {
+      url: "/name",
+      templateUrl: "components/about/tpl/name.tpl.html"
+    })
+    .state('phone', {
+      url: "/phone",
+      templateUrl: "components/about/tpl/phone.tpl.html"
+    })
+    .state('gender', {
+      url: "/gender",
+      templateUrl: "components/about/tpl/gender.tpl.html"
+    })
+    .state('language', {
+      url: "/language",
+      templateUrl: "components/about/tpl/language.tpl.html"
+    })
+    .state('dispatch', {
+      url: "/dispatch",
+      templateUrl: "components/about/tpl/dispatch.tpl.html"
+    })
+    .state('summary', {
+      url: "/summary",
+      templateUrl: "components/about/tpl/summary.tpl.html"
+    })
+});
