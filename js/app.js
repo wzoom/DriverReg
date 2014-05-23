@@ -14,46 +14,61 @@ var drApp = angular.module('driverRegApp', [
   'formVehicle'
 ]);
 
-drApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+drApp.config(['$stateProvider', '$urlRouterProvider',
+  function   ($stateProvider,    $urlRouterProvider) {
 
   // Default state
   $urlRouterProvider.otherwise("/start");
 
-  $stateProvider
+    var getComponentTemplatePath = function (stateName) {
+      return 'components/' + stateName + '/' + stateName + '.html?random=' + Math.random();
+    };
+
+    $stateProvider
     .state('start', {
       title: "Getting Started",
       url: "/start",
-      templateUrl: 'components/start/start.html?random=' + Math.random(),
+      templateUrl: getComponentTemplatePath('start'),
       controller: 'startCtrl'
     })
     .state('about', {
       title: "About You",
       url: "/about",
-      templateUrl: 'components/about/about.html?random=' + Math.random(),
+      templateUrl: getComponentTemplatePath('about'),
       controller: 'formAboutCtrl'
     })
+      .state('about.photo', {
+        //title: "",
+        //url: "/about",
+        templateUrl: 'components/about/tpl/photo.tpl.html?random=' + Math.random()
+      })
+      .state('about.name', {
+        //title: "",
+        //url: "/about",
+        templateUrl: 'components/about/tpl/name.tpl.html?random=' + Math.random()
+      })
     .state('vehicle', {
       title: "Vehicle",
       url: "/vehicle",
-      templateUrl: 'components/vehicle/vehicle.html?random=' + Math.random(),
+      templateUrl: getComponentTemplatePath('vehicle'),
         controller: 'formVehicleCtrl'
     })
     .state('services', {
       title: "Services",
       url: "/services",
-      templateUrl: 'components/services/services.html?random=' + Math.random(),
+      templateUrl: getComponentTemplatePath('services'),
       controller: 'formServicesCtrl'
     })
     .state('prices', {
       title: "Prices",
       url: "/prices",
-      templateUrl: 'components/prices/prices.html?random=' + Math.random(),
+      templateUrl: getComponentTemplatePath('prices'),
       controller: 'formPricesCtrl'
     })
     .state('licensing', {
       title: "Licensing",
       url: "/licensing",
-      templateUrl: 'components/licensing/licensing.html?random=' + Math.random(),
+      templateUrl: getComponentTemplatePath('licensing'),
       controller: 'formLicensingCtrl'
     })
 
