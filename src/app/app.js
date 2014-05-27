@@ -18,7 +18,7 @@ drApp.config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider){
 
     var getComponentTemplatePath = function (stateName) {
-      return 'components/' + stateName + '/' + stateName + '.html?random=' + Math.random();
+      return 'components/' + stateName + '/' + stateName + '.html';
     };
 
     $urlRouterProvider.otherwise('/');

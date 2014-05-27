@@ -12,7 +12,7 @@ angular.module('drApp.about', [
     };
 
     var getComponentTemplatePath = function (stateName) {
-      return 'components/' + stepSettings.mainState + '/' + stateName + '.html?random=' + Math.random();
+      return 'components/' + stepSettings.mainState + '/' + stateName + '.html';
     };
 
     $stateProvider
