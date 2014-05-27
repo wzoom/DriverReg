@@ -1,0 +1,8 @@
+.queue {
+    position: absolute;
+    display: block;
+    height: 155px;
+    bottom: 15px;
+    right: 15px;
+    margin-bottom: 0px;
+}

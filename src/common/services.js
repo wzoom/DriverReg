@@ -17,10 +17,11 @@ drServices.factory('User', function () {
   return function() {
     var user = {};
 
-    user.firstName = '';
-    user.lastName = '';
-    user.fullNameVisible = 'yes';
-    user.gender = 'male';
+    user.image = null;
+    user.firstName = null;
+    user.lastName = null;
+    user.fullNameVisible = null;
+    user.gender = null;
 
     user.getFullName = function() {
       if (angular.isUndefined(this.firstName)) {

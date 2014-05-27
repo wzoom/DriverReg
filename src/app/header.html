@@ -3,7 +3,7 @@
     <div class="">
 
       <div class="list-group">
-        <a ng-repeat="state in states" href="#{{state.url}}" class="list-group-item" ng-click="hideNavbar()" ng-class="{'list-group-item-success' : Math.random() > 0.5, 'list-group-item-danger' : Math.random() < 0.9}">
+        <a ng-repeat="state in states" ng-show="state.sideMenu" href="#{{state.url}}" class="list-group-item" ng-click="hideNavbar()" ng-class="{'list-group-item-success' : Math.random() > 0.5, 'list-group-item-danger' : Math.random() < 0.9}">
           <span ng-show="Math.random() > 0.5" class="glyphicon pull-right lead"></span>
           <span ng-show="Math.random() < 0.5" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
 

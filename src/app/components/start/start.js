@@ -5,5 +5,4 @@ start.controller('startCtrl', ['$scope', '$rootScope', '$state', function ($scop
 
   $rootScope.stepTitle = 'Getting Started';
 
-
 }]);

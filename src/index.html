@@ -1,26 +1,27 @@
 <!doctype html>
 <html lang="en" ng-app="driverRegApp">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Driver Registration</title>
-      <link rel="stylesheet" href="vendor.css">
-      <link rel="stylesheet" href="app.css">
-    </head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Driver Registration</title>
+    <link rel="stylesheet" href="vendor.css">
+    <link rel="stylesheet" href="app.css">
+  </head>
 
-    <body id="drAppCtrl" data-ng-controller="drAppCtrl">
-        <div class="container">
-            <div ng-include="'header.html'"></div>
-            <div ng-include="'notifications.html'" class="container-fluid" data-ng-show="notifications.getCurrent().length"></div>
-            <div class="row">
-                <div ui-view class="view"></div>
-            </div>
-        </div>
+  <body id="drAppCtrl" data-ng-controller="drAppCtrl">
 
-        <script src="angular.js"></script>
-        <script src="jquery.js"></script>
-        <script src="vendor.js"></script>
-        <script src="templates-app.js"></script>
-        <script src="app.js"></script>
-    </body>
+    <div class="container">
+      <div ng-include="'header.html'"></div>
+      <div ng-include="'notifications.html'" class="container-fluid" data-ng-show="notifications.getCurrent().length"></div>
+      <div class="row">
+        <div ui-view></div>
+      </div>
+    </div>
+
+    <script src="angular.js"></script>
+    <script src="jquery.js"></script>
+    <script src="vendor.js"></script>
+    <script src="templates-app.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
