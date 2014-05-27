@@ -13,6 +13,7 @@ var drApp = angular.module('driverRegApp', [
   'formVehicle',
   'angularFileUpload',
   'start',
+  'templates.app',
 ]);
 
 drApp.config(['$stateProvider', '$urlRouterProvider',
