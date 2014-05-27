@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint','build']); //,'karma:unit'
 
-  grunt.registerTask('build', ['mkdir', 'clean', 'bower', 'copy', 'html2js', 'concat']);
+  grunt.registerTask('build', ['mkdir', 'clean', 'bower', 'copy', 'html2js', 'concat', 'ngAnnotate']);
   grunt.registerTask('release', ['build','uglify','jshint']);
 
   grunt.registerTask('server', ['express', 'open', 'watch']);
@@ -26,6 +26,7 @@ module.exports = function(grunt) {
       dir: 'dist',
       lib: '<%= dist.dir %>/lib',
       html: '<%= dist.dir %>/index.html',
+      app: '<%= dist.dir%>/app.js'
     },
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
@@ -163,7 +164,7 @@ module.exports = function(grunt) {
       all: {
         files: {
           // The same file will be replaced by annotated version
-          '<%= concat.dist.dest %>' : ['<%= concat.dist.dest %>'],
+          '<%= dist.app %>' : ['<%= dist.app %>'],
         }
       }
     },
