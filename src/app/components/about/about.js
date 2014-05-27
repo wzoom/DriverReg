@@ -2,8 +2,7 @@ angular.module('drApp.about', [
   'ui.router'
 ])
 
-.config(['$stateProvider', '$urlRouterProvider',
-  function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider){
 
     var stepSettings = {
       mainState: 'about',
@@ -42,9 +41,9 @@ angular.module('drApp.about', [
       });
 
   }
-])
+)
 
-.controller('aboutCtrl', ['$scope', '$rootScope', '$state', '$filter', function ($scope, $rootScope, $state, $filter) {
+.controller('aboutCtrl', function ($scope, $rootScope, $state, $filter) {
   var user = $rootScope.user;
 
   $scope.states = $filter('filter')($state.get(),  function(state){return state.name != ''});
@@ -52,5 +51,5 @@ angular.module('drApp.about', [
 
   $rootScope.stepTitle = 'About you';
 
-}]);
+});
 

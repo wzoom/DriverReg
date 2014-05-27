@@ -14,8 +14,7 @@ var drApp = angular.module('driverRegApp', [
   'templates.app',
 ]);
 
-drApp.config(['$stateProvider', '$urlRouterProvider',
-  function($stateProvider, $urlRouterProvider){
+drApp.config(function($stateProvider, $urlRouterProvider){
 
     var getComponentTemplatePath = function (stateName) {
       return 'components/' + stateName + '/' + stateName + '.html';
@@ -31,10 +30,10 @@ drApp.config(['$stateProvider', '$urlRouterProvider',
         templateUrl: getComponentTemplatePath('start')
       });
   }
-]);
+);
 
 
-drApp.controller('drAppCtrl', ['$scope', '$state', 'User', function($scope, $state, User) {
+drApp.controller('drAppCtrl', function($scope, $state, User) {
   $scope.user =  User();
   $scope.state = $state;
 
@@ -50,10 +49,9 @@ drApp.controller('drAppCtrl', ['$scope', '$state', 'User', function($scope, $sta
 
 
 
-}]);
+});
 
-drApp.controller('HeaderCtrl', ['$scope', '$location', '$state', '$filter',
-  function ($scope, $location, $state, $filter) {
+drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter) {
 
     // Fill-in all states (except the virtual root state)
     $scope.states = $filter('filter')($state.get(),  function(state){return state.name != ''});
@@ -72,9 +70,9 @@ drApp.controller('HeaderCtrl', ['$scope', '$location', '$state', '$filter',
     $scope.hasPendingRequests = function () {
       return false;//httpRequestTracker.hasPendingRequests();
     };
-  }]);
+  });
 
-drApp.controller('formValidationCtrl', ['$scope', '$state', function($scope, $state) {
+drApp.controller('formValidationCtrl', function($scope, $state) {
 // function to submit the form after all validation has occurred
     $scope.submitForm = function(isValid) {
 
@@ -92,6 +90,6 @@ drApp.controller('formValidationCtrl', ['$scope', '$state', function($scope, $st
 
       }
     }
-}]);
+});
 
 

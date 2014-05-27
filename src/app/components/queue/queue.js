@@ -70,7 +70,7 @@ drApp.controller('queueCtrl', function ($scope, $fileUploader) {
 });
 
 
-drApp.directive('ngThumb', ['$window', function($window) {
+drApp.directive('ngThumb', function($window) {
     var helper = {
       support: !!($window.FileReader && $window.CanvasRenderingContext2D),
       isFile: function(item) {
@@ -113,4 +113,4 @@ drApp.directive('ngThumb', ['$window', function($window) {
         }
       }
     };
-  }]);
+  });
