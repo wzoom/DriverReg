@@ -3,14 +3,14 @@
     <div class="">
 
       <div class="list-group">
-        <a ng-repeat="state in states" ng-show="state.sideMenu" href="#{{state.url}}" class="list-group-item" ng-click="hideNavbar()" ng-class="{'list-group-item-success' : Math.random() > 0.5, 'list-group-item-danger' : Math.random() < 0.9}">
-          <span ng-show="Math.random() > 0.5" class="glyphicon pull-right lead"></span>
-          <span ng-show="Math.random() < 0.5" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
+        <a ng-repeat="state in states" ng-show="state.sideMenu" href="#{{state.url}}" class="list-group-item" ng-click="hideNavbar()" ng-class="{'list-group-item-success' : state.isStateValid(), 'list-group-item-danger' : !state.isStateValid()}">
+          <span ng-show="state.isStateValid()" class="glyphicon pull-right lead"></span>
+          <span ng-show="!state.isStateValid()" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
 
           <h4 class="list-group-item-heading">{{state.title}}</h4>
 
           <p class="list-group-item-text small">100% filled in.</p>
-          <p ng-show="Math.random() < 0.5" class="list-group-item-text text-danger small">Almost done. Fill in few more fields.</p>
+          <p ng-show="!state.isStateValid()" class="list-group-item-text text-danger small">Almost done. Fill in few more fields.</p>
         </a>
 
       </div>

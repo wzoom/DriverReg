@@ -3,8 +3,8 @@
 /* App Module */
 
 var drApp = angular.module('driverRegApp', [
+  'ui.router', 'ui.router.stateHelper',
   'drApp.about',
-  'ui.router',
   'mgcrea.ngStrap',
   'drAnimations',
   'drFilters',
@@ -27,7 +27,11 @@ drApp.config(function($stateProvider, $urlRouterProvider){
         title: "Getting Started",
         sideMenu: true,
         url: "/",
-        templateUrl: getComponentTemplatePath('start')
+        templateUrl: getComponentTemplatePath('start'),
+        isStateValid: function() {
+          return true;
+        },
+        weight: 0,
       });
   }
 );
@@ -54,7 +58,9 @@ drApp.controller('drAppCtrl', function($scope, $state, User) {
 drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter) {
 
     // Fill-in all states (except the virtual root state)
-    $scope.states = $filter('filter')($state.get(),  function(state){return state.name != ''});
+    $scope.states = $filter('filter')($state.get(),  function(state){
+      return state.name != ''; //&& state.name.indexOf('.') == -1;
+    });
 
     $scope.isAuthenticated = true;//security.isAuthenticated;
     $scope.isAdmin = true;//security.isAdmin;
@@ -73,23 +79,30 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter) {
   });
 
 drApp.controller('formValidationCtrl', function($scope, $state) {
-// function to submit the form after all validation has occurred
-    $scope.submitForm = function(isValid) {
+  // function to submit the form after all validation has occurred
+  $scope.submitForm = function(isValid) {
 
-        // check to make sure the form is completely valid
-        if (isValid) {
-            alert('our form is amazing');
-        }
-
-    };
-
-    console.log($state);
-
-    $scope.skipStep = function() {
-      if ($state.current.skipAllow == true) {
-
-      }
+    // check to make sure the form is completely valid
+    if (isValid) {
+      alert('our form is amazing');
     }
+
+  };
+
+  console.log($state);
+
+  $scope.skipStep = function() {
+    if ($state.current.skipAllow == true) {
+
+    }
+  }
+
+  $scope.setNextStep = function() {
+    // TODO - find out NAME of the next state first
+    console.log($state.get('', 'about'));
+    // Go to next state
+    $state.go('^.name');
+  }
 });
 
 
