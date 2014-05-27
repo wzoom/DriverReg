@@ -1,0 +1,27 @@
+.fileinput .thumbnail {
+    float: none;
+    clear: both;
+}
+
+.form-submit {
+    top: 10px;
+    right: 15px;
+    position: absolute;
+}
+
+.upload-set {
+    width: 50%;
+}
+
+.thumbnail > canvas,
+.thumbnail a > canvas {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.thumbnail > canvas,
+.thumbnail a > canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}

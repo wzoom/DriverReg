@@ -1,0 +1,33 @@
+<div data-ng-controller="queueCtrl" data-ng-file-drop>
+
+    <div class="col-md-6 col-md-offset-3" data-ng-controller="aboutCtrl">
+        <h2>{{state.current.title}}</h2>
+
+        <div data-ng-controller="formValidationCtrl">
+            <form name="regForm" novalidate>
+                <div ui-view></div>
+                <div class="clearfix form-submit">
+                    <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="regForm.$invalid" class="btn btn-default btn-primary pull-right">Next</button>
+                    <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="!state.current.skipAllow" class="btn btn-default btn-info pull-right margin btn-margin-right">Skip</button>
+
+                </div>
+            </form>
+
+            <!-- DEBUGG MESSAGE-->
+            <div class="clearfix" style="margin-top: 200px;"></div>
+            <div class="well">Valid form: {{regForm.$valid}}</div>
+            <div class="well">State: {{state}}</div>
+            <div class="well">User: {{user}}</div>
+            <!-- END DEBUGG MESSAGE-->
+        </div>
+
+
+
+
+    </div>
+
+    <div data-ng-include="'components/queue/queue.html'"></div>
+
+
+
+</div>
