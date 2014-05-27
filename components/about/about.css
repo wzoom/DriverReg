@@ -3,15 +3,6 @@
     clear: both;
 }
 
-.row,
-.container,
-body,
-html,
-.view {
-    height: 100%;
-    position: relative;
-}
-
 .form-submit {
     top: 10px;
     right: 15px;
@@ -33,13 +24,4 @@ html,
     display: block;
     max-width: 100%;
     height: auto;
-}
-
-.queue {
-    position: absolute;
-    display: block;
-    height: 155px;
-    bottom: 15px;
-    right: 15px;
-    margin-bottom: 0px;
 }

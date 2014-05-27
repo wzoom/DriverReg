@@ -1,0 +1,45 @@
+<div data-ng-controller="TestController" data-ng-file-drop>
+    <div class="col-md-6 col-md-offset-3 view" ng-controller="aboutCtrl">
+        <div data-ng-repeat="(key, formItem) in formItems" class="clearfix" data-ng-show="getCurrentStep() == key">
+            <h2>{{formItem.name}} {{getCurrentStep() + 1}}/{{getMaxStep() + 1}}</h2>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{width: getCurrentProgress()}">
+            </div>
+        </div>
+
+
+
+        <div>
+            <form name="regForm" data-ng-submit="submitForm()" novalidate>
+
+                <div class="clearfix form-submit">
+                    <button type="submit" data-ng-click="setNextStep()" class="btn btn-default btn-primary pull-right" data-ng-show="getCurrentStep() < getMaxStep()">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="queue alert alert-info col-md-12 col-md-offset-12 center-block" data-ng-show="uploader.isUploading || uploader.progress == 100">
+        <p>Queue length: {{ uploader.queue.length }}</p>
+
+        <div>
+            <p>
+                Queue progress: {{uploader.progress + '%'}}
+            <div class="progress" data-ng-class="activeProgress" style="">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+            </div>
+            </p>
+            <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                <span class="glyphicon glyphicon-upload"></span> Upload all
+            </button>
+            <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+            </button>
+            <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                <span class="glyphicon glyphicon-trash"></span> Remove all
+            </button>
+        </div>
+
+    </div>
+</div>
