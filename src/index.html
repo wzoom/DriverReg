@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" ng-app="driverRegApp">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Driver Registration</title>
+      <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+      <link rel="stylesheet" href="../bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css">
+      <link rel="stylesheet" href="app/styles/app.css">
+      <link rel="stylesheet" href="app/styles/animations.css">
+      <link rel="stylesheet" href="app/components/about/about.css">
+
+      <script src="../bower_components/jquery/dist/jquery.js"></script>
+      <script src="../bower_components/angular/angular.js"></script>
+      <script src="../bower_components/angular-animate/angular-animate.js"></script>
+      <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="../bower_components/angular-resource/angular-resource.js"></script>
+      <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="../bower_components/angular-touch/angular-touch.js"></script>
+
+      <script src="../bower_components/angular-strap/dist/angular-strap.js"></script>
+      <script src="../bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+      <script src="../bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
+
+      <script src="../bower_components/es5-shim/es5-shim.js"></script>
+      <script src="../bower_components/angular-file-upload/angular-file-upload.js"></script>
+      <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+      <script src="app/common/notifications.js"></script>
+      <script src="app/common/animations.js"></script>
+      <script src="app/common/filters.js"></script>
+      <script src="app/common/services.js"></script>
+      <script src="app/app.js"></script>
+      <script src="app/common/directives.js"></script>
+
+      <script src="app/components/start/start.js"></script>
+      <script src="app/components/about/about.js"></script>
+      <script src="app/components/vehicle/vehicle.js"></script>
+    </head>
+
+    <body id="drAppCtrl" data-ng-controller="drAppCtrl">
+        <div class="container">
+            <div ng-include="'header.html'"></div>
+            <div ng-include="'notifications.html'" class="container-fluid" data-ng-show="notifications.getCurrent().length"></div>
+            <div class="row">
+                <div ui-view class="view"></div>
+            </div>
+        </div>
+    </body>
+</html>
