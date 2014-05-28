@@ -126,16 +126,31 @@ angular.module('drApp.about', [
 
   var mainStepName = 'about';
 
-  function isNameValid() {
-    if (!angular.isEmpty(User.firstName) && !angular.isEmpty(User.lastName)) return true;
-    return false;
-  }
-
-  function isPhotoValid() {
+  var isNameValid = function(user) {
+    if (angular.isUndefined(user.firstName)) return false;
+    if (angular.isUndefined(user.lastName)) return false;
+    if (user.firstName == '') return false;
+    if (user.lastName == '') return false;
     return true;
   }
 
-  // Public API
+  var isPhotoValid = function(user) {
+    return true;
+  }
+
+  var isGenderValid = function(user) {
+    return !angular.isUndefined(user.gender) && ['yes','no'].indexOf(user.gender) > -1;
+  }
+
+  var isLanguageValid = function(user) {
+    return false;
+  }
+
+  var isDispachingValid = function(user) {
+    return false;
+  }
+
+    // Public API
   service.isStepValid = function(stepName){
     if (stepName.substring(0, stepName.indexOf('.')) != mainStepName) return false;
 
@@ -144,12 +159,16 @@ angular.module('drApp.about', [
     }
 
     switch(stepName) {
-      case 'photo': return this.isPhotoValid();
-      case 'name': return this.isNameValid();
+      case 'photo': return isPhotoValid(User);
+      case 'name': return isNameValid(User);
+      case 'gender': return isGenderValid(User);
+      case 'language': return isLanguageValid(User);
+      case 'dispatch': return isDispachingValid(User);
+      // TODO - change to false and add attribute to $state so that validation can be disabled for certain steps
+      case 'summary': return true;
     }
 
-    // TODO - change to false and add attribute to $state so that validation can be disabled for certain steps
-    return true;
+    return false;
   }
 
   return service;

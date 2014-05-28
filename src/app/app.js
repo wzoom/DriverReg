@@ -104,7 +104,9 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
 
       angular.forEach(siblings, function (state) {
         //if (angular.isUndefined(state.isStateValid) || !state.isStateValid()) {
-        if (aboutValidator.isStepValid(state.name)) {
+        var valid = aboutValidator.isStepValid(state.name);
+        //console.log('Step '+ state.name +' is '+(valid?'valid.':'INVALID.'));
+        if (!valid) {
           // Go to next state
           $state.go(state);
         }
