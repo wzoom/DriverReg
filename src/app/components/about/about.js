@@ -39,7 +39,7 @@ angular.module('drApp.about', [
             templateUrl: getComponentTemplatePath('about.photo'),
             isStateValid: function() {
               return false;
-            },
+            }
           },
           {
             name: 'name',
@@ -57,9 +57,53 @@ angular.module('drApp.about', [
                 if (!angular.isEmpty(user.firstName) && !angular.isEmpty(user.lastName)) return true;
                 return false;
               };
-            },
+            }
+          },
+          {
+            name: 'gender',
+            title: "Gender",
+            sideMenu: false,
+            skipAllow: true,
+            url: "/gender",
+            templateUrl: getComponentTemplatePath('about.gender'),
+            isStateValid: function() {
+              return false;
+            }
+          },
+          {
+            name: 'language',
+            title: "Language",
+            sideMenu: false,
+            skipAllow: true,
+            url: "/language",
+            templateUrl: getComponentTemplatePath('about.language'),
+            isStateValid: function() {
+              return false;
+            }
+          },
+          {
+            name: 'dispatch',
+            title: "Dispatch",
+            sideMenu: false,
+            skipAllow: true,
+            url: "/dispatch",
+            templateUrl: getComponentTemplatePath('about.dispatch'),
+            isStateValid: function() {
+              return false;
+            }
+          },
+          {
+            name: 'summary',
+            title: "Summary",
+            sideMenu: false,
+            skipAllow: true,
+            url: "/summary",
+            templateUrl: getComponentTemplatePath('about.summary'),
+            isStateValid: function() {
+              return false;
+            }
           }
-        ],
+        ]
       });
 
   }
