@@ -122,7 +122,7 @@ angular.module('drApp.about', [
 })
 
 .service('aboutValidator', function (User) {
-  var service = {};
+  var service = this;
 
   var mainStepName = 'about';
 
@@ -169,7 +169,12 @@ angular.module('drApp.about', [
     }
 
     return false;
-  }
+  };
+
+  service.isStepValid = function(stepName){
+
+  };
+
 
   return service;
 })

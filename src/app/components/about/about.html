@@ -13,14 +13,21 @@
                 </div>
             </form>
 
-            <!-- DEBUGG MESSAGE-->
+          <!-- DEBUGG MESSAGE-->
+          <div style="word-wrap:break-word;">
             <div class="clearfix" style="margin-top: 200px;"></div>
             <div class="well">Valid form: {{regForm.$valid}}</div>
             <!--<div class="well">State: {{currentState}}</div>-->
             <div class="well">User: {{user}}</div>
-            <!-- END DEBUGG MESSAGE-->
+          </div>
+          <!-- END DEBUGG MESSAGE-->
         </div>
 
+
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{width: getCurrentProgress()}">
+        </div>
+      </div>
 
 
 

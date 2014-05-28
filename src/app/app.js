@@ -28,9 +28,7 @@ drApp.config(function($stateProvider, $urlRouterProvider){
         sideMenu: true,
         url: "/",
         templateUrl: getComponentTemplatePath('start'),
-        isStateValid: function() {
-          return true;
-        },
+        controller: 'HeaderCtrl',
         weight: 0,
       });
   }
@@ -55,7 +53,9 @@ drApp.controller('drAppCtrl', function($scope, $state, User) {
 
 });
 
-drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter) {
+drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, aboutValidator) {
+
+  console.log($state.current);
 
     // Fill-in all states (except the virtual root state)
     $scope.states = $filter('filter')($state.get(),  function(state){
@@ -76,7 +76,44 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter) {
     $scope.hasPendingRequests = function () {
       return false;//httpRequestTracker.hasPendingRequests();
     };
+
+  $scope.getCurrentProgress = function() {
+    if (angular.isDefined($state.current.parent) && angular.isDefined($state.current.parent.children)) {
+      var siblings = $state.current.parent.children || [];
+      var totalSteps = siblings.length;
+      var progress = 0;
+      if (totalSteps > 0) {
+        angular.forEach(siblings, function (state) {
+          var valid = aboutValidator.isStepValid(state.name);
+          if (valid) {
+            progress++;
+          }
+        });
+
+        return {
+          total: totalSteps,
+          absolute: progress,
+          percent: (100 * (progress / totalSteps)),
+        }
+      }
+    }
+
+    return  {
+      total: 0,
+      absolute: 0,
+      percent: 0,
+    };
+  };
+
+  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+    $scope.headerTitle = toState.title + ' (' + $scope.getCurrentProgress().percent + '% done)';
+    $scope.progress = $scope.getCurrentProgress().percent;
   });
+
+
+
+
+});
 
 drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) {
   // function to submit the form after all validation has occurred
@@ -109,9 +146,11 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
         if (!valid) {
           // Go to next state
           $state.go(state);
+          return;
         }
       });
     }
+    $state.go('^.summary');
   }
 });
 

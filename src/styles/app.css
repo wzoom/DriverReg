@@ -22,3 +22,6 @@ button.navbar-toggle {
     display: none !important;
 }
 
+#header-title {
+  color: white;
+}

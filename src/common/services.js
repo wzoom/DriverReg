@@ -41,13 +41,3 @@ drServices.factory('User', function () {
   return user;
 });
 
-
-drServices.factory('StepValidator', function () {
-  var service = {};
-
-  service.isStepValid = function(){
-    return false;
-  }
-
-  return service;
-});
