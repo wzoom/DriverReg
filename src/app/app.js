@@ -99,7 +99,7 @@ drApp.controller('formValidationCtrl', function($scope, $state) {
 
   $scope.setNextStep = function() {
     // TODO - find out NAME of the next state first
-    console.log($state.get('', 'about'));
+    console.log($state.get('about'));
     // Go to next state
     $state.go('^.name');
   }
