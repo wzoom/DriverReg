@@ -8,7 +8,7 @@
                 <div ui-view></div>
                 <div class="clearfix form-submit">
                     <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="regForm.$invalid" class="btn btn-default btn-primary pull-right">Next</button>
-                    <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="!currentState.skipAllow" class="btn btn-default btn-info pull-right margin btn-margin-right">Skip</button>
+                    <button type="submit" data-ng-click="setNextStep()" data-ng-show="currentState.skipAllow" class="btn btn-default btn-info pull-right margin btn-margin-right">Skip</button>
 
                 </div>
             </form>
