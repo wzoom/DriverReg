@@ -62,7 +62,38 @@ angular.module('drApp.about', [
               return false;
             },
             */
-
+          },
+          {
+            name: 'gender',
+            title: "Gender",
+            sideMenu: false,
+            skipAllow: true,
+            url: "/gender",
+            templateUrl: getComponentTemplatePath('about.gender'),
+          },
+          {
+            name: 'language',
+            title: "Language",
+            sideMenu: false,
+            skipAllow: true,
+            url: "/language",
+            templateUrl: getComponentTemplatePath('about.language'),
+          },
+          {
+            name: 'dispatch',
+            title: "Dispatch",
+            sideMenu: false,
+            skipAllow: true,
+            url: "/dispatch",
+            templateUrl: getComponentTemplatePath('about.dispatch'),
+          },
+          {
+            name: 'summary',
+            title: "Summary",
+            sideMenu: false,
+            skipAllow: true,
+            url: "/summary",
+            templateUrl: getComponentTemplatePath('about.summary'),
           }
         ],
       });
