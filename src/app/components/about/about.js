@@ -1,5 +1,5 @@
 angular.module('drApp.about', [
-  'ui.router', 'ui.router.stateHelper',
+  'ui.router', 'ui.router.stateHelper', 'drServices',
 ])
 
 .config(function(stateHelperProvider){
@@ -24,7 +24,10 @@ angular.module('drApp.about', [
         templateUrl: getComponentTemplatePath('about'),
         weight: 1,
         controller: function ($state) {
-          $state.transitionTo(stepSettings.firstStep);
+          if ($state.current.name == 'about') {
+            //$state.go($state.current.children[0]);
+            $state.go(stepSettings.firstStep);
+          }
         },
         isStateValid: function() {
           return false;
@@ -37,9 +40,6 @@ angular.module('drApp.about', [
             skipAllow: true,
             url: "/photo",
             templateUrl: getComponentTemplatePath('about.photo'),
-            isStateValid: function() {
-              return false;
-            },
           },
           {
             name: 'name',
@@ -50,14 +50,19 @@ angular.module('drApp.about', [
             templateUrl: getComponentTemplatePath('about.name'),
             resolve: {
               user: 'User',
+              //validator: 'nameStepValidator',
             },
             controller: function ($state, $scope, user) {
 
-              $scope.isStateValid = function() {
-                if (!angular.isEmpty(user.firstName) && !angular.isEmpty(user.lastName)) return true;
-                return false;
-              };
             },
+            /*
+            isStateValid: function(validator) {
+              console.log(validator);
+              //return validator.isStateValid()
+              return false;
+            },
+            */
+
           }
         ],
       });
@@ -73,5 +78,63 @@ angular.module('drApp.about', [
 
   $rootScope.stepTitle = 'About you';
 
-});
+  $rootScope.$on('$stateChangeStart', function(event, toState){
+    $scope.currentState = toState;
 
+    if (toState.name == 'about') {
+      //$location.path('/about/photo');
+      //$state.go('about.photo');
+      //$state.go($state.current.children[0]);
+    }
+  });
+
+})
+
+.service('aboutValidator', function (User) {
+  var service = {};
+
+  var mainStepName = 'about';
+
+  function isNameValid() {
+    if (!angular.isEmpty(User.firstName) && !angular.isEmpty(User.lastName)) return true;
+    return false;
+  }
+
+  function isPhotoValid() {
+    return true;
+  }
+
+  // Public API
+  service.isStepValid = function(stepName){
+    if (stepName.substring(0, stepName.indexOf('.')) != mainStepName) return false;
+
+    if (stepName.indexOf('.') > -1) {
+      stepName = stepName.substring(stepName.indexOf('.')+1);
+    }
+
+    switch(stepName) {
+      case 'photo': return this.isPhotoValid();
+      case 'name': return this.isNameValid();
+    }
+
+    // TODO - change to false and add attribute to $state so that validation can be disabled for certain steps
+    return true;
+  }
+
+  return service;
+})
+
+/*
+.factory('nameStepValidator', function (StepValidator, User) {
+  var service = Object.create(StepValidator);
+
+  // Override validation method
+  service.isStepValid = function(){
+    if (!angular.isEmpty(User.firstName) && !angular.isEmpty(User.lastName)) return true;
+    return false;
+  }
+
+  return service;
+})
+ */
+;

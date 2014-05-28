@@ -13,38 +13,41 @@ drServices.factory('Phone', ['$resource',
 
 
 drServices.factory('User', function () {
+ var user = {};
 
-  return function() {
-    var user = {};
+  user.image = null;
+  user.firstName = null;
+  user.lastName = null;
+  user.fullNameVisible = null;
+  user.gender = null;
 
-    user.image = null;
-    user.firstName = null;
-    user.lastName = null;
-    user.fullNameVisible = null;
-    user.gender = null;
-
-    user.getFullName = function() {
-      if (angular.isEmpty(this.firstName)) {
-        return '';
-      }
-
-      if (angular.isEmpty(this.lastName)) {
-        return this.firstName;
-      }
-
-      if (this.fullNameVisible == 'yes') {
-        return this.firstName + ' ' + this.lastName;
-      }
-      else {
-        return this.firstName + ' ' + this.lastName.charAt(0) + '.';
-      }
+  user.getFullName = function() {
+    if (angular.isEmpty(this.firstName)) {
+      return '';
     }
 
-    user.setFullNameVisible = function(visible) {
-      self.fullNameVisible = (visible ? 'yes' : 'no');
+    if (angular.isEmpty(this.lastName)) {
+      return this.firstName;
     }
 
-    return user;
+    if (this.fullNameVisible == 'yes') {
+      return this.firstName + ' ' + this.lastName;
+    }
+    else {
+      return this.firstName + ' ' + this.lastName.charAt(0) + '.';
+    }
   }
+
+  return user;
 });
 
+
+drServices.factory('StepValidator', function () {
+  var service = {};
+
+  service.isStepValid = function(){
+    return false;
+  }
+
+  return service;
+});

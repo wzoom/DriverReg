@@ -38,7 +38,7 @@ drApp.config(function($stateProvider, $urlRouterProvider){
 
 
 drApp.controller('drAppCtrl', function($scope, $state, User) {
-  $scope.user =  User();
+  $scope.user =  User;
   $scope.state = $state;
 
   $scope.notifications = {};
@@ -78,7 +78,7 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter) {
     };
   });
 
-drApp.controller('formValidationCtrl', function($scope, $state) {
+drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) {
   // function to submit the form after all validation has occurred
   $scope.submitForm = function(isValid) {
 
@@ -89,7 +89,7 @@ drApp.controller('formValidationCtrl', function($scope, $state) {
 
   };
 
-  console.log($state);
+  //console.log($state);
 
   $scope.skipStep = function() {
     if ($state.current.skipAllow == true) {
@@ -98,10 +98,18 @@ drApp.controller('formValidationCtrl', function($scope, $state) {
   }
 
   $scope.setNextStep = function() {
-    // TODO - find out NAME of the next state first
-    console.log($state.get('about'));
-    // Go to next state
-    $state.go('^.name');
+    //console.log($state);
+    if (angular.isDefined($state.current.parent) && angular.isDefined($state.current.parent.children)) {
+      var siblings = $state.current.parent.children || [];
+
+      angular.forEach(siblings, function (state) {
+        //if (angular.isUndefined(state.isStateValid) || !state.isStateValid()) {
+        if (aboutValidator.isStepValid(state.name)) {
+          // Go to next state
+          $state.go(state);
+        }
+      });
+    }
   }
 });
 
