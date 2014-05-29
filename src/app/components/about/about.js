@@ -105,7 +105,7 @@ angular.module('drApp.about', [
   $scope.states = $filter('filter')($state.get(),  function(state){return state.name != ''});
   $scope.currentState = $state.current;
 
-  $rootScope.stepTitle = 'About you';
+  //$rootScope.stepTitle = 'About you';
 
   $scope.$on('$stateChangeStart', function(event, toState){
     //$scope.currentState = toState;

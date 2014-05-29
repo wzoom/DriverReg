@@ -140,9 +140,11 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
 
 drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) {
   $scope.currentState = $state.current;
+  $scope.stepTitle = $state.current.title;
 
   $scope.$on('$stateChangeStart', function(event, toState){
     $scope.currentState = toState;
+    $scope.stepTitle = toState.title;
   });
 
   // function to submit the form after all validation has occurred
