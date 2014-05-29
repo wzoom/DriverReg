@@ -22,6 +22,9 @@ start.config(function($stateProvider){
         templateUrl: getComponentTemplatePath('start'),
         controller: 'HeaderCtrl',
         weight: 0,
+        data: {
+          isNeutral: true,
+        },
       })
       // Incomplete can be a substate thanks to "ui-view" defined in parent (start.html) template
       .state("start.incomplete", {

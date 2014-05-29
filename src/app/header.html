@@ -3,14 +3,14 @@
     <div class="">
 
       <div class="list-group">
-        <a ng-repeat="state in states | orderBy:'weight'" ng-show="state.sideMenu" href="#{{state.url}}" class="list-group-item" ng-click="hideNavbar()" ng-class="{'list-group-item-success' : state.isStateValid(), 'list-group-item-danger' : !state.isStateValid()}">
-          <span ng-show="state.isStateValid()" class="glyphicon pull-right lead"></span>
-          <span ng-show="!state.isStateValid()" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
+        <a ng-repeat="state in states | orderBy:'weight'" ng-show="state.sideMenu" ui-sref="{{state.name}}" class="list-group-item" ng-click="hideNavbar()" ng-class="{'list-group-item-success' : state.isStateValid(), 'list-group-item-danger' : !state.data.isNeutral && !state.isStateValid()}">
+          <span ng-hide="state.data.isNeutral || false" ng-show="state.isStateValid()" class="glyphicon pull-right lead"></span>
+          <span ng-hide="state.data.isNeutral || false" ng-show="!state.isStateValid()" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
 
           <h4 class="list-group-item-heading">{{state.title}}</h4>
 
-          <p class="list-group-item-text small">100% filled in.</p>
-          <p ng-show="!state.isStateValid()" class="list-group-item-text text-danger small">Almost done. Fill in few more fields.</p>
+          <p ng-hide="state.data.isNeutral || false" class="list-group-item-text small">100% filled in.</p>
+          <p ng-hide="state.data.isNeutral || false" ng-show="!state.isStateValid()" class="list-group-item-text text-danger small">Almost done. Fill in few more fields.</p>
         </a>
 
       </div>
