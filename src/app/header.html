@@ -3,7 +3,7 @@
     <div class="">
 
       <div class="list-group">
-        <a ng-repeat="state in states" ng-show="state.sideMenu" href="#{{state.url}}" class="list-group-item" ng-click="hideNavbar()" ng-class="{'list-group-item-success' : state.isStateValid(), 'list-group-item-danger' : !state.isStateValid()}">
+        <a ng-repeat="state in states | orderBy:'weight'" ng-show="state.sideMenu" href="#{{state.url}}" class="list-group-item" ng-click="hideNavbar()" ng-class="{'list-group-item-success' : state.isStateValid(), 'list-group-item-danger' : !state.isStateValid()}">
           <span ng-show="state.isStateValid()" class="glyphicon pull-right lead"></span>
           <span ng-show="!state.isStateValid()" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
 
