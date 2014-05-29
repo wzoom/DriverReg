@@ -82,7 +82,7 @@ angular.module('drApp.about', [
             name: 'summary',
             title: "Summary",
             sideMenu: false,
-            skipAllow: true,
+            skipAllow: false,
             url: "/summary",
             templateUrl: getComponentTemplatePath('about.summary'),
           }
@@ -173,7 +173,7 @@ angular.module('drApp.about', [
       case 'name': return isNameValid(User);
       case 'gender': return isGenderValid(User);
       case 'language': return isLanguageValid(User);
-      case 'dispatch': return isDispachingValid(User);
+      case 'dispatch': return isDispachingValid(User, skipStep);
       // TODO - change to false and add attribute to $state so that validation can be disabled for certain steps
       case 'summary': return true;
     }

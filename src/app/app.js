@@ -96,11 +96,13 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
           var showBar = false;
         }
 
+        var percent = (100 * ((progress -1) / totalSteps))
+
         return {
           total: totalSteps,
           showBar: showBar,
           absolute: progress,
-          percent: (100 * ((progress -1) / totalSteps)),
+          percent: percent,
         }
       }
     }
@@ -141,10 +143,12 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
 drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) {
   $scope.currentState = $state.current;
   $scope.stepTitle = $state.current.title;
+  $scope.stepName = $state.current.name;
 
   $scope.$on('$stateChangeStart', function(event, toState){
     $scope.currentState = toState;
     $scope.stepTitle = toState.title;
+    $scope.stepName = toState.name;
   });
 
   // function to submit the form after all validation has occurred
@@ -158,7 +162,13 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
   };
 
   //console.log($state);
+  $scope.isSummaryPage = function() {
+    var isSummaryPage = false;
+    //TODO: Find something better match
+    if ($scope.stepName == 'about.summary') isSummaryPage = true;
 
+    return isSummaryPage;
+  };
   $scope.setSkipStep = function() {
     if ($state.current.skipAllow == true) {
       var valid = aboutValidator.isStepValid($state.current.name, true);
