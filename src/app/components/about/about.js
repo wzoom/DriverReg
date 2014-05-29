@@ -109,7 +109,6 @@ angular.module('drApp.about', [
 
   $scope.$on('$stateChangeStart', function(event, toState){
     //$scope.currentState = toState;
-    console.log(toState.skipAllow, 'toState skip');
     $scope.skipAllow = toState.skipAllow;
 
     if (toState.name == 'about') {

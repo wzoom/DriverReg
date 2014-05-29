@@ -172,7 +172,7 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
   $scope.setSkipStep = function() {
     if ($state.current.skipAllow == true) {
       var valid = aboutValidator.isStepValid($state.current.name, true);
-      console.log(valid, 'valid');
+
       if (valid) {
         $scope.setNextStep();
       }
