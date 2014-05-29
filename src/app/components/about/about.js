@@ -129,8 +129,8 @@ angular.module('drApp.about', [
   var isNameValid = function(user) {
     if (angular.isUndefined(user.firstName)) return false;
     if (angular.isUndefined(user.lastName)) return false;
-    if (user.firstName == '') return false;
-    if (user.lastName == '') return false;
+    if (user.firstName == null) return false;
+    if (user.lastName == null) return false;
     return true;
   }
 
@@ -170,11 +170,6 @@ angular.module('drApp.about', [
 
     return false;
   };
-
-  service.isStepValid = function(stepName){
-
-  };
-
 
   return service;
 })

@@ -55,7 +55,7 @@ drApp.controller('drAppCtrl', function($scope, $state, User) {
 
 drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, aboutValidator) {
 
-  console.log($state.current);
+  //console.log($state.current);
 
     // Fill-in all states (except the virtual root state)
     $scope.states = $filter('filter')($state.get(),  function(state){
@@ -135,22 +135,24 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
   }
 
   $scope.setNextStep = function() {
-    //console.log($state);
+    $scope.finalState = '^.summary';
+
     if (angular.isDefined($state.current.parent) && angular.isDefined($state.current.parent.children)) {
       var siblings = $state.current.parent.children || [];
 
-      angular.forEach(siblings, function (state) {
-        //if (angular.isUndefined(state.isStateValid) || !state.isStateValid()) {
-        var valid = aboutValidator.isStepValid(state.name);
-        //console.log('Step '+ state.name +' is '+(valid?'valid.':'INVALID.'));
+      siblings.some(function(partState) {
+        var valid = aboutValidator.isStepValid(partState.name);
+
+        //console.log('Step '+ partState.name +' is '+(valid?'valid.':'INVALID.'));
+
         if (!valid) {
-          // Go to next state
-          $state.go(state);
-          return;
+          $scope.finalState = partState.name;
+          return true;
         }
       });
     }
-    $state.go('^.summary');
+
+    $state.go($scope.finalState);
   }
 });
 
