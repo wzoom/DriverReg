@@ -18,8 +18,9 @@ drServices.factory('User', function () {
   user.image = null;
   user.firstName = null;
   user.lastName = null;
-  user.fullNameVisible = null;
+  user.fullNameVisible = 'yes';
   user.gender = null;
+  user.languagesSpoken = null;
 
   user.getFullName = function() {
     if (angular.isEmpty(this.firstName)) {

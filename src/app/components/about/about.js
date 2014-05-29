@@ -139,15 +139,19 @@ angular.module('drApp.about', [
   }
 
   var isGenderValid = function(user) {
-    return !angular.isUndefined(user.gender) && ['yes','no'].indexOf(user.gender) > -1;
+    if (angular.isUndefined(user.gender)) return false;
+    if (user.gender == null) return false;
+    return true;
   }
 
   var isLanguageValid = function(user) {
-    return false;
+    if (angular.isUndefined(user.languagesSpoken)) return false;
+    if (user.languagesSpoken == null) return false;
+    return true;
   }
 
   var isDispachingValid = function(user) {
-    return false;
+    return true;
   }
 
     // Public API
