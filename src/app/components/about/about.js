@@ -134,7 +134,10 @@ angular.module('drApp.about', [
     return true;
   }
 
-  var isPhotoValid = function(user) {
+  var isPhotoValid = function(user, skipStep) {
+    if (skipStep == true) user.image = true;
+    if (angular.isUndefined(user.image)) return false;
+    if (user.image == null) return false;
     return true;
   }
 
@@ -151,11 +154,13 @@ angular.module('drApp.about', [
   }
 
   var isDispachingValid = function(user) {
+    if (angular.isUndefined(user.dispatchingCompany)) return false;
+    if (user.dispatchingCompany == null) return false;
     return true;
   }
 
     // Public API
-  service.isStepValid = function(stepName){
+  service.isStepValid = function(stepName, skipStep){
     if (stepName.substring(0, stepName.indexOf('.')) != mainStepName) return false;
 
     if (stepName.indexOf('.') > -1) {
@@ -163,7 +168,7 @@ angular.module('drApp.about', [
     }
 
     switch(stepName) {
-      case 'photo': return isPhotoValid(User);
+      case 'photo': return isPhotoValid(User, skipStep);
       case 'name': return isNameValid(User);
       case 'gender': return isGenderValid(User);
       case 'language': return isLanguageValid(User);

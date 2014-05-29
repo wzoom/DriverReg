@@ -80,8 +80,9 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
   $scope.getCurrentProgress = function() {
     if (angular.isDefined($state.current.parent) && angular.isDefined($state.current.parent.children)) {
       var siblings = $state.current.parent.children || [];
-      var totalSteps = siblings.length;
+      var totalSteps = siblings.length -1;
       var progress = 0;
+      var showBar = true;
       if (totalSteps > 0) {
         angular.forEach(siblings, function (state) {
           var valid = aboutValidator.isStepValid(state.name);
@@ -90,8 +91,13 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
           }
         });
 
+        if (totalSteps <= 0) {
+          var showBar = false;
+        }
+
         return {
-          total: totalSteps - 1,
+          total: totalSteps,
+          showBar: showBar,
           absolute: progress,
           percent: (100 * (progress / totalSteps)),
         }
@@ -111,11 +117,12 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
     var absoluteStep = $scope.getCurrentProgress().absolute;
     var totalStep = $scope.getCurrentProgress().total;
 
-    if (absoluteStep <= totalStep) {
+    if ((absoluteStep <= totalStep) && (totalStep > 0)) {
       $scope.headerTitle = $scope.headerTitle + ' (' + absoluteStep + '/' + totalStep + ')';
     }
 
     $scope.progress = $scope.getCurrentProgress().percent;
+    $scope.showBar = $scope.getCurrentProgress().showBar;
   });
 
 
@@ -136,11 +143,15 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
 
   //console.log($state);
 
-  $scope.skipStep = function() {
+  $scope.setSkipStep = function() {
     if ($state.current.skipAllow == true) {
-
+      var valid = aboutValidator.isStepValid($state.current.name, true);
+      console.log(valid, 'valid');
+      if (valid) {
+        $scope.setNextStep();
+      }
     }
-  }
+  };
 
   $scope.setNextStep = function() {
     $scope.finalState = '^.summary';
@@ -161,7 +172,7 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
     }
 
     $state.go($scope.finalState);
-  }
+  };
 });
 
 
