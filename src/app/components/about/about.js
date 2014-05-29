@@ -19,19 +19,10 @@ angular.module('drApp.about', [
         name: 'about',
         title: "About You",
         sideMenu: true,
-        skipAllow: false,
+        skipAllow: true,
         url: "/about",
         templateUrl: getComponentTemplatePath('about'),
         weight: 1,
-        controller: function ($state) {
-          if ($state.current.name == 'about') {
-            //$state.go($state.current.children[0]);
-            $state.go(stepSettings.firstStep);
-          }
-        },
-        isStateValid: function() {
-          return false;
-        },
         children: [
           {
             name: 'photo',
@@ -67,7 +58,7 @@ angular.module('drApp.about', [
             name: 'gender',
             title: "Gender",
             sideMenu: false,
-            skipAllow: true,
+            skipAllow: false,
             url: "/gender",
             templateUrl: getComponentTemplatePath('about.gender'),
           },
@@ -75,7 +66,7 @@ angular.module('drApp.about', [
             name: 'language',
             title: "Language",
             sideMenu: false,
-            skipAllow: true,
+            skipAllow: false,
             url: "/language",
             templateUrl: getComponentTemplatePath('about.language'),
           },
@@ -104,17 +95,26 @@ angular.module('drApp.about', [
 .controller('aboutCtrl', function ($scope, $rootScope, $state, $filter) {
   var user = $rootScope.user;
 
+    $scope.skipAllow = $state.current.skipAllow;
+
+
+    if ($state.current.name == 'about') {
+      $state.transitionTo('about.photo');
+    }
+
   $scope.states = $filter('filter')($state.get(),  function(state){return state.name != ''});
   $scope.currentState = $state.current;
 
   $rootScope.stepTitle = 'About you';
 
-  $rootScope.$on('$stateChangeStart', function(event, toState){
-    $scope.currentState = toState;
+  $scope.$on('$stateChangeStart', function(event, toState){
+    //$scope.currentState = toState;
+    console.log(toState.skipAllow, 'toState skip');
+    $scope.skipAllow = toState.skipAllow;
 
     if (toState.name == 'about') {
       //$location.path('/about/photo');
-      //$state.go('about.photo');
+      $state.transitionTo('about.photo');
       //$state.go($state.current.children[0]);
     }
   });
@@ -153,7 +153,8 @@ angular.module('drApp.about', [
     return true;
   }
 
-  var isDispachingValid = function(user) {
+  var isDispachingValid = function(user, skipStep) {
+    if (skipStep == true) user.dispatchingCompany = 'none';
     if (angular.isUndefined(user.dispatchingCompany)) return false;
     if (user.dispatchingCompany == null) return false;
     return true;

@@ -26,6 +26,7 @@ drApp.config(function($stateProvider, $urlRouterProvider){
       .state("start", {
         title: "Getting Started",
         sideMenu: true,
+        skipAllow: false,
         url: "/",
         templateUrl: getComponentTemplatePath('start'),
         controller: 'HeaderCtrl',
@@ -99,7 +100,7 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
           total: totalSteps,
           showBar: showBar,
           absolute: progress,
-          percent: (100 * (progress / totalSteps)),
+          percent: (100 * ((progress -1) / totalSteps)),
         }
       }
     }
@@ -112,7 +113,14 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
   };
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    $scope.headerTitle = toState.title;
+
+    if (angular.isDefined($state.current.parent)) {
+      $scope.headerTitle = $state.current.parent.title;
+    } else {
+      $scope.headerTitle = '';
+    }
+
+
 
     var absoluteStep = $scope.getCurrentProgress().absolute;
     var totalStep = $scope.getCurrentProgress().total;
@@ -131,12 +139,18 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
 });
 
 drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) {
+  $scope.currentState = $state.current;
+
+  $scope.$on('$stateChangeStart', function(event, toState){
+    $scope.currentState = toState;
+  });
+
   // function to submit the form after all validation has occurred
   $scope.submitForm = function(isValid) {
 
     // check to make sure the form is completely valid
     if (isValid) {
-      alert('our form is amazing');
+      //alert('our form is amazing');
     }
 
   };
@@ -154,9 +168,9 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
   };
 
   $scope.setNextStep = function() {
-    $scope.finalState = '^.summary';
-
     if (angular.isDefined($state.current.parent) && angular.isDefined($state.current.parent.children)) {
+      $scope.finalState = $state.current.parent.name + '.summary';
+
       var siblings = $state.current.parent.children || [];
 
       siblings.some(function(partState) {
@@ -169,9 +183,9 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
           return true;
         }
       });
-    }
 
-    $state.go($scope.finalState);
+      $state.go($scope.finalState);
+    }
   };
 });
 
