@@ -91,7 +91,7 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
         });
 
         return {
-          total: totalSteps,
+          total: totalSteps - 1,
           absolute: progress,
           percent: (100 * (progress / totalSteps)),
         }
@@ -106,7 +106,15 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
   };
 
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    $scope.headerTitle = toState.title + ' (' + $scope.getCurrentProgress().percent + '% done)';
+    $scope.headerTitle = toState.title;
+
+    var absoluteStep = $scope.getCurrentProgress().absolute;
+    var totalStep = $scope.getCurrentProgress().total;
+
+    if (absoluteStep <= totalStep) {
+      $scope.headerTitle = $scope.headerTitle + ' (' + absoluteStep + '/' + totalStep + ')';
+    }
+
     $scope.progress = $scope.getCurrentProgress().percent;
   });
 
