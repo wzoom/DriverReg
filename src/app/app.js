@@ -14,24 +14,9 @@ var drApp = angular.module('driverRegApp', [
   'templates.app',
 ]);
 
-drApp.config(function($stateProvider, $urlRouterProvider){
-
-    var getComponentTemplatePath = function (stateName) {
-      return 'components/' + stateName + '/' + stateName + '.html';
-    };
+drApp.config(function($urlRouterProvider){
 
     $urlRouterProvider.otherwise('/');
-
-    $stateProvider
-      .state("start", {
-        title: "Getting Started",
-        sideMenu: true,
-        skipAllow: false,
-        url: "/",
-        templateUrl: getComponentTemplatePath('start'),
-        controller: 'HeaderCtrl',
-        weight: 0,
-      });
   }
 );
 
