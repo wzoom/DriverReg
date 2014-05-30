@@ -32,6 +32,30 @@ angular.module('drApp.services', [
             url: "/pickup",
             templateUrl: getComponentTemplatePath('services.pickup'),
           },
+          {
+            name: 'pref1',
+            title: "Preferences",
+            sideMenu: false,
+            skipAllow: false,
+            url: "/pref1",
+            templateUrl: getComponentTemplatePath('services.pref1'),
+          },
+          {
+            name: 'pref2',
+            title: "Preferences",
+            sideMenu: false,
+            skipAllow: false,
+            url: "/pref2",
+            templateUrl: getComponentTemplatePath('services.pref2'),
+          },
+          {
+            name: 'summary',
+            title: "Summary",
+            sideMenu: false,
+            skipAllow: false,
+            url: "/summary",
+            templateUrl: getComponentTemplatePath('services.summary'),
+          },
         ],
       });
 
@@ -64,6 +88,27 @@ angular.module('drApp.services', [
     }
   });
 
+    $scope.goNext = function() {
+      if (angular.isDefined($state.current.parent) && angular.isDefined($state.current.parent.children)) {
+        $scope.finalState = $state.current.parent.name + '.summary';
+
+        var siblings = $state.current.parent.children || [];
+        var lastStateName = '';
+
+        siblings.some(function(partState) {
+          var valid = $state.current.name == lastStateName;
+          lastStateName = partState.name;
+
+          if (valid) {
+            $scope.finalState = partState.name;
+            return true;
+          }
+        });
+
+        $state.go($scope.finalState);
+      }
+    };
+
 })
 
 .service('servicesValidator', function (User) {
@@ -71,39 +116,26 @@ angular.module('drApp.services', [
 
   var mainStepName = 'services';
 
-  var isNameValid = function(user) {
-    if (angular.isUndefined(user.firstName)) return false;
-    if (angular.isUndefined(user.lastName)) return false;
-    if (user.firstName == null) return false;
-    if (user.lastName == null) return false;
+  var isPickupValid = function(user) {
+    console.log('ffff');
+    if (angular.isUndefined(user.pickup)) return false;
+    if (user.pickup == null) return false;
+    if ((user.pickup < 1) || (user.pickup > 30)) {
+      console.log('ffff');
+      return false;
+    }
     return true;
   }
 
-  var isPhotoValid = function(user, skipStep) {
-    if (skipStep == true) user.image = true;
-    if (angular.isUndefined(user.image)) return false;
-    if (user.image == null) return false;
-    return true;
-  }
-
-  var isGenderValid = function(user) {
-    if (angular.isUndefined(user.gender)) return false;
-    if (user.gender == null) return false;
-    return true;
-  }
-
-  var isLanguageValid = function(user) {
-    if (angular.isUndefined(user.languagesSpoken)) return false;
-    if (user.languagesSpoken == null) return false;
-    return true;
-  }
-
-  var isDispachingValid = function(user, skipStep) {
-    if (skipStep == true) user.dispatchingCompany = 'none';
-    if (angular.isUndefined(user.dispatchingCompany)) return false;
-    if (user.dispatchingCompany == null) return false;
-    return true;
-  }
+    var isPref1Valid = function(user) {
+      if (angular.isUndefined(user.pickup)) return false;
+      if (user.pickup == null) return false;
+      if ((user.pickup < 1) || (user.pickup > 30)) {
+        console.log('ffff');
+        return false;
+      }
+      return true;
+    }
 
     // Public API
   service.isStepValid = function(stepName, skipStep){
@@ -114,11 +146,9 @@ angular.module('drApp.services', [
     }
 
     switch(stepName) {
-      case 'photo': return isPhotoValid(User, skipStep);
-      case 'name': return isNameValid(User);
-      case 'gender': return isGenderValid(User);
-      case 'language': return isLanguageValid(User);
-      case 'dispatch': return isDispachingValid(User, skipStep);
+      case 'pickup': return isPickupValid(User);
+      case 'pref1': return true;
+      case 'pref2': return true;
       // TODO - change to false and add attribute to $state so that validation can be disabled for certain steps
       case 'summary': return true;
     }
