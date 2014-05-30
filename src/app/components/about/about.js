@@ -72,7 +72,7 @@ angular.module('drApp.about', [
           },
           {
             name: 'dispatch',
-            title: "Dispatch",
+            title: "Dispatching",
             sideMenu: false,
             skipAllow: true,
             url: "/dispatch",

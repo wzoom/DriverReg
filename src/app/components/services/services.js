@@ -22,7 +22,7 @@ angular.module('drApp.services', [
         skipAllow: true,
         url: "/services",
         templateUrl: getComponentTemplatePath('services'),
-        weight: 1,
+        weight: 3,
         children: [
           {
             name: 'pickup',
