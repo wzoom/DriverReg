@@ -24,6 +24,7 @@ drServices.factory('User', function () {
   user.car = {
     color : 'yellow',
   };
+  user.pickup = 5;
 
   user.getFullName = function() {
     if (angular.isEmpty(this.firstName)) {

@@ -5,6 +5,7 @@
 var drApp = angular.module('driverRegApp', [
   'ui.router', 'ui.router.stateHelper',
   'drApp.about',
+  'drApp.services',
   'drApp.vehicle',
   'mgcrea.ngStrap',
   'drAnimations',
@@ -12,6 +13,7 @@ var drApp = angular.module('driverRegApp', [
   'drServices',
   'angularFileUpload',
   'start',
+  'vr.directives.slider',
   'templates.app',
 ]);
 
