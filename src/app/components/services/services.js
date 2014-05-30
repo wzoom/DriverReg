@@ -121,7 +121,6 @@ angular.module('drApp.services', [
     if (angular.isUndefined(user.pickup)) return false;
     if (user.pickup == null) return false;
     if ((user.pickup < 1) || (user.pickup > 30)) {
-      console.log('ffff');
       return false;
     }
     return true;
@@ -131,7 +130,15 @@ angular.module('drApp.services', [
       if (angular.isUndefined(user.pickup)) return false;
       if (user.pickup == null) return false;
       if ((user.pickup < 1) || (user.pickup > 30)) {
-        console.log('ffff');
+        return false;
+      }
+      return true;
+    }
+
+    var isPref2Valid = function(user) {
+      if (angular.isUndefined(user.pickup)) return false;
+      if (user.pickup == null) return false;
+      if ((user.pickup < 1) || (user.pickup > 30)) {
         return false;
       }
       return true;
