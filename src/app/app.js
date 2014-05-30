@@ -176,7 +176,7 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
       siblings.some(function(partState) {
         var valid = aboutValidator.isStepValid(partState.name);
 
-        //console.log('Step '+ partState.name +' is '+(valid?'valid.':'INVALID.'));
+        console.log('Step '+ partState.name +' is '+(valid?'valid.':'INVALID.'));
 
         if (!valid) {
           $scope.finalState = partState.name;
