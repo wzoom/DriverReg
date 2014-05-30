@@ -5,12 +5,14 @@
 var drApp = angular.module('driverRegApp', [
   'ui.router', 'ui.router.stateHelper',
   'drApp.about',
+  'drApp.services',
   'mgcrea.ngStrap',
   'drAnimations',
   'drFilters',
   'drServices',
   'angularFileUpload',
   'start',
+  'vr.directives.slider',
   'templates.app',
 ]);
 
