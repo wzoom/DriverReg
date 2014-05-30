@@ -1,0 +1,150 @@
+<div class="help-block">What kind of car are you driving?</div>
+
+<div class="form-group">
+  <!--<input type="number" name="year" ng-model="user.car.year">-->
+  <label for="year">Year</label>
+  <select id="year" name="year" class="form-control" ng-model="user.car.year">
+    <option selected="selected" class="hidden" value="">Year of your car</option>
+    <option ng-repeat="y in [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014]" value="{{y}}">{{y}}</option>
+  </select>
+</div>
+
+    <!--
+<div class="form-group">
+  <label for="make">Make</label>
+  <select id="make" name="make" class="form-control" ng-model="user.car.make">
+    <option selected="selected" disabled="disabled">Choose make of your car</option>
+    <option ng-repeat="y in [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014]" value="{{y}}">{{y}}</option>
+  </select>
+</div>
+
+PHP Generator:
+$cars = array('Abarth', 'AC', 'Acura', 'Aixam', 'Alfa Romeo', 'Alpina', 'AM General Truck', 'ARO', 'Asia Motors', 'Aston Martin', 'Audi', 'Austin', 'Auverland', 'Bellier', 'Bentley', 'BMW', 'Bugatti', 'Buick', 'Cadillac', 'Casalini', 'Caterham', 'Changhe', 'Chatenet', 'Chevrolet', 'Chrysler', 'Citroën', 'Dacia', 'Daewoo', 'Daihatsu', 'Dodge', 'Eagle', 'Ferrari', 'Fiat', 'Fisker', 'Ford', 'GAZ', 'GMC', 'Gonow', 'Gordon', 'GREAT WALL', 'Grecav', 'Honda', 'Honker', 'Hummer', 'Hurtan', 'Hyundai', 'Infiniti', 'Isuzu', 'Italcar', 'Iveco', 'Jaguar', 'JDM', 'Jeep', 'Kaipan', 'Kia', 'Lada', 'Lamborghini', 'Lancia', 'Land Rover', 'Lexus', 'Ligier', 'Lincoln', 'Lotus', 'Marcos', 'Martin Motors', 'Maruti', 'Maserati', 'Mazda', 'MCC', 'McLaren', 'Mercedes-Benz', 'Mercury', 'MG', 'Microcar', 'Mini', 'Mitsubishi', 'Morgan', 'Moskvič', 'MTX', 'Nissan', 'Oldsmobile', 'Oltcit', 'Opel', 'Peugeot', 'Plymouth', 'Polski Fiat', 'Pontiac', 'Porsche', 'Proton', 'Renault', 'Rolls Royce', 'Rover', 'Saab', 'Santana', 'Saturn', 'Scion', 'Seat', 'Smart', 'SsangYong', 'Subaru', 'Suzuki', 'Skoda', 'Tata', 'Tatra', 'Tavria', 'Tesla', 'Toyota', 'Trabant', 'Triumph', 'TVR', 'UAZ', 'Ultima', 'Volkswagen', 'Volvo', 'Volga', 'Wartburg', 'Yugo', 'Zastava');
+foreach($cars as $name) {
+  echo '<label class="btn btn-default btn-sm "><input type="checkbox" class="btn btn-default" value="'.strtolower($name).'">'.$name.'</label>'.PHP_EOL;
+}
+
+-->
+<div class="form-group car-make">
+  <label>Make</label>
+  <div bs-checkbox-group>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="0">Abarth</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="1">AC</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="2">Acura</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="3">Aixam</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="4">Alfa Romeo</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="5">Alpina</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="6">AM General Truck</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="7">ARO</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="8">Asia Motors</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="9">Aston Martin</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="10">Audi</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="11">Austin</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="12">Auverland</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="13">Bellier</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="14">Bentley</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="15">BMW</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="16">Bugatti</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="17">Buick</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="18">Cadillac</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="19">Casalini</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="20">Caterham</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="21">Changhe</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="22">Chatenet</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="23">Chevrolet</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="24">Chrysler</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="25">Citroën</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="26">Dacia</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="27">Daewoo</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="28">Daihatsu</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="29">Dodge</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="30">Eagle</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="31">Ferrari</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="32">Fiat</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="33">Fisker</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="34">Ford</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="35">GAZ</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="36">GMC</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="37">Gonow</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="38">Gordon</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="39">GREAT WALL</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="40">Grecav</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="41">Honda</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="42">Honker</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="43">Hummer</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="44">Hurtan</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="45">Hyundai</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="46">Infiniti</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="47">Isuzu</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="48">Italcar</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="49">Iveco</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="50">Jaguar</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="51">JDM</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="52">Jeep</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="53">Kaipan</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="54">Kia</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="55">Lada</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="56">Lamborghini</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="57">Lancia</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="58">Land Rover</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="59">Lexus</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="60">Ligier</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="61">Lincoln</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="62">Lotus</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="63">Marcos</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="64">Martin Motors</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="65">Maruti</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="66">Maserati</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="67">Mazda</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="68">MCC</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="69">McLaren</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="70">Mercedes-Benz</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="71">Mercury</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="72">MG</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="73">Microcar</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="74">Mini</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="75">Mitsubishi</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="76">Morgan</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="77">Moskvič</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="78">MTX</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="79">Nissan</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="80">Oldsmobile</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="81">Oltcit</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="82">Opel</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="83">Peugeot</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="84">Plymouth</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="85">Polski Fiat</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="86">Pontiac</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="87">Porsche</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="88">Proton</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="89">Renault</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="90">Rolls Royce</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="91">Rover</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="92">Saab</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="93">Santana</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="94">Saturn</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="95">Scion</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="96">Seat</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="97">Smart</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="98">SsangYong</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="99">Subaru</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="100">Suzuki</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="101">Skoda</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="102">Tata</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="103">Tatra</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="104">Tavria</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="105">Tesla</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="106">Toyota</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="107">Trabant</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="108">Triumph</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="109">TVR</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="110">UAZ</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="111">Ultima</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="112">Volkswagen</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="113">Volvo</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="114">Volga</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="115">Wartburg</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="116">Yugo</label>
+    <label class="btn btn-default "><input type="radio" class="btn btn-default" value="117">Zastava</label>
+  </div>
+</div>

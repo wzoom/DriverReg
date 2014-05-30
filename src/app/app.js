@@ -6,6 +6,7 @@ var drApp = angular.module('driverRegApp', [
   'ui.router', 'ui.router.stateHelper',
   'drApp.about',
   'drApp.services',
+  'drApp.vehicle',
   'mgcrea.ngStrap',
   'drAnimations',
   'drFilters',
