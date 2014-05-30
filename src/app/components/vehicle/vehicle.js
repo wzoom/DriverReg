@@ -71,6 +71,14 @@ angular.module('drApp.vehicle', [
             skipAllow: false,
             url: "/preferences",
             templateUrl: getComponentTemplatePath('vehicle.preferences'),
+          },
+          {
+            name: 'summary',
+            title: "Summary",
+            sideMenu: false,
+            skipAllow: false,
+            url: "/summary",
+            templateUrl: getComponentTemplatePath('vehicle.summary'),
           }
         ],
       });
