@@ -42,7 +42,7 @@ drApp.controller('drAppCtrl', function($scope, $state, User) {
 
 });
 
-drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, aboutValidator) {
+drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, aboutValidator, servicesValidator, vehicleValidator) {
 
   //console.log($state.current);
 
@@ -74,7 +74,11 @@ drApp.controller('HeaderCtrl', function ($scope, $location, $state, $filter, abo
       var showBar = true;
       if (totalSteps > 0) {
         angular.forEach(siblings, function (state) {
-          var valid = aboutValidator.isStepValid(state.name);
+          console.log($state.current.parent, 'parrent');
+
+          if ($state.current.parent.name == 'about') var valid = aboutValidator.isStepValid(state.name);
+          if ($state.current.parent.name == 'vehicle') var valid = vehicleValidator.isStepValid(state.name);
+          if ($state.current.parent.name == 'services') var valid = servicesValidator.isStepValid(state.name);
           if (valid) {
             progress++;
           }
