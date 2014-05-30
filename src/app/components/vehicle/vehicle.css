@@ -1,3 +1,26 @@
 .car-make label {
   margin-bottom: 5px;
 }
+
+.car-color .color {
+  width: 60px;
+  height: 60px;
+  margin: 0 10px 20px;
+}
+
+.car-color .color.selected {
+  font-size: 2em;
+  color: white;
+  line-height: 1.5em;
+}
+
+.car-color .color.black { background-color: black; }
+.car-color .color.blue { background-color: #0072b9; }
+.car-color .color.brown { background-color: #633429; }
+.car-color .color.green { background-color: green; }
+.car-color .color.orange { background-color: #ebb52d; }
+.car-color .color.purple { background-color: purple; }
+.car-color .color.red { background-color: #ff003c; }
+.car-color .color.silver { background-color: silver; }
+.car-color .color.white { background-color: white; }
+.car-color .color.yellow { background-color: #ffee74; }

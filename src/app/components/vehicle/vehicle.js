@@ -60,7 +60,7 @@ angular.module('drApp.vehicle', [
             name: 'engine',
             title: "Engine",
             sideMenu: false,
-            skipAllow: true,
+            skipAllow: false,
             url: "/engine",
             templateUrl: getComponentTemplatePath('vehicle.engine'),
           },
