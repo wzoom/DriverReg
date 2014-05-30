@@ -1,0 +1,23 @@
+<div class="help-block">Great picture, now we need a name with that face.</div>
+<div class="form-group">
+  <label class="control-label">First Name </label>
+  <span class="label label-danger" ng-show="regForm.firstName.$invalid && !regForm.firstName.$pristine">Required</span>
+  <span class="label label-danger" ng-show="regForm.firstName.$error.minlength">Too short.</span>
+  <input type="text" name="firstName" data-ng-model="user.firstName" class="form-control" data-ng-minlength="3" required />
+</div>
+
+<div class="form-group">
+  <label class="control-label">Last Name </label>
+  <span class="label label-danger" ng-show="regForm.lastName.$invalid && !regForm.lastName.$pristine">Required</span>
+  <span class="label label-danger" ng-show="regForm.lastName.$error.minlength">Too short.</span>
+  <input type="text" name="lastName" data-ng-model="user.lastName" class="form-control" data-ng-minlength="3" required />
+</div>
+
+<div class="help-block">Can we display your full name in offers to passengers?</div>
+<div class="form-group">
+  <div class="btn-group center-block text-center" ng-model="user.fullNameVisible" bs-radio-group required>
+    <label class="btn btn-default"><input type="radio" class="btn btn-default" value="yes">Yes</label>
+    <label class="btn btn-default"><input type="radio" class="btn btn-default" value="no">No</label>
+  </div>
+</div>
+
