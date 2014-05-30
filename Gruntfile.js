@@ -9,8 +9,12 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint','build']); //,'karma:unit'
 
-  grunt.registerTask('build', ['mkdir', 'clean', 'bower', 'copy', 'html2js', 'concat', 'ngAnnotate']);
-  grunt.registerTask('release', ['build','uglify','jshint']);
+  grunt.registerTask('build', ['mkdir', 'clean', 'bower', 'copy', 'html2js', 'concat', 'ngAnnotate', 'nggettext_compile']);
+
+  grunt.registerTask('release', ['build','uglify','jshint', 'nggettext_extract']);
+
+  grunt.registerTask('translations-export', ['nggettext_extract', 'shell:pot2crowdin']);
+  grunt.registerTask('translations-import', ['nggettext_compile', 'shell:crowdin2po']);
 
   grunt.registerTask('server', ['express', 'open', 'watch']);
 
@@ -157,6 +161,22 @@ module.exports = function(grunt) {
         },
       }
     },
+    // Generate POT file with strings to be translated
+    nggettext_extract: {
+      pot: {
+        files: {
+          'src/translations/<%= pkg.name %>.pot': ['src/**/*.html', 'src/**/*.js']
+        }
+      },
+    },
+    // Convert PO translation files to JS
+    nggettext_compile: {
+      all: {
+        files: {
+          'dist/translations.js': ['src/translations/*.po']
+        }
+      },
+    },
     ngAnnotate: {
       options: {
         singleQuotes: true,
@@ -170,15 +190,22 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        banner: '<%= banner %>',
+        compress: {
+          drop_console: true,
+        },
       },
       app: {
-        src: '<%= concat.app.dest %>',
-        dest: 'dist/app.min.js'
+        files: {
+          'dist/app.js': ['src/**/*.js'],
+        }
       },
       vendor: {
-        src: '<%= concat.vendor.dest %>',
-        dest: 'dist/app.min.js'
+        files: {
+          'dist/angular.js': ['lib/angular/*.js'],
+          'dist/jquery.js': ['lib/jquery/*.js'],
+          'dist/vendor.js': ['lib/**/*.js', '!lib/bootstrap/*.js', '!lib/angular/*.js', '!lib/jquery/*.js'],
+        },
       }
     },
     jshint: {
@@ -210,7 +237,17 @@ module.exports = function(grunt) {
     //qunit: {
     //  files: ['test/**/*.html']
     //},
-
+    shell: {
+      options: {
+        stderr: false
+      },
+      pot2crowdin: {
+        command: 'java -jar crowdin-cli.jar upload sources'
+      },
+      crowdin2po: {
+        command: 'java -jar crowdin-cli.jar download'
+      }
+    },
     express: {
       all: {
         options: {
@@ -268,5 +305,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-browserify-bower');
+  grunt.loadNpmTasks('grunt-angular-gettext');
+  grunt.loadNpmTasks('grunt-shell');
 
 };

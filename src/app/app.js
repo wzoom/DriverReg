@@ -3,6 +3,7 @@
 /* App Module */
 
 var drApp = angular.module('driverRegApp', [
+  'gettext',
   'ui.router', 'ui.router.stateHelper',
   'drApp.about',
   'drApp.services',
@@ -24,9 +25,12 @@ drApp.config(function($urlRouterProvider){
 );
 
 
-drApp.controller('drAppCtrl', function($scope, $state, User) {
+drApp.controller('drAppCtrl', function($scope, $state, User, gettextCatalog) {
   $scope.user =  User;
   $scope.state = $state;
+
+  gettextCatalog.currentLanguage = 'cs_CZ';
+  //gettextCatalog.debug = true;
 
   $scope.notifications = {};
 

@@ -1,0 +1,107 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/app/components/about/about.gender.html
+#: src/app/components/about/about.language.html
+#: src/app/components/about/about.name.html
+msgid ""
+msgstr ""
+
+#: src/app/components/about/about.dispatch.html
+msgid "Are you a driver for one of our local partners?"
+msgstr ""
+
+#: src/app/components/about/about.name.html
+msgid "Can we display your full name in offers to passengers?"
+msgstr ""
+
+#: src/app/components/start/start.incomplete.html
+msgid "Complete"
+msgstr ""
+
+#: src/app/components/about/about.dispatch.html
+msgid "Displaying a dispatching company make you more creditable for passenger and gives the dispatching company access to your data."
+msgstr ""
+
+#: src/index.html
+msgid "Driver Registration"
+msgstr ""
+
+#: src/app/components/about/about.name.html
+msgid "First Name"
+msgstr ""
+
+#: src/app/components/about/about.name.html
+msgid "Great picture, now we need a name with that face."
+msgstr ""
+
+#: src/app/components/start/start.html
+#: src/app/components/start/start.incomplete.html
+msgid "In order for you to start picking up passengers we need to collect some information about you."
+msgstr ""
+
+#: src/app/components/about/about.name.html
+msgid "Last Name"
+msgstr ""
+
+#: src/app/components/about/about.html
+msgid "Next"
+msgstr ""
+
+#: src/app/components/about/about.html
+msgid "Next Step >"
+msgstr ""
+
+#: src/app/components/about/about.language.html
+msgid "Passenger are sometimes looking for unique languages, let us know languages you speak."
+msgstr ""
+
+#: src/app/components/about/about.photo.html
+msgid "Passengers want to see who they are riding with, add a profile photo."
+msgstr ""
+
+#: src/app/components/about/about.photo.html
+msgid "Remove"
+msgstr ""
+
+#: src/app/components/about/about.name.html
+msgid "Required"
+msgstr ""
+
+#: src/app/components/about/about.photo.html
+msgid "Select file"
+msgstr ""
+
+#: src/app/components/about/about.gender.html
+msgid "Select your Gender."
+msgstr ""
+
+#: src/app/components/about/about.html
+msgid "Skip"
+msgstr ""
+
+#: src/app/components/start/start.html
+msgid "Start"
+msgstr ""
+
+#: src/app/components/about/about.name.html
+msgid "Too short."
+msgstr ""
+
+#: src/app/components/about/about.photo.html
+msgid "Upload"
+msgstr ""
+
+#: src/app/components/start/start.incomplete.html
+msgid "We are missing a few details about you."
+msgstr ""
+
+#: src/app/components/start/start.html
+msgid "Welcome to Liftago!"
+msgstr ""
+
+#: src/app/components/about/about.summary.html
+msgid "Your almost done with the About you section, here's what we have so far."
+msgstr ""
