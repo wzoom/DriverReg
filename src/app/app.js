@@ -157,7 +157,7 @@ drApp.controller('formValidationCtrl', function($scope, $state, aboutValidator) 
   $scope.isSummaryPage = function() {
     var isSummaryPage = false;
     //TODO: Find something better match
-    if ($scope.stepName == 'about.summary') isSummaryPage = true;
+    if ($scope.stepName.indexOf('.summary') > -1) isSummaryPage = true;
 
     return isSummaryPage;
   };

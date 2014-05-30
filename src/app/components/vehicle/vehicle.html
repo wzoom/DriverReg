@@ -9,14 +9,13 @@
                 <div class="clearfix form-submit">
                     <button type="submit" data-ng-click="goNext()" data-ng-disabled="regForm.$invalid" data-ng-hide="isSummaryPage()" class="btn btn-default btn-success pull-right">Next</button>
                     <button type="submit" data-ng-click="goSkip()" data-ng-show="skipAllow" class="btn btn-default btn-primary pull-right margin btn-margin-right">Skip</button>
-
                 </div>
             </form>
 
-          <!-- DEBUGG MESSAGE-->
+          <!-- DEBUGG MESSAGE--
           <div style="word-wrap:break-word;">
             <div class="clearfix" style="margin-top: 200px;"></div>
-            <div class="well">Valid form: {{regForm.$valid}}</div>
+            <div class="well">Form: {{regForm}}</div>
             <div class="well">State skip: {{stepTitle}}</div>
             <div class="well">User: {{user}}</div>
           </div>

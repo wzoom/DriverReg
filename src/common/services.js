@@ -21,6 +21,10 @@ drServices.factory('User', function () {
   user.fullNameVisible = 'yes';
   user.gender = null;
   user.languagesSpoken = null;
+  user.car = {
+    color : 'yellow',
+  };
+  user.pickup = 5;
 
   user.getFullName = function() {
     if (angular.isEmpty(this.firstName)) {

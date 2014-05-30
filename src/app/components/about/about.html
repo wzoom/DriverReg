@@ -7,13 +7,14 @@
             <form name="regForm" novalidate>
                 <div ui-view></div>
                 <div class="clearfix form-submit">
+                  <a ui-sref="vehicle.photo" data-ng-show="isSummaryPage()" class="btn btn-default btn-success pull-right">Next Step ></a>
                     <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="regForm.$invalid" data-ng-hide="isSummaryPage()" class="btn btn-default btn-success pull-right">Next</button>
                     <button type="submit" data-ng-click="setSkipStep()" data-ng-show="skipAllow" class="btn btn-default btn-primary pull-right margin btn-margin-right">Skip</button>
 
                 </div>
             </form>
 
-          <!-- DEBUGG MESSAGE-->
+          <!-- DEBUGG MESSAGE--
           <div style="word-wrap:break-word;">
             <div class="clearfix" style="margin-top: 200px;"></div>
             <div class="well">Valid form: {{regForm.$valid}}</div>
