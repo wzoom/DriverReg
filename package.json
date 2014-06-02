@@ -25,6 +25,7 @@
     "grunt-mkdir": "^0.1.1",
     "grunt-ng-annotate": "^0.2.2",
     "grunt-open": "^0.2.3",
-    "grunt-shell": "^0.7.0"
+    "grunt-shell": "^0.7.0",
+    "grunt-string-replace": "^0.2.7",
   }
 }

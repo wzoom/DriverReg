@@ -11,10 +11,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['mkdir', 'clean', 'bower', 'copy', 'html2js', 'concat', 'ngAnnotate', 'nggettext_compile']);
 
-  grunt.registerTask('release', ['build','uglify','jshint', 'nggettext_extract']);
+  grunt.registerTask('release', ['build','uglify','jshint', 'translations-export', 'translations-import']);
 
-  grunt.registerTask('translations-export', ['nggettext_extract', 'shell:pot2crowdin']);
-  grunt.registerTask('translations-import', ['nggettext_compile', 'shell:crowdin2po']);
+  grunt.registerTask('translations-export', ['nggettext_extract', 'string-replace:pot_project', 'shell:pot2crowdin']);
+  grunt.registerTask('translations-import', ['shell:crowdin2po', 'nggettext_compile']);
 
   grunt.registerTask('server', ['express', 'open', 'watch']);
 
@@ -177,6 +177,20 @@ module.exports = function(grunt) {
         }
       },
     },
+    // Adds mandatory line into POT file (for Crowdin to work properly)
+    'string-replace': {
+      pot_project: {
+        files: {
+          'src/translations/<%= pkg.name %>.pot': 'src/translations/<%= pkg.name %>.pot',
+        },
+        options: {
+          replacements: [{
+            pattern: /^(msgid ""\nmsgstr ""\n)/,    // This is RegExp, so it cannot be string!
+            replacement: '$1"Project-Id-Version: liftago-mktp\\n"\n',
+          }],
+        }
+      }
+    },
     ngAnnotate: {
       options: {
         singleQuotes: true,
@@ -307,5 +321,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify-bower');
   grunt.loadNpmTasks('grunt-angular-gettext');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-string-replace');
 
 };
