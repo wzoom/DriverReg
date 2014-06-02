@@ -26,6 +26,6 @@
     "grunt-ng-annotate": "^0.2.2",
     "grunt-open": "^0.2.3",
     "grunt-shell": "^0.7.0",
-    "grunt-string-replace": "^0.2.7",
+    "grunt-string-replace": "^0.2.7"
   }
 }

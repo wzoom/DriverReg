@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint','build']); //,'karma:unit'
 
-  grunt.registerTask('build', ['mkdir', 'clean', 'bower', 'copy', 'html2js', 'concat', 'ngAnnotate', 'nggettext_compile']);
+  grunt.registerTask('build', ['mkdir', 'clean', 'bower', 'copy', 'html2js', 'concat', 'ngAnnotate', 'nggettext_compile', 'generate-locales']);
 
   grunt.registerTask('release', ['build','uglify','jshint', 'translations-export', 'translations-import']);
 
@@ -21,10 +21,13 @@ module.exports = function(grunt) {
   //grunt.registerTask('test-watch', ['karma:watch']);
 
 
+  var locales = ['en-us', 'cs', 'pl', 'sk'];
+
   // Project configuration.
   grunt.initConfig({
 
     // --- Metadata.
+    languages: ['cs', 'pl', 'sk'],
     distdir: 'dist',
     dist: {
       dir: 'dist',
@@ -156,10 +159,10 @@ module.exports = function(grunt) {
         files: {
           'dist/angular.js': ['lib/angular/*.js'],
           'dist/jquery.js': ['lib/jquery/*.js'],
-          'dist/vendor.js': ['lib/**/*.js', '!lib/bootstrap/*.js', '!lib/angular/*.js', '!lib/jquery/*.js'],
+          'dist/vendor.js': ['lib/**/*.js', '!lib/bootstrap/*.js', '!lib/angular/*.js', '!lib/jquery/*.js', '!lib/angular-i18n/*.js'],
           'dist/vendor.css': ['lib/**/*.css'],
         },
-      }
+      },
     },
     // Generate POT file with strings to be translated
     nggettext_extract: {
@@ -300,6 +303,58 @@ module.exports = function(grunt) {
       //}
     }
   });
+
+  // Dynamic locale-related tasks
+  var localesTasks = [];
+  for(var i = 0; i < locales.length; i++) {
+    var locale = locales[i];
+    var language = locale.substring(0,2);
+
+    grunt.config(['concat', locale], {
+      files: [
+        {
+          expand: true,
+          cwd: 'lib/angular-i18n',
+          src: '*_' + locale + '.js',
+          dest: 'dist/js/',
+          ext: '.js',
+          extDot: 'first',
+        },
+      ],
+    });
+
+    localesTasks.push('concat:' + locale);
+
+
+    if (locale === 'en-us') { continue; }
+
+
+    grunt.config(['string-replace', locale], {
+      files: [
+        {
+          src: 'dist/index.html',
+          dest: 'dist/index-' + locale + '.html'
+        },
+      ],
+      options: {
+        replacements: [
+          {
+            pattern: 'lang="en"',
+            replacement: 'lang="' + language + '"',
+          },
+          {
+            pattern: 'angular-locale_en-us.js',
+            replacement: 'angular-locale_' + locale + '.js',
+          }
+        ],
+      }
+    });
+
+    localesTasks.push('string-replace:' + locale);
+  }
+
+  grunt.registerTask('generate-locales', localesTasks);
+
 
   // These plugins provide necessary tasks.
 
