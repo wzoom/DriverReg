@@ -7,20 +7,19 @@ msgstr "Project-Id-Version: liftago-mktp\n"
 "Last-Translator: Liftago <crowdin@adleritech.com>\n"
 "Language-Team: Slovak\n"
 "Language: sk_SK\n"
-"PO-Revision-Date: 2014-06-02 08:36-0400\n"
+"PO-Revision-Date: 2014-06-03 12:00-0400\n"
 
-#: src/app/components/about/about.gender.html
-#: src/app/components/about/about.language.html
-#: src/app/components/about/about.name.html
-msgid ""
-msgstr "Project-Id-Version: liftago-mktp\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: crowdin.net\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Liftago <crowdin@adleritech.com>\n"
-"Language-Team: Slovak\n"
-"Language: sk_SK\n"
-"PO-Revision-Date: 2014-06-02 08:36-0400\n"
+#: src/app/components/about/about.js
+msgid "About You"
+msgstr "About You"
+
+#: src/app/components/about/about.js
+msgid "About you"
+msgstr "About you"
+
+#: src/app/header.html
+msgid "Almost done."
+msgstr "Almost done."
 
 #: src/app/components/about/about.dispatch.html
 msgid "Are you a driver for one of our local partners?"
@@ -34,6 +33,14 @@ msgstr "Can we display your full name in offers to passengers?"
 msgid "Complete"
 msgstr "Complete"
 
+#: src/app/components/about/about.language.html
+msgid "Czech"
+msgstr "Czech"
+
+#: src/app/components/about/about.js
+msgid "Dispatching"
+msgstr "Dispatching"
+
 #: src/app/components/about/about.dispatch.html
 msgid "Displaying a dispatching company make you more creditable for passenger and gives the dispatching company access to your data."
 msgstr "Displaying a dispatching company make you more creditable for passenger and gives the dispatching company access to your data."
@@ -42,9 +49,21 @@ msgstr "Displaying a dispatching company make you more creditable for passenger 
 msgid "Driver Registration"
 msgstr "Driver Registration"
 
+#: src/app/components/about/about.language.html
+msgid "English"
+msgstr "English"
+
+#: src/app/components/about/about.gender.html
+msgid "Female"
+msgstr "Female"
+
 #: src/app/components/about/about.name.html
 msgid "First Name"
 msgstr "First Name"
+
+#: src/app/components/about/about.js
+msgid "Gender"
+msgstr "Gender"
 
 #: src/app/components/about/about.name.html
 msgid "Great picture, now we need a name with that face."
@@ -55,9 +74,21 @@ msgstr "Great picture, now we need a name with that face."
 msgid "In order for you to start picking up passengers we need to collect some information about you."
 msgstr "In order for you to start picking up passengers we need to collect some information about you."
 
+#: src/app/components/about/about.js
+msgid "Language"
+msgstr "Language"
+
 #: src/app/components/about/about.name.html
 msgid "Last Name"
 msgstr "Last Name"
+
+#: src/app/components/about/about.gender.html
+msgid "Male"
+msgstr "Male"
+
+#: src/app/components/about/about.js
+msgid "Name"
+msgstr "Name"
 
 #: src/app/components/about/about.html
 msgid "Next"
@@ -67,6 +98,10 @@ msgstr "Next"
 msgid "Next Step >"
 msgstr "Next Step >"
 
+#: src/app/components/about/about.name.html
+msgid "No"
+msgstr "No"
+
 #: src/app/components/about/about.language.html
 msgid "Passenger are sometimes looking for unique languages, let us know languages you speak."
 msgstr "Passenger are sometimes looking for unique languages, let us know languages you speak."
@@ -74,6 +109,14 @@ msgstr "Passenger are sometimes looking for unique languages, let us know langua
 #: src/app/components/about/about.photo.html
 msgid "Passengers want to see who they are riding with, add a profile photo."
 msgstr "Passengers want to see who they are riding with, add a profile photo."
+
+#: src/app/components/about/about.js
+msgid "Photo"
+msgstr "Photo"
+
+#: src/app/components/about/about.language.html
+msgid "Polish"
+msgstr "Polish"
 
 #: src/app/components/about/about.photo.html
 msgid "Remove"
@@ -95,9 +138,17 @@ msgstr "Select your Gender."
 msgid "Skip"
 msgstr "Skip"
 
+#: src/app/components/about/about.language.html
+msgid "Slovak"
+msgstr "Slovak"
+
 #: src/app/components/start/start.html
 msgid "Start"
 msgstr "Start"
+
+#: src/app/components/about/about.js
+msgid "Summary"
+msgstr "Summary"
 
 #: src/app/components/about/about.name.html
 msgid "Too short."
@@ -115,7 +166,15 @@ msgstr "We are missing a few details about you."
 msgid "Welcome to Liftago!"
 msgstr "Welcome to Liftago!"
 
+#: src/app/components/about/about.name.html
+msgid "Yes"
+msgstr "Yes"
+
 #: src/app/components/about/about.summary.html
 msgid "Your almost done with the About you section, here's what we have so far."
 msgstr "Your almost done with the About you section, here's what we have so far."
+
+#: src/app/header.html
+msgid "{{getProgress(mainItem.name).percent}}% filled in."
+msgstr "{{getProgress(mainItem.name).percent}}% filled in."
 

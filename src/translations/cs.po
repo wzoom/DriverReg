@@ -7,57 +7,88 @@ msgstr "Project-Id-Version: liftago-mktp\n"
 "Last-Translator: Liftago <crowdin@adleritech.com>\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2014-06-02 08:36-0400\n"
+"PO-Revision-Date: 2014-06-03 12:00-0400\n"
 
-#: src/app/components/about/about.gender.html
-#: src/app/components/about/about.language.html
-#: src/app/components/about/about.name.html
-msgid ""
-msgstr "Project-Id-Version: liftago-mktp\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: crowdin.net\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Liftago <crowdin@adleritech.com>\n"
-"Language-Team: Czech\n"
-"Language: cs_CZ\n"
-"PO-Revision-Date: 2014-06-02 08:36-0400\n"
+#: src/app/components/about/about.js
+msgid "About You"
+msgstr "O vás"
+
+#: src/app/components/about/about.js
+msgid "About you"
+msgstr "O vás"
+
+#: src/app/header.html
+msgid "Almost done."
+msgstr "Téměř hotovo."
 
 #: src/app/components/about/about.dispatch.html
 msgid "Are you a driver for one of our local partners?"
-msgstr "Are you a driver for one of our local partners?"
+msgstr "Jste řidič jednoho z našich místních partnerů?"
 
 #: src/app/components/about/about.name.html
 msgid "Can we display your full name in offers to passengers?"
-msgstr "Can we display your full name in offers to passengers?"
+msgstr "Můžeme zobrazit vaše celé jméno v nabídce cestujícím?"
 
 #: src/app/components/start/start.incomplete.html
 msgid "Complete"
-msgstr "Complete"
+msgstr "Kompletní"
+
+#: src/app/components/about/about.language.html
+msgid "Czech"
+msgstr "Čeština"
+
+#: src/app/components/about/about.js
+msgid "Dispatching"
+msgstr "Dispečink"
 
 #: src/app/components/about/about.dispatch.html
 msgid "Displaying a dispatching company make you more creditable for passenger and gives the dispatching company access to your data."
-msgstr "Displaying a dispatching company make you more creditable for passenger and gives the dispatching company access to your data."
+msgstr "Zobrazení dispečinku společnosti, aby vám více úctyhodné pro osobní a expediční společnost přístup k vašim datům."
 
 #: src/index.html
 msgid "Driver Registration"
-msgstr "Driver Registration"
+msgstr "Registrace řidiče"
+
+#: src/app/components/about/about.language.html
+msgid "English"
+msgstr "Angličtina"
+
+#: src/app/components/about/about.gender.html
+msgid "Female"
+msgstr "Žena"
 
 #: src/app/components/about/about.name.html
 msgid "First Name"
-msgstr "First Name"
+msgstr "Křestní jméno"
+
+#: src/app/components/about/about.js
+msgid "Gender"
+msgstr "Pohlaví"
 
 #: src/app/components/about/about.name.html
 msgid "Great picture, now we need a name with that face."
-msgstr "Great picture, now we need a name with that face."
+msgstr "Skvělý obrázek, teď ještě potřebujeme vaše jméno."
 
 #: src/app/components/start/start.html
 #: src/app/components/start/start.incomplete.html
 msgid "In order for you to start picking up passengers we need to collect some information about you."
-msgstr "In order for you to start picking up passengers we need to collect some information about you."
+msgstr "Aby pro vás začít, nástupu a výstupu cestujících musíme shromažďovat určité informace o vás."
+
+#: src/app/components/about/about.js
+msgid "Language"
+msgstr "Jazyk"
 
 #: src/app/components/about/about.name.html
 msgid "Last Name"
 msgstr "Příjmení"
+
+#: src/app/components/about/about.gender.html
+msgid "Male"
+msgstr "Muž"
+
+#: src/app/components/about/about.js
+msgid "Name"
+msgstr "Jméno"
 
 #: src/app/components/about/about.html
 msgid "Next"
@@ -67,13 +98,25 @@ msgstr "Další"
 msgid "Next Step >"
 msgstr "Další krok >"
 
+#: src/app/components/about/about.name.html
+msgid "No"
+msgstr "Ne"
+
 #: src/app/components/about/about.language.html
 msgid "Passenger are sometimes looking for unique languages, let us know languages you speak."
-msgstr "Passenger are sometimes looking for unique languages, let us know languages you speak."
+msgstr "Pasažéři někdy hledají jedinečné jazyky, jazyky, mluvíte, dejte nám vědět."
 
 #: src/app/components/about/about.photo.html
 msgid "Passengers want to see who they are riding with, add a profile photo."
-msgstr "Passengers want to see who they are riding with, add a profile photo."
+msgstr "Cestující chtějí vidět, kdo jsou na koni s, přidejte fotografie profilu."
+
+#: src/app/components/about/about.js
+msgid "Photo"
+msgstr "Foto"
+
+#: src/app/components/about/about.language.html
+msgid "Polish"
+msgstr "Polština"
 
 #: src/app/components/about/about.photo.html
 msgid "Remove"
@@ -95,27 +138,43 @@ msgstr "Vyberte si pohlaví."
 msgid "Skip"
 msgstr "Přeskočit"
 
+#: src/app/components/about/about.language.html
+msgid "Slovak"
+msgstr "Slovenština"
+
 #: src/app/components/start/start.html
 msgid "Start"
 msgstr "Začít"
 
+#: src/app/components/about/about.js
+msgid "Summary"
+msgstr "Shrnutí"
+
 #: src/app/components/about/about.name.html
 msgid "Too short."
-msgstr "Too short."
+msgstr "Příliš krátká."
 
 #: src/app/components/about/about.photo.html
 msgid "Upload"
-msgstr "Upload"
+msgstr "Nahrát"
 
 #: src/app/components/start/start.incomplete.html
 msgid "We are missing a few details about you."
-msgstr "We are missing a few details about you."
+msgstr "Chybí nám pár detailů o vás."
 
 #: src/app/components/start/start.html
 msgid "Welcome to Liftago!"
-msgstr "Welcome to Liftago!"
+msgstr "Vítejte na Liftago!"
+
+#: src/app/components/about/about.name.html
+msgid "Yes"
+msgstr "Ano"
 
 #: src/app/components/about/about.summary.html
 msgid "Your almost done with the About you section, here's what we have so far."
-msgstr "Your almost done with the About you section, here's what we have so far."
+msgstr "Téměř hotovo se o vás sekce, tady je to, co zatím máme."
+
+#: src/app/header.html
+msgid "{{getProgress(mainItem.name).percent}}% filled in."
+msgstr "{{getProgress(mainItem.name).percent}}% vyplněno."
 
