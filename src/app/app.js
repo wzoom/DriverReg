@@ -85,7 +85,7 @@ drApp.controller('drAppCtrl', function(
       percent: 0,
     };
 
-    if (angular.isDefined(stepObject.children)) {
+    if (angular.isDefined(stepObject.children) && angular.isDefined($scope.user)) {
       var stepChildren = stepObject.children;
       output['total'] = stepChildren.length - 1;
 
@@ -160,6 +160,21 @@ drApp.controller('drAppCtrl', function(
       var valid = eval(validatorName).isStepValid($state.current.name, $scope.user ,true);
       if (valid) $scope.setNextStep();
     }
+  };
+
+  // Last empty step
+  $scope.lastEmptyStep = function() {
+    var lastEmptyStep = 'start.finished';
+
+    $scope.mainItems.some(function(item, index) {
+      var itemProgress = $scope.getProgress(item.name).percent;
+      if (itemProgress < 100) {
+        lastEmptyStep = item.redirectTo;
+        return true;
+      }
+    });
+
+    return lastEmptyStep;
   };
 
 });

@@ -3,11 +3,15 @@
   <p translate>In order for you to start picking up passengers we need to collect some information about you.</p>
 
   <div class="clearfix form-submit">
-    <a ui-sref="{{mainItems[0].redirectTo}}" class="btn btn-default btn-primary pull-right" translate>Start</a>
+    <a ui-sref="{{lastEmptyStep()}}" class="btn btn-default btn-primary pull-right" translate>Start</a>
   </div>
 
   <div class="debug clearfix well">
-    Go to <a ui-sref="start.incomplete" class="">Incomplete</a> state.
+    Go to <a ui-sref="{{lastEmptyStep()}}" class="">Incomplete</a> state.
+  </div>
+
+  <div class="clearfix well">
+    DEVEL OPTION: <a data-ng-click="{{deleteUserObject()}}" class="">Delete user object</a>
   </div>
 
 </div>
