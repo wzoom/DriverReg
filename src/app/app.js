@@ -116,18 +116,18 @@ drApp.controller('drAppCtrl', function(
   // Fill-in all main states (except the virtual root state)
   $scope.setMainItems = function() {
 
-    var filtredItems = $filter('filter')($state.get(),  function(state){
+    var filteredItems = $filter('filter')($state.get(),  function(state){
       return state.name != '' && state.sideMenu == true && angular.isDefined(state.redirectTo);
     });
 
-    filtredItems.forEach(function(filtredItem, index) {
-      var filtredItemProgress = $scope.getProgress(filtredItem.name).percent;
-      if (filtredItemProgress >= 100) {
-        filtredItems[index].redirectTo = filtredItem.name + '.summary';
+    filteredItems.forEach(function(filteredItem, index) {
+      var filteredItemProgress = $scope.getProgress(filteredItem.name).percent;
+      if (filteredItemProgress >= 100) {
+        filteredItems[index].redirectTo = filteredItem.name + '.summary';
       }
     });
 
-    return filtredItems;
+    return filteredItems;
   };
 
   $scope.mainItems = $scope.setMainItems();
@@ -135,7 +135,7 @@ drApp.controller('drAppCtrl', function(
   // Next step set
   $scope.setNextStep = function() {
     if (angular.isDefined($scope.currentMain) && angular.isDefined($scope.subItems)) {
-
+      var finalState = $scope.currentMain.name + '.summary';
       var validatorName = $scope.currentMain.name + 'Validator';
       $scope.subItems.some(function(partState) {
         var valid = eval(validatorName).isStepValid(partState.name, $scope.user);
@@ -164,7 +164,7 @@ drApp.controller('drAppCtrl', function(
 
 });
 
-drApp.controller('HeaderCtrl', function ($scope, $state) {
+drApp.controller('HeaderCtrl', function ($scope) {
   $scope.hideNavbar = function() {
     angular.element('nav.navmenu.offcanvas').offcanvas('hide');
   };
