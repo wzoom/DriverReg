@@ -21,7 +21,7 @@ module.exports = function(grunt) {
   //grunt.registerTask('test-watch', ['karma:watch']);
 
 
-  var locales = ['en-us', 'cs', 'pl', 'sk'];
+  var locales = ['en_US', 'cs_CZ', 'pl_PL', 'sk_SK'];
 
   // Project configuration.
   grunt.initConfig({
@@ -307,15 +307,17 @@ module.exports = function(grunt) {
   // Dynamic locale-related tasks
   var localesTasks = [];
   for(var i = 0; i < locales.length; i++) {
-    var locale = locales[i];
-    var language = locale.substring(0,2);
+    var locale_full = locales[i];
+    var language = locales[i].substring(0,2);
+    var locale = locales[i].substring(3);
+    var locale_safe = language.toLowerCase() + '-' + locale.toLowerCase();
 
-    grunt.config(['concat', locale], {
+    grunt.config(['concat', language], {
       files: [
         {
           expand: true,
           cwd: 'lib/angular-i18n',
-          src: '*_' + locale + '.js',
+          src: '*_' + locale_safe + '.js',
           dest: 'dist/js/',
           ext: '.js',
           extDot: 'first',
@@ -323,17 +325,17 @@ module.exports = function(grunt) {
       ],
     });
 
-    localesTasks.push('concat:' + locale);
+    localesTasks.push('concat:' + language);
 
 
-    if (locale === 'en-us') { continue; }
+    if (language === 'en') { continue; }
 
 
-    grunt.config(['string-replace', locale], {
+    grunt.config(['string-replace', language], {
       files: [
         {
           src: 'dist/index.html',
-          dest: 'dist/index-' + locale + '.html'
+          dest: 'dist/index-' + language + '.html'
         },
       ],
       options: {
@@ -343,14 +345,18 @@ module.exports = function(grunt) {
             replacement: 'lang="' + language + '"',
           },
           {
+            pattern: 'locale="en_US"',
+            replacement: 'locale="' + locale_full + '"',
+          },
+          {
             pattern: 'angular-locale_en-us.js',
-            replacement: 'angular-locale_' + locale + '.js',
+            replacement: 'angular-locale_' + locale_safe + '.js',
           }
         ],
       }
     });
 
-    localesTasks.push('string-replace:' + locale);
+    localesTasks.push('string-replace:' + language);
   }
 
   grunt.registerTask('generate-locales', localesTasks);

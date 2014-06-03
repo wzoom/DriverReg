@@ -40,7 +40,8 @@ drApp.controller('drAppCtrl', function(
   $scope.state = $state;
 
   $scope.user =  $localStorage.user || User;
-  gettextCatalog.currentLanguage = 'cs_CZ';
+
+  gettextCatalog.currentLanguage = angular.element('html').attr('locale');
   //gettextCatalog.debug = true;
 
   $scope.notifications = {};
