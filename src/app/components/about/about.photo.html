@@ -1,4 +1,4 @@
-<div class="help-block">Passengers want to see who they are riding with, add a profile photo.</div>
+<div class="help-block" translate>Passengers want to see who they are riding with, add a profile photo.</div>
 
 <div>
     <div data-ng-repeat="item in uploader.queue">
@@ -6,10 +6,10 @@
             <div class="fileinput-preview thumbnail" data-ng-show="uploader.isHTML5" data-ng-thumb="{ file: item.file, height: 200 }"></div>
             <div class="buttons">
                 <button type="button" class="btn btn-success" data-ng-click="item.upload()" data-ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                    <span class="glyphicon glyphicon-upload"></span> Upload
+                    <span class="glyphicon glyphicon-upload"></span> <span translate>Upload</span>
                 </button>
                 <button type="button" class="btn btn-danger" data-ng-click="item.remove()">
-                    <span class="glyphicon glyphicon-trash"></span> Remove
+                    <span class="glyphicon glyphicon-trash"></span> <span translate>Remove</span>
                 </button>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <img src="images/default.jpg" alt="default-avatar">
         </div>
         <input data-ng-file-select type="file" data-ng-show="!uploader.queue[0]" id="hide-button" class="hide-button btn btn-default btn-primary" />
-        <div data-ng-file-select  class="btn btn-default btn-primary" data-ng-click="openSelect()">Select file</div>
+        <div data-ng-file-select  class="btn btn-default btn-primary" data-ng-click="openSelect()" translate>Select file</div>
     </div>
 
 </div>

@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.2",
+    "grunt-angular-gettext": "^0.2.14",
     "grunt-bower-task": "^0.3.4",
     "grunt-browserify-bower": "^0.1.4",
     "grunt-contrib-clean": "^0.5.0",
@@ -23,6 +24,8 @@
     "grunt-html2js": "^0.2.7",
     "grunt-mkdir": "^0.1.1",
     "grunt-ng-annotate": "^0.2.2",
-    "grunt-open": "^0.2.3"
+    "grunt-open": "^0.2.3",
+    "grunt-shell": "^0.7.0",
+    "grunt-string-replace": "^0.2.7"
   }
 }

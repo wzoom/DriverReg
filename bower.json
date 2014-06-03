@@ -37,6 +37,7 @@
     "angular-ui-router.stateHelper": "~1.1.0",
     "venturocket-angular-slider": "~0.3.2",
     "ngstorage": "~0.3.0"
+    "angular-i18n": "~1.2.16"
   },
   "resolutions": {
     "es5-shim": "~3.4.0"

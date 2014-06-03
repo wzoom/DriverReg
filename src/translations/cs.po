@@ -1,0 +1,121 @@
+msgid ""
+msgstr "Project-Id-Version: liftago-mktp\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: crowdin.net\n"
+"Last-Translator: Liftago <crowdin@adleritech.com>\n"
+"Language-Team: Czech\n"
+"Language: cs_CZ\n"
+"PO-Revision-Date: 2014-06-02 08:36-0400\n"
+
+#: src/app/components/about/about.gender.html
+#: src/app/components/about/about.language.html
+#: src/app/components/about/about.name.html
+msgid ""
+msgstr "Project-Id-Version: liftago-mktp\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: crowdin.net\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Liftago <crowdin@adleritech.com>\n"
+"Language-Team: Czech\n"
+"Language: cs_CZ\n"
+"PO-Revision-Date: 2014-06-02 08:36-0400\n"
+
+#: src/app/components/about/about.dispatch.html
+msgid "Are you a driver for one of our local partners?"
+msgstr "Are you a driver for one of our local partners?"
+
+#: src/app/components/about/about.name.html
+msgid "Can we display your full name in offers to passengers?"
+msgstr "Can we display your full name in offers to passengers?"
+
+#: src/app/components/start/start.incomplete.html
+msgid "Complete"
+msgstr "Complete"
+
+#: src/app/components/about/about.dispatch.html
+msgid "Displaying a dispatching company make you more creditable for passenger and gives the dispatching company access to your data."
+msgstr "Displaying a dispatching company make you more creditable for passenger and gives the dispatching company access to your data."
+
+#: src/index.html
+msgid "Driver Registration"
+msgstr "Driver Registration"
+
+#: src/app/components/about/about.name.html
+msgid "First Name"
+msgstr "First Name"
+
+#: src/app/components/about/about.name.html
+msgid "Great picture, now we need a name with that face."
+msgstr "Great picture, now we need a name with that face."
+
+#: src/app/components/start/start.html
+#: src/app/components/start/start.incomplete.html
+msgid "In order for you to start picking up passengers we need to collect some information about you."
+msgstr "In order for you to start picking up passengers we need to collect some information about you."
+
+#: src/app/components/about/about.name.html
+msgid "Last Name"
+msgstr "Příjmení"
+
+#: src/app/components/about/about.html
+msgid "Next"
+msgstr "Další"
+
+#: src/app/components/about/about.html
+msgid "Next Step >"
+msgstr "Další krok >"
+
+#: src/app/components/about/about.language.html
+msgid "Passenger are sometimes looking for unique languages, let us know languages you speak."
+msgstr "Passenger are sometimes looking for unique languages, let us know languages you speak."
+
+#: src/app/components/about/about.photo.html
+msgid "Passengers want to see who they are riding with, add a profile photo."
+msgstr "Passengers want to see who they are riding with, add a profile photo."
+
+#: src/app/components/about/about.photo.html
+msgid "Remove"
+msgstr "Odstranit"
+
+#: src/app/components/about/about.name.html
+msgid "Required"
+msgstr "Požadováno"
+
+#: src/app/components/about/about.photo.html
+msgid "Select file"
+msgstr "Vybrat soubor"
+
+#: src/app/components/about/about.gender.html
+msgid "Select your Gender."
+msgstr "Vyberte si pohlaví."
+
+#: src/app/components/about/about.html
+msgid "Skip"
+msgstr "Přeskočit"
+
+#: src/app/components/start/start.html
+msgid "Start"
+msgstr "Začít"
+
+#: src/app/components/about/about.name.html
+msgid "Too short."
+msgstr "Too short."
+
+#: src/app/components/about/about.photo.html
+msgid "Upload"
+msgstr "Upload"
+
+#: src/app/components/start/start.incomplete.html
+msgid "We are missing a few details about you."
+msgstr "We are missing a few details about you."
+
+#: src/app/components/start/start.html
+msgid "Welcome to Liftago!"
+msgstr "Welcome to Liftago!"
+
+#: src/app/components/about/about.summary.html
+msgid "Your almost done with the About you section, here's what we have so far."
+msgstr "Your almost done with the About you section, here's what we have so far."
+

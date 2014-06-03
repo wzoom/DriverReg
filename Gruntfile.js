@@ -9,18 +9,25 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint','build']); //,'karma:unit'
 
-  grunt.registerTask('build', ['mkdir', 'clean', 'bower', 'copy', 'html2js', 'concat', 'ngAnnotate']);
-  grunt.registerTask('release', ['build','uglify','jshint']);
+  grunt.registerTask('build', ['mkdir', 'clean', 'bower', 'copy', 'html2js', 'concat', 'ngAnnotate', 'nggettext_compile', 'generate-locales']);
+
+  grunt.registerTask('release', ['build','uglify','jshint', 'translations-export', 'translations-import']);
+
+  grunt.registerTask('translations-export', ['nggettext_extract', 'string-replace:pot_project', 'shell:pot2crowdin']);
+  grunt.registerTask('translations-import', ['shell:crowdin2po', 'nggettext_compile']);
 
   grunt.registerTask('server', ['express', 'open', 'watch']);
 
   //grunt.registerTask('test-watch', ['karma:watch']);
 
 
+  var locales = ['en-us', 'cs', 'pl', 'sk'];
+
   // Project configuration.
   grunt.initConfig({
 
     // --- Metadata.
+    languages: ['cs', 'pl', 'sk'],
     distdir: 'dist',
     dist: {
       dir: 'dist',
@@ -152,9 +159,39 @@ module.exports = function(grunt) {
         files: {
           'dist/angular.js': ['lib/angular/*.js'],
           'dist/jquery.js': ['lib/jquery/*.js'],
-          'dist/vendor.js': ['lib/**/*.js', '!lib/bootstrap/*.js', '!lib/angular/*.js', '!lib/jquery/*.js'],
+          'dist/vendor.js': ['lib/**/*.js', '!lib/bootstrap/*.js', '!lib/angular/*.js', '!lib/jquery/*.js', '!lib/angular-i18n/*.js'],
           'dist/vendor.css': ['lib/**/*.css'],
         },
+      },
+    },
+    // Generate POT file with strings to be translated
+    nggettext_extract: {
+      pot: {
+        files: {
+          'src/translations/<%= pkg.name %>.pot': ['src/**/*.html', 'src/**/*.js']
+        }
+      },
+    },
+    // Convert PO translation files to JS
+    nggettext_compile: {
+      all: {
+        files: {
+          'dist/translations.js': ['src/translations/*.po']
+        }
+      },
+    },
+    // Adds mandatory line into POT file (for Crowdin to work properly)
+    'string-replace': {
+      pot_project: {
+        files: {
+          'src/translations/<%= pkg.name %>.pot': 'src/translations/<%= pkg.name %>.pot',
+        },
+        options: {
+          replacements: [{
+            pattern: /^(msgid ""\nmsgstr ""\n)/,    // This is RegExp, so it cannot be string!
+            replacement: '$1"Project-Id-Version: liftago-mktp\\n"\n',
+          }],
+        }
       }
     },
     ngAnnotate: {
@@ -170,15 +207,22 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        banner: '<%= banner %>',
+        compress: {
+          drop_console: true,
+        },
       },
       app: {
-        src: '<%= concat.app.dest %>',
-        dest: 'dist/app.min.js'
+        files: {
+          'dist/app.js': ['src/**/*.js'],
+        }
       },
       vendor: {
-        src: '<%= concat.vendor.dest %>',
-        dest: 'dist/app.min.js'
+        files: {
+          'dist/angular.js': ['lib/angular/*.js'],
+          'dist/jquery.js': ['lib/jquery/*.js'],
+          'dist/vendor.js': ['lib/**/*.js', '!lib/bootstrap/*.js', '!lib/angular/*.js', '!lib/jquery/*.js'],
+        },
       }
     },
     jshint: {
@@ -210,7 +254,17 @@ module.exports = function(grunt) {
     //qunit: {
     //  files: ['test/**/*.html']
     //},
-
+    shell: {
+      options: {
+        stderr: false
+      },
+      pot2crowdin: {
+        command: 'java -jar crowdin-cli.jar upload sources'
+      },
+      crowdin2po: {
+        command: 'java -jar crowdin-cli.jar download'
+      }
+    },
     express: {
       all: {
         options: {
@@ -250,6 +304,58 @@ module.exports = function(grunt) {
     }
   });
 
+  // Dynamic locale-related tasks
+  var localesTasks = [];
+  for(var i = 0; i < locales.length; i++) {
+    var locale = locales[i];
+    var language = locale.substring(0,2);
+
+    grunt.config(['concat', locale], {
+      files: [
+        {
+          expand: true,
+          cwd: 'lib/angular-i18n',
+          src: '*_' + locale + '.js',
+          dest: 'dist/js/',
+          ext: '.js',
+          extDot: 'first',
+        },
+      ],
+    });
+
+    localesTasks.push('concat:' + locale);
+
+
+    if (locale === 'en-us') { continue; }
+
+
+    grunt.config(['string-replace', locale], {
+      files: [
+        {
+          src: 'dist/index.html',
+          dest: 'dist/index-' + locale + '.html'
+        },
+      ],
+      options: {
+        replacements: [
+          {
+            pattern: 'lang="en"',
+            replacement: 'lang="' + language + '"',
+          },
+          {
+            pattern: 'angular-locale_en-us.js',
+            replacement: 'angular-locale_' + locale + '.js',
+          }
+        ],
+      }
+    });
+
+    localesTasks.push('string-replace:' + locale);
+  }
+
+  grunt.registerTask('generate-locales', localesTasks);
+
+
   // These plugins provide necessary tasks.
 
   grunt.loadNpmTasks('grunt-mkdir');
@@ -268,5 +374,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-browserify-bower');
+  grunt.loadNpmTasks('grunt-angular-gettext');
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-string-replace');
 
 };
