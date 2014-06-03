@@ -4,6 +4,7 @@
 
 var drApp = angular.module('driverRegApp', [
   'ui.router', 'ui.router.stateHelper',
+  'ngStorage',
   'drApp.about',
   'drApp.services',
   'drApp.vehicle',
