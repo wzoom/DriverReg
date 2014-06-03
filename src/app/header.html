@@ -7,10 +7,10 @@
           <span ng-hide="state.data.isNeutral || false" ng-show="state.isStateValid()" class="glyphicon pull-right lead"></span>
           <span ng-hide="state.data.isNeutral || false" ng-show="!state.isStateValid()" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
 
-          <h4 class="list-group-item-heading">{{state.title}}</h4>
+          <h4 class="list-group-item-heading">{{state.title | translate}}</h4>
 
-          <p ng-hide="state.data.isNeutral || false" class="list-group-item-text small">100% filled in.</p>
-          <p ng-hide="state.data.isNeutral || false" ng-show="!state.isStateValid()" class="list-group-item-text text-danger small">Almost done. Fill in few more fields.</p>
+          <p ng-hide="state.data.isNeutral || false" class="list-group-item-text small" translate>100% filled in.</p>
+          <p ng-hide="state.data.isNeutral || false" ng-show="!state.isStateValid()" class="list-group-item-text text-danger small" translate>Almost done. Fill in few more fields.</p>
         </a>
 
       </div>
@@ -24,7 +24,7 @@
       <span class="icon-bar"></span>
     </button>
 
-    <h3 id="header-title">{{headerTitle}}</h3>
+    <h3 id="header-title">{{headerTitle | translate}}</h3>
 
   </div>
 

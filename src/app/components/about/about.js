@@ -1,13 +1,16 @@
 angular.module('drApp.about', [
-  'ui.router', 'ui.router.stateHelper', 'drServices',
+  'ui.router',
+  'ui.router.stateHelper',
+  'drServices',
+  'gettext',
 ])
 
-.config(function(stateHelperProvider){
+.config(function(stateHelperProvider, gettext){
 
     var stepSettings = {
       mainState: 'about',
       firstStep: 'about.photo',
-      stepTitle: 'About you'
+      stepTitle: gettext('About you'),
     };
 
     var getComponentTemplatePath = function (stateName) {
@@ -17,7 +20,7 @@ angular.module('drApp.about', [
     stateHelperProvider
       .setNestedState({
         name: 'about',
-        title: "About You",
+        title: gettext("About You"),
         sideMenu: true,
         skipAllow: true,
         url: "/about",
@@ -26,7 +29,7 @@ angular.module('drApp.about', [
         children: [
           {
             name: 'photo',
-            title: "Photo",
+            title: gettext("Photo"),
             sideMenu: false,
             skipAllow: true,
             url: "/photo",
@@ -34,7 +37,7 @@ angular.module('drApp.about', [
           },
           {
             name: 'name',
-            title: "Name",
+            title: gettext("Name"),
             sideMenu: false,
             skipAllow: false,
             url: "/name",
@@ -56,7 +59,7 @@ angular.module('drApp.about', [
           },
           {
             name: 'gender',
-            title: "Gender",
+            title: gettext("Gender"),
             sideMenu: false,
             skipAllow: false,
             url: "/gender",
@@ -64,7 +67,7 @@ angular.module('drApp.about', [
           },
           {
             name: 'language',
-            title: "Language",
+            title: gettext("Language"),
             sideMenu: false,
             skipAllow: false,
             url: "/language",
@@ -72,7 +75,7 @@ angular.module('drApp.about', [
           },
           {
             name: 'dispatch',
-            title: "Dispatching",
+            title: gettext("Dispatching"),
             sideMenu: false,
             skipAllow: true,
             url: "/dispatch",
@@ -80,7 +83,7 @@ angular.module('drApp.about', [
           },
           {
             name: 'summary',
-            title: "Summary",
+            title: gettext("Summary"),
             sideMenu: false,
             skipAllow: false,
             url: "/summary",
