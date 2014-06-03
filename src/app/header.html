@@ -1,16 +1,16 @@
-<div class="header" ng-controller="HeaderCtrl">
+<div class="header" data-ng-controller="HeaderCtrl">
   <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation" bs-navbar>
     <div class="">
 
       <div class="list-group">
-        <a ng-repeat="state in states | orderBy:'weight'" ng-show="state.sideMenu" ui-sref="{{state.name}}" class="list-group-item" ng-click="hideNavbar()" ng-class="{'list-group-item-success' : state.isStateValid(), 'list-group-item-danger' : !state.data.isNeutral && !state.isStateValid()}">
-          <span ng-hide="state.data.isNeutral || false" ng-show="state.isStateValid()" class="glyphicon pull-right lead"></span>
-          <span ng-hide="state.data.isNeutral || false" ng-show="!state.isStateValid()" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
+        <a data-ng-repeat="mainItem in mainItems | orderBy:'weight'" data-ng-show="mainItem.sideMenu" ui-sref="{{mainItem.redirectTo}}" class="list-group-item" data-ng-click="hideNavbar()" data-ng-class="{'list-group-item-success' : getProgress(mainItem.name).percent >= 100, 'list-group-item-danger' : !mainItem.data.isNeutral && getProgress(mainItem.name).percent < 100}">
+          <span data-ng-show="getProgress(mainItem.name).percent >= 100 && !mainItem.data.isNeutral" class="glyphicon glyphicon-ok pull-right lead"></span>
+          <span data-ng-show="getProgress(mainItem.name).percent < 100 && !mainItem.data.isNeutral" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
 
-          <h4 class="list-group-item-heading">{{state.title}}</h4>
+          <h4 class="list-group-item-heading">{{mainItem.title}}</h4>
 
-          <p ng-hide="state.data.isNeutral || false" class="list-group-item-text small">100% filled in.</p>
-          <p ng-hide="state.data.isNeutral || false" ng-show="!state.isStateValid()" class="list-group-item-text text-danger small">Almost done. Fill in few more fields.</p>
+          <p data-ng-show="getProgress(mainItem.name).percent < 100 && !mainItem.data.isNeutral" class="list-group-item-text small">{{getProgress(mainItem.name).percent}}% filled in.</p>
+          <p data-ng-show="getProgress(mainItem.name).percent >= 100 && !mainItem.data.isNeutral" class="list-group-item-text text-danger small">Almost done.</p>
         </a>
 
       </div>
@@ -24,14 +24,14 @@
       <span class="icon-bar"></span>
     </button>
 
-    <h3 id="header-title">{{headerTitle}}</h3>
+    <a data-ng-click="state.go(currentMain.redirectTo)" class="navbar-brand head-title" title="{{currentMain.title}}"><strong>{{currentMain.title}}</strong></a>
 
   </div>
 
-    <div class="row" data-ng-show="showBar">
+    <div class="row" data-ng-show="getCurrentProgress().showBar">
         <div class="col-md-6 col-md-offset-3">
             <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{width: progress+'%'}">
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{width: getCurrentProgress().percent +'%'}">
                 </div>
             </div>
         </div>

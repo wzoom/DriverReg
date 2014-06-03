@@ -18,9 +18,11 @@ angular.module('drApp.about', [
       .setNestedState({
         name: 'about',
         title: "About You",
+        absolute: true,
         sideMenu: true,
         skipAllow: true,
         url: "/about",
+        redirectTo: 'about.photo',
         templateUrl: getComponentTemplatePath('about'),
         weight: 1,
         children: [
@@ -39,20 +41,6 @@ angular.module('drApp.about', [
             skipAllow: false,
             url: "/name",
             templateUrl: getComponentTemplatePath('about.name'),
-            resolve: {
-              user: 'User',
-              //validator: 'nameStepValidator',
-            },
-            controller: function ($state, $scope, user) {
-
-            },
-            /*
-            isStateValid: function(validator) {
-              console.log(validator);
-              //return validator.isStateValid()
-              return false;
-            },
-            */
           },
           {
             name: 'gender',
@@ -93,37 +81,11 @@ angular.module('drApp.about', [
 )
 
 .controller('aboutCtrl', function ($scope, $rootScope, $state, $filter) {
-  var user = $rootScope.user;
-
-    $scope.skipAllow = $state.current.skipAllow;
-
-
-    if ($state.current.name == 'about') {
-      $state.transitionTo('about.photo');
-    }
-
-  $scope.states = $filter('filter')($state.get(),  function(state){return state.name != ''});
-  $scope.currentState = $state.current;
-
-  //$rootScope.stepTitle = 'About you';
-
-  $scope.$on('$stateChangeStart', function(event, toState){
-    //$scope.currentState = toState;
-    $scope.skipAllow = toState.skipAllow;
-
-    if (toState.name == 'about') {
-      //$location.path('/about/photo');
-      $state.transitionTo('about.photo');
-      //$state.go($state.current.children[0]);
-    }
-  });
 
 })
 
-.service('aboutValidator', function (User) {
+.service('aboutValidator', function () {
   var service = this;
-
-  var mainStepName = 'about';
 
   var isNameValid = function(user) {
     if (angular.isUndefined(user.firstName)) return false;
@@ -160,19 +122,19 @@ angular.module('drApp.about', [
   }
 
     // Public API
-  service.isStepValid = function(stepName, skipStep){
-    if (stepName.substring(0, stepName.indexOf('.')) != mainStepName) return false;
+  service.isStepValid = function(stepName, userObject, skipStep){
+    if (stepName.substring(0, stepName.indexOf('.')) != 'about') return false;
 
     if (stepName.indexOf('.') > -1) {
       stepName = stepName.substring(stepName.indexOf('.')+1);
     }
 
     switch(stepName) {
-      case 'photo': return isPhotoValid(User, skipStep);
-      case 'name': return isNameValid(User);
-      case 'gender': return isGenderValid(User);
-      case 'language': return isLanguageValid(User);
-      case 'dispatch': return isDispachingValid(User, skipStep);
+      case 'photo': return isPhotoValid(userObject, skipStep);
+      case 'name': return isNameValid(userObject);
+      case 'gender': return isGenderValid(userObject);
+      case 'language': return isLanguageValid(userObject);
+      case 'dispatch': return isDispachingValid(userObject, skipStep);
       // TODO - change to false and add attribute to $state so that validation can be disabled for certain steps
       case 'summary': return true;
     }
@@ -181,19 +143,4 @@ angular.module('drApp.about', [
   };
 
   return service;
-})
-
-/*
-.factory('nameStepValidator', function (StepValidator, User) {
-  var service = Object.create(StepValidator);
-
-  // Override validation method
-  service.isStepValid = function(){
-    if (!angular.isEmpty(User.firstName) && !angular.isEmpty(User.lastName)) return true;
-    return false;
-  }
-
-  return service;
-})
- */
-;
+});

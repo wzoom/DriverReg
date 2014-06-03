@@ -21,6 +21,7 @@ angular.module('drApp.services', [
         sideMenu: true,
         skipAllow: true,
         url: "/services",
+        redirectTo: 'services.pickup',
         templateUrl: getComponentTemplatePath('services'),
         weight: 3,
         children: [
@@ -117,7 +118,6 @@ angular.module('drApp.services', [
   var mainStepName = 'services';
 
   var isPickupValid = function(user) {
-    console.log('ffff');
     if (angular.isUndefined(user.pickup)) return false;
     if (user.pickup == null) return false;
     if ((user.pickup < 1) || (user.pickup > 30)) {
