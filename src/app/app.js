@@ -46,11 +46,6 @@ drApp.controller('drAppCtrl', function(
 
   $scope.notifications = {};
 
-
-  if (angular.isDefined($scope.user)) {
-    User = $scope.user;
-  }
-
   $scope.$watch('user', function() {
     $localStorage.user = $scope.user;
   });
@@ -59,8 +54,12 @@ drApp.controller('drAppCtrl', function(
     return angular.toJson($localStorage);
   }, function() {
     $scope.user = $localStorage.user;
-    User = $localStorage.user;
   });
+
+  $scope.deleteUserObject = function() {
+    delete $localStorage.user;
+    $localStorage.user = User;
+  };
 
   // Fill-in all sub states
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
@@ -140,8 +139,6 @@ drApp.controller('drAppCtrl', function(
       var validatorName = $scope.currentMain.name + 'Validator';
       $scope.subItems.some(function(partState) {
         var valid = eval(validatorName).isStepValid(partState.name, $scope.user);
-
-        console.log('Step '+ partState.name +' is '+(valid?'valid.':'INVALID.'));
 
         if (!valid) {
           finalState = partState.name;

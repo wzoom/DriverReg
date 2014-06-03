@@ -15,17 +15,21 @@
       <div ng-include="'notifications.html'" class="container-fluid" data-ng-show="notifications.getCurrent().length"></div>
       <div class="row">
         <div ui-view></div>
+
+          <!-- DEBUGG MESSAGE-->
+          <div class="col-md-6 col-md-offset-3" style="word-wrap:break-word;">
+              <div class="clearfix" style="margin-top: 60px;"></div>
+              <hr>
+              <div class="well">Valid form: {{regForm.$valid}}</div>
+              <div class="clearfix well">
+                  <a href='#' data-ng-click="deleteUserObject()" class="">Delete user object from session cache</a>
+              </div>
+              <div class="well">User: {{user}}</div>
+          </div>
+          <!-- END DEBUGG MESSAGE-->
+
       </div>
     </div>
-
-    <!-- DEBUGG MESSAGE-->
-    <div class="col-md-6 col-md-offset-3" style="word-wrap:break-word;">
-        <div class="clearfix" style="margin-top: 100px;"></div>
-        <div class="well">Valid form: {{regForm.$valid}}</div>
-        <div class="well">User: {{user}}</div>
-        <div class="well">User: {{User}}</div>
-    </div>
-    <!-- END DEBUGG MESSAGE-->
 
     <script src="jquery.js"></script>
     <script src="angular.js"></script>
