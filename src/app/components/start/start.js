@@ -19,6 +19,7 @@ start.config(function($stateProvider){
         sideMenu: true,
         skipAllow: false,
         url: "/",
+        redirectTo: 'start',
         templateUrl: getComponentTemplatePath('start'),
         controller: 'HeaderCtrl',
         weight: 0,

@@ -30,15 +30,7 @@ button.navbar-toggle {
   margin-top: 100px;
 }
 
-slider span.pointer,
-slider span.pointer::after,
-slider span.pointer:hover,
-slider span.pointer:hover::after {
-    background-color: #fff;
-    border: 0px solid #fff;
+.navbar-default .head-title {
     color: #fff;
-}
-
-slider span.pointer {
-    border: 1px solid #ccc;
+    cursor: pointer;
 }
