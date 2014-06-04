@@ -132,20 +132,25 @@ drApp.controller('drAppCtrl', function(
 
   $scope.mainItems = $scope.setMainItems();
 
+  //Last unfinished sub step in main step
+  $scope.unfinishedSubItem = function(mainItemObject) {
+    var finalItemName = mainItemObject.name + '.summary';
+    var validatorName = mainItemObject.name + 'Validator';
+    mainItemObject.children.some(function(partState) {
+      var valid = eval(validatorName).isStepValid(partState.name, $scope.user);
+      if (!valid) {
+        finalItemName = partState.name;
+        return true;
+      }
+    });
+
+    return finalItemName;
+  };
+
   // Next step set
   $scope.setNextStep = function() {
-    if (angular.isDefined($scope.currentMain) && angular.isDefined($scope.subItems)) {
-      var finalState = $scope.currentMain.name + '.summary';
-      var validatorName = $scope.currentMain.name + 'Validator';
-      $scope.subItems.some(function(partState) {
-        var valid = eval(validatorName).isStepValid(partState.name, $scope.user);
-
-        if (!valid) {
-          finalState = partState.name;
-          return true;
-        }
-      });
-
+    if (angular.isDefined($scope.currentMain)) {
+      var finalState = $scope.unfinishedSubItem($scope.currentMain);
       $state.go(finalState);
     }
   };
@@ -163,14 +168,19 @@ drApp.controller('drAppCtrl', function(
   // Last empty step
   $scope.lastEmptyStep = function() {
     var lastEmptyStep = 'start.finished';
+    var lastEmptyMainStep = [];
 
-    $scope.mainItems.some(function(item, index) {
+    $scope.mainItems.some(function(item) {
       var itemProgress = $scope.getProgress(item.name).percent;
       if (itemProgress < 100) {
-        lastEmptyStep = item.redirectTo;
+        lastEmptyMainStep = item;
         return true;
       }
     });
+
+    if (lastEmptyMainStep.length > 0) {
+      lastEmptyStep = $scope.unfinishedSubItem(lastEmptyMainStep);
+    }
 
     return lastEmptyStep;
   };
