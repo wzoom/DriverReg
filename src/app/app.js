@@ -165,9 +165,8 @@ drApp.controller('drAppCtrl', function(
     }
   };
 
-  // Last empty step
-  $scope.lastEmptyStep = function() {
-    var lastEmptyStep = 'start.finished';
+  // Last main empty step
+  $scope.lastMainStep = function() {
     var lastEmptyMainStep = [];
 
     $scope.mainItems.some(function(item) {
@@ -178,11 +177,35 @@ drApp.controller('drAppCtrl', function(
       }
     });
 
-    if (lastEmptyMainStep.length > 0) {
+    return lastEmptyMainStep;
+  };
+
+  // Last empty step
+  $scope.lastEmptyStep = function() {
+    var lastEmptyStep = 'start.finished';
+    var lastEmptyMainStep = $scope.lastMainStep();
+
+    if (angular.isDefined(lastEmptyMainStep.name)) {
       lastEmptyStep = $scope.unfinishedSubItem(lastEmptyMainStep);
     }
 
     return lastEmptyStep;
+  };
+
+  // Chceck if is current state summary page
+  $scope.isSummaryPage = function() {
+    var output = false;
+    var isSummaryPage = $scope.state.current.name.search(/summary/i);
+
+    if (isSummaryPage > 0) output = true;
+
+    return output;
+  };
+
+  //
+  $scope.setNextMainStep = function() {
+    var nextMainStep = $scope.lastMainStep();
+    $state.go(nextMainStep.redirectTo);
   };
 
 });
