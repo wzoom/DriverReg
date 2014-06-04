@@ -1,13 +1,13 @@
 var start = angular.module('start', []);
 
-start.controller('startCtrl', function ($scope, $rootScope, $state) {
+start.controller('startCtrl', function ($scope, $rootScope, $state, gettextCatalog) {
   var user = $rootScope.user;
 
-  $rootScope.stepTitle = 'Getting Started';
+  $rootScope.stepTitle = gettextCatalog.getString('Getting Started');
 
 });
 
-start.config(function($stateProvider){
+start.config(function($stateProvider, gettext){
 
     var getComponentTemplatePath = function (stateName) {
       return 'components/' + stateName + '/' + stateName + '.html';
@@ -15,7 +15,7 @@ start.config(function($stateProvider){
 
     $stateProvider
       .state("start", {
-        title: "Getting Started",
+        title: gettext("Getting Started"),
         sideMenu: true,
         skipAllow: false,
         url: "/",
@@ -29,7 +29,7 @@ start.config(function($stateProvider){
       })
       // Incomplete can be a substate thanks to "ui-view" defined in parent (start.html) template
       .state("start.incomplete", {
-        title: "Getting Started",
+        title: gettext("Getting Started"),
         sideMenu: false,
         skipAllow: false,
         url: "^/incomplete",
