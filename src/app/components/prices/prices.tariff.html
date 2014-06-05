@@ -17,21 +17,21 @@
 
       <div class="list-group-item-text" ng-click="tariff.editing = true">
         <div class="form-group" ng-class="{'clearfix' : tariff.editing }">
-          <div class="col-xs-4 col-sm-3 col-md-1 text-center">
+          <div class="col-xs-4 text-center">
             <div ng-hide="tariff.editing" class="label label-default">{{tariff.initial | currency:''}}</div>
             <label ng-show="tariff.editing" for="tariffInitial" translate>Initial fee</label>
             <input ng-model="tariff.initial" ng-show="tariff.editing" type="number" class="form-control" id="tariffInitial" min="0" max="1000" required>
             <div class="symbol small text-muted">CZK</div>
           </div>
 
-          <div class="col-xs-4 col-sm-3 col-md-1 text-center">
+          <div class="col-xs-4 text-center">
             <div ng-hide="tariff.editing" class="label label-default">{{tariff.pricePerKm | currency:''}}</div>
             <label ng-show="tariff.editing" for="tariffPricePerKm" translate>Rate</label>
             <input ng-model="tariff.pricePerKm" ng-show="tariff.editing" type="number" class="form-control" id="tariffPricePerKm" min="0" max="1000" required>
             <div class="symbol small text-muted">CZK/km</div>
           </div>
 
-          <div class="col-xs-4 col-sm-3 col-md-1 text-center">
+          <div class="col-xs-4 text-center">
             <div ng-hide="tariff.editing" class="label label-default">{{tariff.waiting | currency:''}}</div>
             <label ng-show="tariff.editing" for="tariffWaiting" translate>Waiting</label>
             <input ng-model="tariff.waiting" ng-show="tariff.editing" type="number" class="form-control" id="tariffWaiting" min="0" max="1000" required>
@@ -60,19 +60,19 @@
 
       <div class="list-group-item-text clearfix">
         <div class="form-group clearfix">
-          <div class="col-xs-4 col-sm-3 col-md-1 text-center">
+          <div class="col-xs-4 text-center">
             <label for="tariffInitialNew" translate>Initial fee</label>
             <input ng-model="newTariff.initial" type="number" class="form-control" id="tariffInitialNew" min="0" max="1000" required>
             <div class="symbol small text-muted">CZK</div>
           </div>
 
-          <div class="col-xs-4 col-sm-3 col-md-1 text-center">
+          <div class="col-xs-4 text-center">
             <label for="tariffPricePerKmNew" translate>Rate</label>
             <input ng-model="newTariff.pricePerKm" type="number" class="form-control" id="tariffPricePerKmNew" min="0" max="1000" required>
             <div class="symbol small text-muted">CZK/km</div>
           </div>
 
-          <div class="col-xs-4 col-sm-3 col-md-1 text-center">
+          <div class="col-xs-4 text-center">
             <label for="tariffWaitingNew" translate>Waiting</label>
             <input ng-model="newTariff.waiting" type="number" class="form-control" id="tariffWaitingNew" min="0" max="1000" required>
             <div class="symbol small text-muted">CZK/min</div>
