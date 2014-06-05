@@ -15,21 +15,39 @@
       <div ng-include="'notifications.html'" class="container-fluid" data-ng-show="notifications.getCurrent().length"></div>
       <div class="row">
           <div data-ng-controller="queueCtrl" data-ng-file-drop>
-              <div ui-view></div>
+              <div class="col-md-6 col-md-offset-3">
+                  <h2 data-ng-show="showStepTitle()">{{state.current.title | translate}}</h2>
+                  <div data-ng-controller="formValidationCtrl">
+                      <form name="regForm" novalidate>
+                          <div ui-view></div>
+                          <div class="clearfix form-submit" data-ng-show="!state.current.data.isNeutral">
+                              <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="regForm.$invalid" data-ng-hide="isSummaryPage() || state.current.data.isNeutral" class="btn btn-default btn-success pull-right" translate>Next
+                              </button>
+
+                              <button type="submit" data-ng-click="setNextMainStep()" data-ng-show="isSummaryPage()" class="btn btn-default btn-danger pull-right margin btn-margin-right" translate>Next step
+                              </button>
+
+                              <button type="submit" data-ng-click="setSkipStep()" data-ng-show="state.current.skipAllow && !isSummaryPage()"class="btn btn-default btn-primary pull-right margin btn-margin-right" translate>Skip
+                              </button>
+                          </div>
+
+                          <!-- DEBUGG MESSAGE-->
+                          <div style="word-wrap:break-word; margin-top: 60px;">
+                              <hr>
+                              <div class="well">Valid form: {{regForm.$valid}}</div>
+                              <div class="clearfix well">
+                                  <a href='#' data-ng-click="deleteUserObject()" class="">Delete user object from session cache</a>
+                              </div>
+                              <div class="well">User: {{user}}</div>
+                          </div>
+                          <!-- END DEBUGG MESSAGE-->
+
+                      </form>
+                  </div>
+
+              </div>
               <div data-ng-include="'components/queue/queue.html'"></div>
           </div>
-
-          <!-- DEBUGG MESSAGE-->
-          <div class="col-md-6 col-md-offset-3" style="word-wrap:break-word;">
-              <div class="clearfix" style="margin-top: 60px;"></div>
-              <hr>
-              <div class="well">Valid form: {{regForm.$valid}}</div>
-              <div class="clearfix well">
-                  <a href='#' data-ng-click="deleteUserObject()" class="">Delete user object from session cache</a>
-              </div>
-              <div class="well">User: {{user}}</div>
-          </div>
-          <!-- END DEBUGG MESSAGE-->
 
       </div>
     </div>

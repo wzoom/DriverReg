@@ -219,6 +219,25 @@ drApp.controller('drAppCtrl', function(
     $state.go(nextMainStep.redirectTo);
   };
 
+  $scope.showStepTitle = function() {
+    if (angular.isDefined($scope.currentMain) && angular.isDefined($state.current) && ($scope.currentMain.title == $state.current.title)) {
+      return false;
+    }
+
+    return true;
+  };
+
+  $scope.totalProgress = function() {
+    var totalScore = 0;
+    $scope.mainItems.some(function(mainItem) {
+      totalScore = totalScore + $scope.getProgress(mainItem).percent;
+    });
+
+    var itemsNumber = $scope.mainItems.length;
+
+    return totalScore / itemsNumber;
+  }
+
 });
 
 drApp.controller('HeaderCtrl', function ($scope) {

@@ -1,20 +1,4 @@
-
-
-    <div class="col-md-6 col-md-offset-3" data-ng-controller="servicesCtrl">
-
-        <div data-ng-controller="formValidationCtrl">
-            <h2>{{state.current.title}}</h2>
-            <form name="regForm" novalidate>
-                <div ui-view></div>
-                <div class="clearfix form-submit">
-                    <button type="submit" data-ng-click="goNext()" data-ng-disabled="regForm.$invalid" data-ng-hide="isSummaryPage()" class="btn btn-default btn-success pull-right">Next</button>
-                    <button type="submit" data-ng-click="goSkip()" data-ng-show="skipAllow" class="btn btn-default btn-primary pull-right margin btn-margin-right">Skip</button>
-
-                </div>
-            </form>
-
-        </div>
-
-
-    </div>
+<div data-ng-controller="servicesCtrl">
+    <div ui-view></div>
+</div>
 
