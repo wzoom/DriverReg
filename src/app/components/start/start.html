@@ -1,9 +1,10 @@
-<div id="state-start" ui-view class="col-md-6 col-md-offset-3 view" ng-controller="startCtrl">
+<div id="state-start" ng-controller="startCtrl">
   <h2 translate>Welcome to Liftago!</h2>
   <p translate>In order for you to start picking up passengers we need to collect some information about you.</p>
 
-  <div class="clearfix form-submit">
-    <a ui-sref="{{lastEmptyStep()}}" class="btn btn-default btn-primary pull-right" translate>Start</a>
+  <div class="clearfix">
+    <a ui-sref="{{lastEmptyStep()}}" data-ng-show="totalProgress() != 0" class="btn btn-default btn-primary pull-right" translate>Continue</a>
+    <a ui-sref="{{lastEmptyStep()}}" data-ng-show="totalProgress() == 0" class="btn btn-default btn-primary pull-right" translate>Start</a>
   </div>
 
 </div>

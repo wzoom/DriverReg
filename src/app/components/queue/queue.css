@@ -1,11 +1,17 @@
 .queue {
-    width: 90%;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    padding: 0px 15px;
+    display: none;
 }
 
-.queue-wrapper {
-    position: absolute;
-    display: block;
-    height: 155px;
+.queue .alert {
+    width: 100%;
+    float: none;
+    clear: both;
+    height: 55px;
+    position: relative;
     bottom: 15px;
-    margin-bottom: 0px;
 }

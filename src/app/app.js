@@ -115,6 +115,29 @@ drApp.controller('drAppCtrl', function(
     }
   };
 
+  //Last unfinished sub step in main step
+  $scope.unfinishedSubItem = function(mainItemObject) {
+    if (angular.isDefined(mainItemObject.children)) {
+      var finalItemName = mainItemObject.name + '.summary';
+      var validatorName = mainItemObject.name + 'Validator';
+      mainItemObject.children.some(function(partState) {
+        var valid = eval(validatorName).isStepValid(partState.name, $scope.user);
+        if (!valid) {
+          finalItemName = partState.name;
+          return true;
+        }
+      });
+    } else {
+      finalItemName = mainItemObject.name;
+    }
+
+    return finalItemName;
+  };
+
+  $scope.goToUnfinishedSubItem = function(mainItemObject) {
+    $state.go($scope.unfinishedSubItem(mainItemObject));
+  };
+
   // Fill-in all main states (except the virtual root state)
   $scope.setMainItems = function() {
 
@@ -126,6 +149,10 @@ drApp.controller('drAppCtrl', function(
       var filteredItemProgress = $scope.getProgress(filteredItem.name).percent;
       if (filteredItemProgress >= 100) {
         filteredItems[index].redirectTo = filteredItem.name + '.summary';
+      } else {
+        if (angular.isDefined(filteredItem.children)) {
+          filteredItems[index].redirectTo = $scope.unfinishedSubItem(filteredItem);
+        }
       }
     });
 
@@ -133,21 +160,6 @@ drApp.controller('drAppCtrl', function(
   };
 
   $scope.mainItems = $scope.setMainItems();
-
-  //Last unfinished sub step in main step
-  $scope.unfinishedSubItem = function(mainItemObject) {
-    var finalItemName = mainItemObject.name + '.summary';
-    var validatorName = mainItemObject.name + 'Validator';
-    mainItemObject.children.some(function(partState) {
-      var valid = eval(validatorName).isStepValid(partState.name, $scope.user);
-      if (!valid) {
-        finalItemName = partState.name;
-        return true;
-      }
-    });
-
-    return finalItemName;
-  };
 
   // Next step set
   $scope.setNextStep = function() {
@@ -158,7 +170,6 @@ drApp.controller('drAppCtrl', function(
   };
 
   // Skip step
-
   $scope.setSkipStep = function() {
     if ($state.current.skipAllow == true && angular.isDefined($scope.currentMain) && angular.isDefined($scope.subItems)) {
       var validatorName = $scope.currentMain.name + 'Validator';
@@ -209,6 +220,25 @@ drApp.controller('drAppCtrl', function(
     var nextMainStep = $scope.lastMainStep();
     $state.go(nextMainStep.redirectTo);
   };
+
+  $scope.showStepTitle = function() {
+    if (angular.isDefined($scope.currentMain) && angular.isDefined($state.current) && ($scope.currentMain.title == $state.current.title)) {
+      return false;
+    }
+
+    return true;
+  };
+
+  $scope.totalProgress = function() {
+    var totalScore = 0;
+    $scope.mainItems.some(function(mainItem) {
+      totalScore = totalScore + $scope.getProgress(mainItem).percent;
+    });
+
+    var itemsNumber = $scope.mainItems.length;
+
+    return totalScore / itemsNumber;
+  }
 
 });
 
