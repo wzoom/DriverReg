@@ -1,24 +1,23 @@
-<div data-ng-controller="queueCtrl" data-ng-file-drop>
+<div class="col-md-6 col-md-offset-3" data-ng-controller="aboutCtrl">
+    <div data-ng-controller="formValidationCtrl">
+        <h2>{{state.current.title | translate}}</h2>
 
-    <div class="col-md-6 col-md-offset-3" data-ng-controller="aboutCtrl">
+        <form name="regForm" novalidate>
+            <div ui-view></div>
+            <div class="clearfix form-submit">
+                <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="regForm.$invalid" data-ng-hide="isSummaryPage()" class="btn btn-default btn-success pull-right" translate>Next
+                </button>
 
-        <div data-ng-controller="formValidationCtrl">
-            <h2>{{state.current.title | translate}}</h2>
-            <form name="regForm" novalidate>
-                <div ui-view></div>
-                <div class="clearfix form-submit">
-                    <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="regForm.$invalid" data-ng-hide="isSummaryPage()" class="btn btn-default btn-success pull-right" translate>Next</button>
-                    <button type="submit" data-ng-click="setNextMainStep()" data-ng-show="isSummaryPage()" class="btn btn-default btn-danger pull-right margin btn-margin-right" translate>Next step</button>
-                    <button type="submit" data-ng-click="setSkipStep()" data-ng-show="state.current.skipAllow && !isSummaryPage()" class="btn btn-default btn-primary pull-right margin btn-margin-right" translate>Skip</button>
-                </div>
-            </form>
-        </div>
+                <button type="submit" data-ng-click="setNextMainStep()" data-ng-show="isSummaryPage()" class="btn btn-default btn-danger pull-right margin btn-margin-right" translate>Next step
+                </button>
 
-
+                <button type="submit" data-ng-click="setSkipStep()" data-ng-show="state.current.skipAllow && !isSummaryPage()"class="btn btn-default btn-primary pull-right margin btn-margin-right" translate>Skip
+                </button>
+            </div>
+        </form>
     </div>
-
-    <div data-ng-include="'components/queue/queue.html'"></div>
-
-
-
 </div>
+
+
+
+
