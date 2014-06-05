@@ -4,7 +4,10 @@ drApp.controller('queueCtrl', function ($scope, $fileUploader) {
   // Creates a uploader
   var uploader = $scope.uploader = $fileUploader.create({
     scope: $scope,
-    url: '' // TODO: add here URL upload services
+    url: 'http://api-media-eudev.jelastic.dogado.eu/api-media/v1/images?token=1MSnljapQdv7COEmb0DTY766D%2BCEXgTuHopnrgjccio%3D',
+    formData: [
+      {tag: 'test'}
+    ]
   });
 
   $scope.openSelect = function() {
