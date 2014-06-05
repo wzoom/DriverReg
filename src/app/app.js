@@ -113,25 +113,6 @@ drApp.controller('drAppCtrl', function(
     }
   };
 
-  // Fill-in all main states (except the virtual root state)
-  $scope.setMainItems = function() {
-
-    var filteredItems = $filter('filter')($state.get(),  function(state){
-      return state.name != '' && state.sideMenu == true && angular.isDefined(state.redirectTo);
-    });
-
-    filteredItems.forEach(function(filteredItem, index) {
-      var filteredItemProgress = $scope.getProgress(filteredItem.name).percent;
-      if (filteredItemProgress >= 100) {
-        filteredItems[index].redirectTo = filteredItem.name + '.summary';
-      }
-    });
-
-    return filteredItems;
-  };
-
-  $scope.mainItems = $scope.setMainItems();
-
   //Last unfinished sub step in main step
   $scope.unfinishedSubItem = function(mainItemObject) {
     var finalItemName = mainItemObject.name + '.summary';
@@ -146,6 +127,29 @@ drApp.controller('drAppCtrl', function(
 
     return finalItemName;
   };
+
+  // Fill-in all main states (except the virtual root state)
+  $scope.setMainItems = function() {
+
+    var filteredItems = $filter('filter')($state.get(),  function(state){
+      return state.name != '' && state.sideMenu == true && angular.isDefined(state.redirectTo);
+    });
+
+    filteredItems.forEach(function(filteredItem, index) {
+      var filteredItemProgress = $scope.getProgress(filteredItem.name).percent;
+      if (filteredItemProgress >= 100) {
+        filteredItems[index].redirectTo = filteredItem.name + '.summary';
+      } else {
+        if (angular.isDefined(filteredItem.children)) {
+          filteredItems[index].redirectTo = $scope.unfinishedSubItem(filteredItem)
+        }
+      }
+    });
+
+    return filteredItems;
+  };
+
+  $scope.mainItems = $scope.setMainItems();
 
   // Next step set
   $scope.setNextStep = function() {
