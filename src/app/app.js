@@ -115,17 +115,25 @@ drApp.controller('drAppCtrl', function(
 
   //Last unfinished sub step in main step
   $scope.unfinishedSubItem = function(mainItemObject) {
-    var finalItemName = mainItemObject.name + '.summary';
-    var validatorName = mainItemObject.name + 'Validator';
-    mainItemObject.children.some(function(partState) {
-      var valid = eval(validatorName).isStepValid(partState.name, $scope.user);
-      if (!valid) {
-        finalItemName = partState.name;
-        return true;
-      }
-    });
+    if (angular.isDefined(mainItemObject.children)) {
+      var finalItemName = mainItemObject.name + '.summary';
+      var validatorName = mainItemObject.name + 'Validator';
+      mainItemObject.children.some(function(partState) {
+        var valid = eval(validatorName).isStepValid(partState.name, $scope.user);
+        if (!valid) {
+          finalItemName = partState.name;
+          return true;
+        }
+      });
+    } else {
+      finalItemName = mainItemObject.name;
+    }
 
     return finalItemName;
+  };
+
+  $scope.goToUnfinishedSubItem = function(mainItemObject) {
+    $state.go($scope.unfinishedSubItem(mainItemObject));
   };
 
   // Fill-in all main states (except the virtual root state)
@@ -141,7 +149,7 @@ drApp.controller('drAppCtrl', function(
         filteredItems[index].redirectTo = filteredItem.name + '.summary';
       } else {
         if (angular.isDefined(filteredItem.children)) {
-          filteredItems[index].redirectTo = $scope.unfinishedSubItem(filteredItem)
+          filteredItems[index].redirectTo = $scope.unfinishedSubItem(filteredItem);
         }
       }
     });
