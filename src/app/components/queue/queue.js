@@ -1,6 +1,6 @@
 'use strict';
 
-drApp.controller('queueCtrl', function ($scope, $fileUploader) {
+drApp.controller('queueCtrl', function ($scope, $fileUploader, $timeout) {
   // Creates a uploader
   var uploader = $scope.uploader = $fileUploader.create({
     scope: $scope,
@@ -13,7 +13,28 @@ drApp.controller('queueCtrl', function ($scope, $fileUploader) {
   $scope.openSelect = function() {
     var myLink = document.getElementById('hide-button');
     myLink.click();
-  }
+  };
+
+  $scope.shower = false;
+
+  $scope.setHider = function() {
+    // uploader.progress == 100 || uploader.isUploading}
+    if ($scope.uploader.isUploading) $scope.shower = true;
+    if ($scope.uploader.progress == 100) {
+      //$scope.shower = true;
+      $timeout(function(){
+        $scope.shower = false;
+      }, 20000);
+    }
+  };
+
+  $scope.hider = function() {
+    $scope.shower = false;
+  };
+
+  $scope.$watch(function() {
+    $scope.setHider();
+  });
 
   // ADDING FILTERS
 

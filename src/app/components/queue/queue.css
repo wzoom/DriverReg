@@ -5,6 +5,12 @@
     width: 100%;
     padding: 0px 15px;
     display: none;
+    z-index: -99;
+}
+
+.queue.enable {
+    display: block;
+    z-index: 99;
 }
 
 .queue .alert {
