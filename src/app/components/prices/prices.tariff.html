@@ -1,0 +1,99 @@
+<div class="help-block" translate>Enter the tariffs you have in your Taximeter.</div>
+<div class="help-block" translate>Add a new tariff or select a tariff to edit.</div>
+
+
+<div class="list-group tariffs">
+  <div data-ng-repeat="(key, tariff) in tariffs" class="list-group-item clearfix" data-ng-class="{'list-group-item-info' : tariff.editing}">
+    <ng-form name="{{'tForm'+key}}" ng-submit="tariff.editing = false" class="clearfix">
+
+      <h3 class="list-group-item-heading clearfix" ng-click="tariff.editing = true">
+        <span ng-hide="tariff.editing">{{tariff.name}}</span>
+        <a ng-hide="tariff.editing" ng-click="tariff.editing = true" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-pencil"></span> <span translate>Edit</span></a>
+      </h3>
+      <div class="form-group heading clearfix" ng-show="tariff.editing">
+        <label translate>Tariff Name</label>
+        <input ng-model="tariff.name" type="text" class="form-control" placeholder="Name" autofocus required>
+      </div>
+
+      <div class="list-group-item-text" ng-click="tariff.editing = true">
+        <div class="form-group" ng-class="{'clearfix' : tariff.editing }">
+          <div class="col-xs-4 text-center">
+            <div ng-hide="tariff.editing" class="label label-default">{{tariff.initial | currency:''}}</div>
+            <label ng-show="tariff.editing" for="tariffInitial" translate>Initial fee</label>
+            <input ng-model="tariff.initial" ng-show="tariff.editing" type="number" class="form-control" id="tariffInitial" min="0" max="1000" required>
+            <div class="symbol small text-muted">CZK</div>
+          </div>
+
+          <div class="col-xs-4 text-center">
+            <div ng-hide="tariff.editing" class="label label-default">{{tariff.pricePerKm | currency:''}}</div>
+            <label ng-show="tariff.editing" for="tariffPricePerKm" translate>Rate</label>
+            <input ng-model="tariff.pricePerKm" ng-show="tariff.editing" type="number" class="form-control" id="tariffPricePerKm" min="0" max="1000" required>
+            <div class="symbol small text-muted">CZK/km</div>
+          </div>
+
+          <div class="col-xs-4 text-center">
+            <div ng-hide="tariff.editing" class="label label-default">{{tariff.waiting | currency:''}}</div>
+            <label ng-show="tariff.editing" for="tariffWaiting" translate>Waiting</label>
+            <input ng-model="tariff.waiting" ng-show="tariff.editing" type="number" class="form-control" id="tariffWaiting" min="0" max="1000" required>
+            <div class="symbol small text-muted">CZK/min</div>
+          </div>
+        </div>
+
+        <div class="form-group actions" ng-show="tariff.editing">
+          <a ng-disabled="$eval('tForm'+key).$invalid" ng-click="disableEditing(key)" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span> Save</a>
+          <a ng-click="removeTariff(key)" class="text-danger pull-right remove"><span translate>Remove</span></a>
+        </div>
+      </div>
+    </ng-form>
+
+  </div>
+
+
+  <!-- Add New Tariff -->
+  <div class="list-group-item list-group-item-info" data-ng-class="" ng-show="isAddingNewTariff()">
+    <ng-form name="addForm">
+
+      <div class="form-group heading">
+        <label translate>Tariff Name</label>
+        <input ng-model="newTariff.name" type="text" class="form-control" placeholder="Name" required>
+      </div>
+
+      <div class="list-group-item-text clearfix">
+        <div class="form-group clearfix">
+          <div class="col-xs-4 text-center">
+            <label for="tariffInitialNew" translate>Initial fee</label>
+            <input ng-model="newTariff.initial" type="number" class="form-control" id="tariffInitialNew" min="0" max="1000" required>
+            <div class="symbol small text-muted">CZK</div>
+          </div>
+
+          <div class="col-xs-4 text-center">
+            <label for="tariffPricePerKmNew" translate>Rate</label>
+            <input ng-model="newTariff.pricePerKm" type="number" class="form-control" id="tariffPricePerKmNew" min="0" max="1000" required>
+            <div class="symbol small text-muted">CZK/km</div>
+          </div>
+
+          <div class="col-xs-4 text-center">
+            <label for="tariffWaitingNew" translate>Waiting</label>
+            <input ng-model="newTariff.waiting" type="number" class="form-control" id="tariffWaitingNew" min="0" max="1000" required>
+            <div class="symbol small text-muted">CZK/min</div>
+          </div>
+        </div>
+
+        <div class="form-group actions">
+          <button ng-click="addNewTariff()" ng-disabled="addForm.$invalid" type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok"></span> <span translate>Add</span></button>
+        </div>
+
+      </div>
+
+    </ng-form>
+  </div>
+
+
+
+
+</div>
+
+<div class="clearfix new-tariff" ng-hide="isAddingNewTariff()" ng-click="setAddingNewTariff(true)">
+  <a class="btn btn-success" data-ng-click=""><span class="glyphicon glyphicon-plus"></span> Add Tariff</a>
+</div>
+

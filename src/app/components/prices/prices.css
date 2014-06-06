@@ -1,0 +1,27 @@
+.new-tariff {
+  margin-top: 20px;
+}
+
+.tariffs h4 {
+}
+
+.tariffs .heading input {
+  width: 100%;
+}
+
+.tariffs .list-group-item-text .label {
+  font-size: 16px;
+}
+
+.tariffs .list-group-item-text .symbol {
+  margin-top: 5px;
+}
+
+.tariffs .actions {
+  margin-top: 10px;
+}
+
+.tariffs .actions .remove {
+  margin: 8px 20px 8px 0;
+}
+
