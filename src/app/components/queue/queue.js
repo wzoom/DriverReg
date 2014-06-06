@@ -1,14 +1,28 @@
 'use strict';
 
-drApp.controller('queueCtrl', function ($scope, $fileUploader) {
-  // Creates a uploader
-  var uploader = $scope.uploader = $fileUploader.create({
-    scope: $scope,
+var drUploader = angular.module('drUploader', ['ngResource', 'angularFileUpload']);
+
+drUploader.factory('Uploader', function ($fileUploader) {
+  var uploader = $fileUploader.create({
+    //scope: $scope,
     url: 'http://api-media-eudev.jelastic.dogado.eu/api-media/v1/images?token=1MSnljapQdv7COEmb0DTY766D%2BCEXgTuHopnrgjccio%3D',
     formData: [
       {tag: 'test'}
     ]
   });
+
+  uploader.bind('afteraddingfile', function (event, item) {
+    item.formData[0].tag = item.file.name;
+    //item.alias = item.file.name;
+  });
+
+    return uploader;
+});
+
+
+drUploader.controller('queueCtrl', function ($scope, Uploader) {
+  // Creates a uploader
+  var uploader = Uploader;
 
   $scope.openSelect = function() {
     var myLink = document.getElementById('hide-button');
@@ -73,7 +87,7 @@ drApp.controller('queueCtrl', function ($scope, $fileUploader) {
 });
 
 
-drApp.directive('ngThumb', function($window) {
+drUploader.directive('ngThumb', function($window) {
     var helper = {
       support: !!($window.FileReader && $window.CanvasRenderingContext2D),
       isFile: function(item) {
