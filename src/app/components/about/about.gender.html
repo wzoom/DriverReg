@@ -1,7 +1,7 @@
 <div class="help-block" translate>Select your Gender.</div>
 
 <div class="form-group">
-    <div class="btn-group" data-ng-model="user.gender" bs-radio-group required>
+    <div class="btn-group" data-ng-model="user.gender" bs-radio-group required data-ng-click="setNextStep()">
         <label class="btn btn-default"><input type="radio" class="btn btn-default" value="male"><span translate>Male</span></label>
         <label class="btn btn-default"><input type="radio" class="btn btn-default" value="female"><span translate>Female</span></label>
     </div>

@@ -52,6 +52,9 @@ angular.module('drApp.about', [
             skipAllow: false,
             url: "/gender",
             templateUrl: getComponentTemplatePath('about.gender'),
+            data: {
+              hideNext: true,
+            },
           },
           {
             name: 'language',
@@ -68,6 +71,9 @@ angular.module('drApp.about', [
             skipAllow: true,
             url: "/dispatch",
             templateUrl: getComponentTemplatePath('about.dispatch'),
+            data: {
+              hideNext: true,
+            },
           },
           {
             name: 'summary',
