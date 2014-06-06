@@ -15,10 +15,10 @@ var drApp = angular.module('driverRegApp', [
   'drAnimations',
   'drFilters',
   'drServices',
-  'angularFileUpload',
   'start',
   'vr.directives.slider',
   'templates.app',
+  'drUploader',
 ]);
 
 drApp.config(function($urlRouterProvider){
