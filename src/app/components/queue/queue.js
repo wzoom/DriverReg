@@ -1,12 +1,12 @@
 'use strict';
 
-drApp.controller('queueCtrl', function ($scope, $fileUploader, $timeout) {
+drApp.controller('queueCtrl', function ($scope, $state, $fileUploader, $timeout) {
   // Creates a uploader
   var uploader = $scope.uploader = $fileUploader.create({
     scope: $scope,
     url: 'http://api-media-eudev.jelastic.dogado.eu/api-media/v1/images?token=1MSnljapQdv7COEmb0DTY766D%2BCEXgTuHopnrgjccio%3D',
     formData: [
-      {tag: 'test'}
+      {tag: 'miro'}
     ]
   });
 
@@ -40,6 +40,7 @@ drApp.controller('queueCtrl', function ($scope, $fileUploader, $timeout) {
 
   // Images only
   uploader.filters.push(function(item /*{File|HTMLInputElement}*/) {
+    console.log('DDD =>', item);
     var type = uploader.isHTML5 ? item.type : '/' + item.value.slice(item.value.lastIndexOf('.') + 1);
     type = '|' + type.toLowerCase().slice(type.lastIndexOf('/') + 1) + '|';
     return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
@@ -49,6 +50,8 @@ drApp.controller('queueCtrl', function ($scope, $fileUploader, $timeout) {
   // REGISTER HANDLERS
 
   uploader.bind('afteraddingfile', function (event, item) {
+    item.formData[0].tag = item.file.name;
+    console.info('After adding a file', event);
     console.info('After adding a file', item);
   });
 
@@ -138,3 +141,13 @@ drApp.directive('ngThumb', function($window) {
       }
     };
   });
+
+// It is attached to <input type="file"> element like <ng-file-select="options">
+drApp.directive('drUploader', function($fileUploader) {
+  return {
+    templateUrl: 'components/queue/queue.element.html',
+    link: function(scope, element) {
+      scope.fileTag = element.attr('id');
+    }
+  };
+});
