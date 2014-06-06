@@ -26,12 +26,14 @@ drServices.factory('User', function () {
   };
   user.pickup = 5;
 
+  user.tariffs = [];
+
   user.getFullName = function() {
-    if (angular.isEmpty(this.firstName)) {
+    if (angular.isUndefined(this.firstName) || this.firstName == '') {
       return '';
     }
 
-    if (angular.isEmpty(this.lastName)) {
+    if (angular.isUndefined(this.lastName) || this.lastName == '') {
       return this.firstName;
     }
 
