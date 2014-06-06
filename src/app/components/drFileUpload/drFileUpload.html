@@ -1,0 +1,15 @@
+<div class="dr-file-upload">
+  <input ng-file-select="{ fieldName: uploaderName }" type="file" name="{{uploaderName}}" id="{{uploaderName}}" class="btn btn-default hidden" />
+  <button ng-hide="uploaderItem"  class="btn btn-primary" ng-click="openFileSelect()" translate>Select file</button>
+
+  <div class="buttons" ng-show="uploaderItem">
+  <div class="file-name"><span class="glyphicon glyphicon-file"></span> {{uploaderItem.alias}}</div>
+
+    <button type="button" class="btn btn-success" ng-click="uploaderItem.upload()" ng-disabled="uploaderItem.isReady || uploaderItem.isUploading || uploaderItem.isSuccess">
+      <span class="glyphicon glyphicon-upload"></span> <span translate>Upload</span>
+    </button>
+    <button type="button" class="btn btn-danger" ng-click="uploaderItem.remove()">
+      <span class="glyphicon glyphicon-trash"></span> <span translate>Remove</span>
+    </button>
+  </div>
+</div>
