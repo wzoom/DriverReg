@@ -1,7 +1,6 @@
-<div class="queue" data-ng-class="{'show' : uploader.progress == 100 || uploader.isUploading, 'hidden' : hidder == selected}">
+<div class="queue" data-ng-class="{'enable' : shower}">
     <div class="alert alert-success alert-dismissable" style="">
-        <button type="button" class="close" data-ng-click="select(hidder)">&times;</button>
-
+        <button type="button" class="close" data-ng-click="hider()">&times;</button>
         <div class="progress" data-ng-class="activeProgress">
             <div class="progress-bar" role="progressbar" aria-valuenow="{{uploader.progress}}" aria-valuemin="0" aria-valuemax="100" data-ng-style="{ 'width': uploader.progress + '%' }">
                 {{uploader.progress + '%'}}
@@ -9,7 +8,3 @@
         </div>
     </div>
 </div>
-
-
-
-

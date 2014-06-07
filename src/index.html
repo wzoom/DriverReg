@@ -16,18 +16,19 @@
       <div class="row">
           <div data-ng-controller="queueCtrl" data-ng-file-drop>
               <div class="col-md-6 col-md-offset-3">
-                  <h2 data-ng-show="showStepTitle()">{{state.current.title | translate}}</h2>
+                  <h2 class="main-title" data-ng-show="showStepTitle()">{{state.current.title | translate}}</h2>
                   <div data-ng-controller="formValidationCtrl">
                       <form name="regForm" novalidate>
                           <div ui-view></div>
-                          <div class="clearfix form-submit" data-ng-show="!state.current.data.isNeutral">
-                              <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="regForm.$invalid" data-ng-hide="isSummaryPage() || state.current.data.isNeutral" class="btn btn-default btn-success pull-right" translate>Next
+                          <div class="clearfix main-form-submit" data-ng-show="!state.current.data.isNeutral">
+
+                              <button type="submit" data-ng-click="setNextStep()" data-ng-disabled="regForm.$invalid" data-ng-hide="isSummaryPage() || state.current.data.isNeutral || state.current.data.hideNext" class="btn btn-default btn-success pull-right btn-margin-left" translate>Next
                               </button>
 
-                              <button type="submit" data-ng-click="setNextMainStep()" data-ng-show="isSummaryPage()" class="btn btn-default btn-danger pull-right margin btn-margin-right" translate>Next step
+                              <button type="submit" data-ng-click="setNextMainStep()" data-ng-show="isSummaryPage()" class="btn btn-default btn-danger pull-right btn-margin-left" translate>Next step
                               </button>
 
-                              <button type="submit" data-ng-click="setSkipStep()" data-ng-show="state.current.skipAllow && !isSummaryPage()"class="btn btn-default btn-primary pull-right margin btn-margin-right" translate>Skip
+                              <button type="submit" data-ng-click="setSkipStep()" data-ng-show="state.current.skipAllow && !isSummaryPage()"class="btn btn-default btn-primary pull-right btn-margin-left" translate>Skip
                               </button>
                           </div>
 

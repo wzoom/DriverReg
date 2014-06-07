@@ -7,7 +7,7 @@ drUploader.factory('Uploader', function ($fileUploader) {
     //scope: $scope,
     url: 'http://api-media-eudev.jelastic.dogado.eu/api-media/v1/images?token=1MSnljapQdv7COEmb0DTY766D%2BCEXgTuHopnrgjccio%3D',
     formData: [
-      {tag: 'test'}
+      {tag: 'miro'}
     ]
   });
 
@@ -16,7 +16,7 @@ drUploader.factory('Uploader', function ($fileUploader) {
     //item.alias = item.file.name;
   });
 
-    return uploader;
+  return uploader;
 });
 
 
@@ -27,7 +27,28 @@ drUploader.controller('queueCtrl', function ($scope, Uploader) {
   $scope.openSelect = function() {
     var myLink = document.getElementById('hide-button');
     myLink.click();
-  }
+  };
+
+  $scope.shower = false;
+
+  $scope.setHider = function() {
+    // uploader.progress == 100 || uploader.isUploading}
+    if ($scope.uploader.isUploading) $scope.shower = true;
+    if ($scope.uploader.progress == 100) {
+      //$scope.shower = true;
+      $timeout(function(){
+        $scope.shower = false;
+      }, 20000);
+    }
+  };
+
+  $scope.hider = function() {
+    $scope.shower = false;
+  };
+
+  $scope.$watch(function() {
+    $scope.setHider();
+  });
 
   // ADDING FILTERS
 
@@ -42,7 +63,9 @@ drUploader.controller('queueCtrl', function ($scope, Uploader) {
   // REGISTER HANDLERS
 
   uploader.bind('afteraddingfile', function (event, item) {
-    console.info('After adding a file', item);
+    item.formData[0].tag = item.file.name;
+    console.info('After adding a file EVENT', event);
+    console.info('After adding a file ITEM', item);
   });
 
   uploader.bind('whenaddingfilefailed', function (event, item) {

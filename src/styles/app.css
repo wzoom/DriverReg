@@ -18,8 +18,8 @@ a {
     cursor: pointer;
 }
 
-.btn-margin-right {
-    margin-right: 15px;
+.btn-margin-left {
+    margin-left: 15px;
 }
 
 .hide-button {
@@ -37,4 +37,16 @@ a {
 .navbar-default .head-title {
     color: #fff;
     cursor: pointer;
+}
+
+.main-form-submit {
+    width:100%;
+    position: absolute;
+    padding: 0px 15px;
+    top: 0px;
+    left: 0px;
+}
+
+.main-title {
+    margin-bottom: 40px;
 }
