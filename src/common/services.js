@@ -27,6 +27,7 @@ drServices.factory('User', function () {
   user.pickup = 5;
 
   user.tariffs = [];
+  user.fixedRateTariffNotifyMe = true;
 
   user.getFullName = function() {
     if (angular.isUndefined(this.firstName) || this.firstName == '') {
