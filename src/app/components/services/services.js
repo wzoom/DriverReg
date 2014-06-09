@@ -27,7 +27,7 @@ angular.module('drApp.services', [
         children: [
           {
             name: 'preferences',
-            title: "Preferences",
+            title: "Services",
             sideMenu: false,
             skipAllow: false,
             url: "/preferences",

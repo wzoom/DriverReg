@@ -92,10 +92,10 @@ angular.module('drApp.vehicle', [
 
 .controller('vehicleCtrl', function ($scope, $rootScope, $state, $filter) {
   $scope.carSelector = false;
-  $scope.currentYear = (new Date).getFullYear();
 
   $scope.carMake = function() {
     $scope.carSelector = !$scope.carSelector;
+    if ($scope.carSelector == true) $scope.user.car.make = null;
   };
 
   $scope.carMakeHide = function() {
