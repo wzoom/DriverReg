@@ -7,7 +7,7 @@ drUploader.factory('Uploader', function ($fileUploader) {
     //scope: $scope,
     url: 'http://api-media-eudev.jelastic.dogado.eu/api-media/v1/images?token=1MSnljapQdv7COEmb0DTY766D%2BCEXgTuHopnrgjccio%3D',
     formData: [
-      {tag: 'miro'}
+      {tag: ''}
     ],
     autoUpload: true,
   });
