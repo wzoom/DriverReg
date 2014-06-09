@@ -21,7 +21,7 @@ angular.module('drApp.services', [
         sideMenu: true,
         skipAllow: true,
         url: "/services",
-        redirectTo: 'services.pickup',
+        redirectTo: 'preferences',
         templateUrl: getComponentTemplatePath('services'),
         weight: 3,
         children: [

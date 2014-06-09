@@ -229,7 +229,7 @@ drApp.controller('drAppCtrl', function(
   };
 
   $scope.showStepTitle = function() {
-    if (angular.isDefined($scope.currentMain) && angular.isDefined($state.current) && ($scope.currentMain.title == $state.current.title)) {
+    if (angular.isDefined($scope.currentMain) && angular.isDefined($state.current) && ($scope.currentMain.name == $state.current.name)) {
       return false;
     }
 
