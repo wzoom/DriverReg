@@ -39,12 +39,12 @@ angular.module('drApp.prices', [
             templateUrl: getComponentTemplatePath('prices.taximeter'),
           },
           {
-            name: 'tariff',
+            name: 'tariffs',
             title: gettext("Tariffs"),
             sideMenu: false,
             skipAllow: false,
-            url: "/tariff",
-            templateUrl: getComponentTemplatePath('prices.tariff'),
+            url: "/tariffs",
+            templateUrl: getComponentTemplatePath('prices.tariffs'),
           },
           {
             name: 'summary',
