@@ -7,7 +7,7 @@ angular.module('drFileUpload', ['angularFileUpload'])
     return {
       restrict: "EA",
       scope: {
-        theModel: "=ngModel"
+        theModel: "=ngModel",
       },
       templateUrl: 'components/drFileUpload/drFileUpload.html',
       replace: true,
@@ -32,6 +32,7 @@ angular.module('drFileUpload', ['angularFileUpload'])
         });
 */
         scope.openFileSelect = function () {
+          scope.invalidFile = null;
           angular.element('input[name="'+ uploaderName + '"]').click();
         };
 
@@ -60,7 +61,9 @@ angular.module('drFileUpload', ['angularFileUpload'])
         });
 
         Uploader.bind('whenaddingfilefailed', function (event, item) {
-          scope.invalidFile = item.file || true;
+          if (item.fieldName == uploaderName) {
+            scope.invalidFile = item.file || true;
+          }
         });
 
 
