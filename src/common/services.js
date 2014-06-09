@@ -19,11 +19,7 @@ drServices.factory('User', function () {
   user.firstName = null;
   user.lastName = null;
   user.fullNameVisible = 'yes';
-  user.gender = null;
-  user.languagesSpoken = null;
-  user.car = {
-    color : 'yellow',
-  };
+  user.car = {};
   user.pickup = 5;
 
   user.getFullName = function() {

@@ -6,7 +6,7 @@ angular.module('drApp.services', [
 
     var stepSettings = {
       mainState: 'services',
-      firstStep: 'services.pickup',
+      firstStep: 'services.preferences',
       stepTitle: 'Services'
     };
 
@@ -26,28 +26,12 @@ angular.module('drApp.services', [
         weight: 3,
         children: [
           {
-            name: 'pickup',
-            title: "Pickup distance",
-            sideMenu: false,
-            skipAllow: false,
-            url: "/pickup",
-            templateUrl: getComponentTemplatePath('services.pickup'),
-          },
-          {
-            name: 'pref1',
+            name: 'preferences',
             title: "Preferences",
             sideMenu: false,
             skipAllow: false,
-            url: "/pref1",
-            templateUrl: getComponentTemplatePath('services.pref1'),
-          },
-          {
-            name: 'pref2',
-            title: "Preferences",
-            sideMenu: false,
-            skipAllow: false,
-            url: "/pref2",
-            templateUrl: getComponentTemplatePath('services.pref2'),
+            url: "/preferences",
+            templateUrl: getComponentTemplatePath('services.preferences'),
           },
           {
             name: 'summary',
@@ -63,120 +47,50 @@ angular.module('drApp.services', [
   }
 )
 
-.controller('servicesCtrl', function ($scope, $rootScope, $state, $filter) {
-  var user = $rootScope.user;
+.controller('servicesCtrl', function ($scope) {
+  $scope.setDefaultServices = function() {
 
-    $scope.skipAllow = $state.current.skipAllow;
-
-
-    if ($state.current.name == 'services') {
-      $state.transitionTo('services.pickup');
+    if(angular.isUndefined($scope.user.services)){
+      $scope.user.services = {};
+      $scope.user.services.card = "Yes";
+      $scope.user.services.wifi = "No";
+      $scope.user.services.air = "No";
+      $scope.user.services.child = "No";
+      $scope.user.services.smoke = "No";
+      $scope.user.services.animal = "No";
     }
 
-  $scope.states = $filter('filter')($state.get(),  function(state){return state.name != ''});
-  $scope.currentState = $state.current;
+    return true;
+  };
+})
 
-  //$rootScope.stepTitle = 'About you';
+  .service('servicesValidator', function () {
+    var service = this;
 
-  $scope.$on('$stateChangeStart', function(event, toState){
-    //$scope.currentState = toState;
-    $scope.skipAllow = toState.skipAllow;
-
-    if (toState.name == 'services') {
-      //$location.path('/about/photo');
-      $state.transitionTo('services.pickup');
-      //$state.go($state.current.children[0]);
-    }
-  });
-
-    $scope.goNext = function() {
-      if (angular.isDefined($state.current.parent) && angular.isDefined($state.current.parent.children)) {
-        $scope.finalState = $state.current.parent.name + '.summary';
-
-        var siblings = $state.current.parent.children || [];
-        var lastStateName = '';
-
-        siblings.some(function(partState) {
-          var valid = $state.current.name == lastStateName;
-          lastStateName = partState.name;
-
-          if (valid) {
-            $scope.finalState = partState.name;
-            return true;
-          }
-        });
-
-        $state.go($scope.finalState);
+    var isPreferencesValid = function (user) {
+      if(angular.isUndefined(user.services)) {
+        return false;
       }
+
+      return true;
     };
 
-})
-
-.service('servicesValidator', function (User) {
-  var service = this;
-
-  var mainStepName = 'services';
-
-  var isPickupValid = function(user) {
-    if (angular.isUndefined(user.pickup)) return false;
-    if (user.pickup == null) return false;
-    if ((user.pickup < 1) || (user.pickup > 30)) {
-      return false;
-    }
-    return true;
-  }
-
-    var isPref1Valid = function(user) {
-      if (angular.isUndefined(user.pickup)) return false;
-      if (user.pickup == null) return false;
-      if ((user.pickup < 1) || (user.pickup > 30)) {
-        return false;
-      }
-      return true;
-    }
-
-    var isPref2Valid = function(user) {
-      if (angular.isUndefined(user.pickup)) return false;
-      if (user.pickup == null) return false;
-      if ((user.pickup < 1) || (user.pickup > 30)) {
-        return false;
-      }
-      return true;
-    }
-
     // Public API
-  service.isStepValid = function(stepName, skipStep){
-    if (stepName.substring(0, stepName.indexOf('.')) != mainStepName) return false;
+    service.isStepValid = function (stepName, userObject) {
+      if (stepName.substring(0, stepName.indexOf('.')) != 'services') return false;
 
-    if (stepName.indexOf('.') > -1) {
-      stepName = stepName.substring(stepName.indexOf('.')+1);
-    }
+      if (stepName.indexOf('.') > -1) {
+        stepName = stepName.substring(stepName.indexOf('.')+1);
+      }
 
-    switch(stepName) {
-      case 'pickup': return isPickupValid(User);
-      case 'pref1': return true;
-      case 'pref2': return true;
-      // TODO - change to false and add attribute to $state so that validation can be disabled for certain steps
-      case 'summary': return true;
-    }
+      switch(stepName) {
+        case 'preferences' : return isPreferencesValid(userObject);
+        case 'summary': return true;
+      }
 
-    return false;
-  };
+      return true;
+    };
 
-  return service;
-})
+    return service;
+  });
 
-/*
-.factory('nameStepValidator', function (StepValidator, User) {
-  var service = Object.create(StepValidator);
-
-  // Override validation method
-  service.isStepValid = function(){
-    if (!angular.isEmpty(User.firstName) && !angular.isEmpty(User.lastName)) return true;
-    return false;
-  }
-
-  return service;
-})
- */
-;

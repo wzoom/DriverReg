@@ -2,18 +2,17 @@
 
 <div class="form-group car-color">
   <label>Color</label>
-  <div bs-checkbox-group ng-model="user.car.color">
-    <label class="btn btn-default color black"><input name="color" type="radio" class="btn btn-default" value="black"><span ng-show="regForm.color == 'black'" class="glyphicon glyphicon-ok"></span><span class="sr-only">Black</span></label>
-    <label class="btn btn-default color blue"><input name="color" type="radio" class="btn btn-default" value="blue"><span class="sr-only">Blue</span></label>
-    <label class="btn btn-default color brown"><input name="color" type="radio" class="btn btn-default" value="brown"><span class="sr-only">Black</span></label>
-    <label class="btn btn-default color green"><input name="color" type="radio" class="btn btn-default" value="green"><span class="sr-only">Black</span></label>
-    <label class="btn btn-default color orange"><input name="color" type="radio" class="btn btn-default" value="orange"><span class="sr-only">Black</span></label>
-    <label class="btn btn-default color purple"><input name="color" type="radio" class="btn btn-default" value="purple"><span class="sr-only">Black</span></label>
-    <label class="btn btn-default color red"><input name="color" type="radio" class="btn btn-default" value="red"><span class="sr-only">Black</span></label>
-    <label class="btn btn-default color silver"><input name="color" type="radio" class="btn btn-default" value="silver"><span class="sr-only">Black</span></label>
-    <label class="btn btn-default color white"><input name="color" type="radio" class="btn btn-default" value="white"><span class="sr-only">Black</span></label>
-    <label class="btn btn-default color yellow"><input name="color" type="radio" class="btn btn-default" value="yellow"><span class="sr-only">Black</span></label>
-
+  <div bs-radio-group data-ng-model="user.car.color" data-ng-click="setNextStep()">
+    <label class="btn btn-default color black"><input name="color" type="radio" class="btn btn-default" value="Black" title="Black"><span class="sr-only">Black</span><span class="glyphicon glyphicon-ok-sign" data-ng-show="user.car.color == 'black'"></span></label>
+    <label class="btn btn-default color blue"><input name="color" type="radio" class="btn btn-default" value="Blue" title="Blue"><span class="sr-only">Blue</span><span class="glyphicon glyphicon-ok-sign" data-ng-show="user.car.color == 'blue'"></span></label>
+    <label class="btn btn-default color brown"><input name="color" type="radio" class="btn btn-default" value="Brown" title="Brown"><span class="sr-only">Brown</span><span class="glyphicon glyphicon-ok-sign" data-ng-show="user.car.color == 'brown'"></span></label>
+    <label class="btn btn-default color green"><input name="color" type="radio" class="btn btn-default" value="Green" title="Green"><span class="sr-only">Green</span><span class="glyphicon glyphicon-ok-sign" data-ng-show="user.car.color == 'green'"></span></label>
+    <label class="btn btn-default color orange last"><input name="color" type="radio" class="btn btn-default" value="Orange" title="Orange"><span class="sr-only">Orange</span><span class="glyphicon glyphicon-ok-sign" data-ng-show="user.car.color == 'orange'"></span></label>
+    <label class="btn btn-default color purple"><input name="color" type="radio" class="btn btn-default" value="Purple" title="Purple"><span class="sr-only">Purple</span><span class="glyphicon glyphicon-ok-sign" data-ng-show="user.car.color == 'purple'"></span></label>
+    <label class="btn btn-default color red"><input name="color" type="radio" class="btn btn-default" value="Red" title="Red"><span class="sr-only">Red</span><span class="glyphicon glyphicon-ok-sign" data-ng-show="user.car.color == 'red'"></span></label>
+    <label class="btn btn-default color silver"><input name="color" type="radio" class="btn btn-default" value="Silver" title="Silver"><span class="sr-only">Silver</span><span class="glyphicon glyphicon-ok-sign" data-ng-show="user.car.color == 'silver'"></span></label>
+    <label class="btn btn-default color white"><input name="color" type="radio" class="btn btn-default" value="White" title="White"><span class="sr-only">White</span><span class="glyphicon glyphicon-black glyphicon-ok-sign" data-ng-show="user.car.color == 'white'"></span></label>
+    <label class="btn btn-default color yellow last"><input name="color" type="radio" class="btn btn-default" value="Yellow" title="Yellow"><span class="sr-only">Yellow</span><span class="glyphicon glyphicon-ok-sign" data-ng-show="user.car.color == 'yellow'"></span></label>
   </div>
 
 </div>

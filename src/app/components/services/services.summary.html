@@ -2,12 +2,11 @@
 
 <div class="clearfix">
     <div class="col-xs-12 col-md-12">
-        <div class="text-line center-block text-center">Max pickup destination: {{user.pickup}} km</div>
-        <div class="text-line center-block text-center" data-ng-show="{{user.animal}}">Animal transport</div>
-        <div class="text-line center-block text-center" data-ng-show="{{user.smoking}}">Smoking onboard</div>
-        <div class="text-line center-block text-center" data-ng-show="{{user.card}}">Payment with Card</div>
-        <div class="text-line center-block text-center" data-ng-show="{{user.wifi}}">Onboard wifi</div>
-        <div class="text-line center-block text-center" data-ng-show="{{user.air}}">Air-condition</div>
-        <div class="text-line center-block text-center" data-ng-show="{{user.child}}">Child seat</div>
+        <div class="text-line center-block text-center"><span translate>Payment with Card: </span>{{user.services.card}}</div>
+        <div class="text-line center-block text-center"><span translate>Onboard Wifi: </span>{{user.services.wifi}}</div>
+        <div class="text-line center-block text-center"><span translate>Air-conditioning: </span>{{user.services.air}}</div>
+        <div class="text-line center-block text-center"><span translate>Child seat: </span>{{user.services.child}}</div>
+        <div class="text-line center-block text-center"><span translate>Smoking onboard: </span>{{user.services.smoke}}</div>
+        <div class="text-line center-block text-center"><span translate>Animal transport: </span>{{user.services.animal}}</div>
     </div>
 </div>

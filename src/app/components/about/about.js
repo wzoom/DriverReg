@@ -1,6 +1,7 @@
 angular.module('drApp.about', [
   'ui.router',
   'ui.router.stateHelper',
+  'ui-rangeSlider',
   'drServices',
   'gettext',
 ])
