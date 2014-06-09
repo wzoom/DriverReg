@@ -12,48 +12,7 @@ drUploader.factory('Uploader', function ($fileUploader) {
     autoUpload: true,
   });
 
-  uploader.bind('afteraddingfile', function (event, item) {
-    item.formData[0].tag = item.file.name;
-    //item.alias = item.file.name;
-  });
-
-  return uploader;
-});
-
-
-drUploader.controller('queueCtrl', function ($scope, $timeout, Uploader) {
-  // Creates a uploader
-  var uploader = Uploader;
-
-  $scope.openSelect = function() {
-    var myLink = document.getElementById('hide-button');
-    myLink.click();
-  };
-
-  $scope.shower = false;
-
-  $scope.setHider = function() {
-    // uploader.progress == 100 || uploader.isUploading}
-    if (uploader.isUploading) $scope.shower = true;
-    if (uploader.progress == 100) {
-      //$scope.shower = true;
-      $timeout(function(){
-        $scope.shower = false;
-      }, 20000);
-    }
-  };
-
-  $scope.hider = function() {
-    $scope.shower = false;
-  };
-
-  $scope.$watch(function() {
-    $scope.setHider();
-  });
-
-  // ADDING FILTERS
-
-  // Images only
+  // Filter Images only
   uploader.filters.push(function(item /*{File|HTMLInputElement}*/) {
     var type = uploader.isHTML5 ? item.type : '/' + item.value.slice(item.value.lastIndexOf('.') + 1);
     type = '|' + type.toLowerCase().slice(type.lastIndexOf('/') + 1) + '|';
@@ -61,7 +20,7 @@ drUploader.controller('queueCtrl', function ($scope, $timeout, Uploader) {
   });
 
 
-  // REGISTER HANDLERS
+  // Events
 
   uploader.bind('afteraddingfile', function (event, item) {
     item.formData[0].tag = item.file.name;
@@ -108,6 +67,41 @@ drUploader.controller('queueCtrl', function ($scope, $timeout, Uploader) {
   uploader.bind('completeall', function (event, items) {
     console.info('Complete all', items);
   });
+
+  return uploader;
+});
+
+
+drUploader.controller('queueCtrl', function ($scope, $timeout, Uploader) {
+  // Creates a uploader
+  var uploader = Uploader;
+
+  $scope.openSelect = function() {
+    var myLink = document.getElementById('hide-button');
+    myLink.click();
+  };
+
+  $scope.shower = false;
+
+  $scope.setHider = function() {
+    // uploader.progress == 100 || uploader.isUploading}
+    if (uploader.isUploading) $scope.shower = true;
+    if (uploader.progress == 100) {
+      //$scope.shower = true;
+      $timeout(function(){
+        $scope.shower = false;
+      }, 20000);
+    }
+  };
+
+  $scope.hider = function() {
+    $scope.shower = false;
+  };
+
+  $scope.$watch(function() {
+    $scope.setHider();
+  });
+
 });
 
 

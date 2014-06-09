@@ -59,6 +59,9 @@ angular.module('drFileUpload', ['angularFileUpload'])
           }
         });
 
+        Uploader.bind('whenaddingfilefailed', function (event, item) {
+          scope.invalidFile = item.file || true;
+        });
 
 
         /*
