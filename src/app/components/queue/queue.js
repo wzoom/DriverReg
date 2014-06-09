@@ -8,7 +8,8 @@ drUploader.factory('Uploader', function ($fileUploader) {
     url: 'http://api-media-eudev.jelastic.dogado.eu/api-media/v1/images?token=1MSnljapQdv7COEmb0DTY766D%2BCEXgTuHopnrgjccio%3D',
     formData: [
       {tag: 'miro'}
-    ]
+    ],
+    autoUpload: true,
   });
 
   uploader.bind('afteraddingfile', function (event, item) {
@@ -20,7 +21,7 @@ drUploader.factory('Uploader', function ($fileUploader) {
 });
 
 
-drUploader.controller('queueCtrl', function ($scope, Uploader) {
+drUploader.controller('queueCtrl', function ($scope, $timeout, Uploader) {
   // Creates a uploader
   var uploader = Uploader;
 
@@ -33,8 +34,8 @@ drUploader.controller('queueCtrl', function ($scope, Uploader) {
 
   $scope.setHider = function() {
     // uploader.progress == 100 || uploader.isUploading}
-    if ($scope.uploader.isUploading) $scope.shower = true;
-    if ($scope.uploader.progress == 100) {
+    if (uploader.isUploading) $scope.shower = true;
+    if (uploader.progress == 100) {
       //$scope.shower = true;
       $timeout(function(){
         $scope.shower = false;
