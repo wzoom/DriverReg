@@ -14,17 +14,15 @@
 
 
     <div class="form-group">
-      <label><span translate>Price list</span></label>
-      <p class="help-block" bs-tooltip translate>Please upload photo of your price list.</p>
-      <div dr-file-upload="priceList"></div>
+      <label for="priceList"><span translate>Price list</span></label>
+      <p class="help-block" translate>Please upload photo of your price list.</p>
+      <div id="priceList" dr-file-upload="priceList" ng-model="user.photos.priceList"></div>
     </div>
-<!--
+
     <div class="form-group">
-      <label for="dashboardWithTaximeter"><span translate>Dashboard with taximeter</span></label>
-      <p class="help-block" bs-tooltip translate>Please upload photo of your taxamiter on a car dashboard.</p>
-      <input data-ng-file-select type="file" name="priceList" id="dashboardWithTaximeter" ng-show="!uploader.queue[0]" class="btn btn-default hidden" />
-      <button class="btn btn-primary" data-ng-click="openSelect('dashboardWithTaximeter')" translate>Select file</button>
+      <label for="dashboardWithTaximeter" translate>Dashboard with taximeter</label>
+      <p class="help-block" translate>Please upload photo of your taxamiter on a car dashboard.</p>
+      <div id="dashboardWithTaximeter" dr-file-upload="dashboardWithTaximeter" ng-model="user.photos.priceList"></div>
     </div>
--->
   </div>
 </div>
