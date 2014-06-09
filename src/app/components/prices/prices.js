@@ -3,6 +3,7 @@ angular.module('drApp.prices', [
   'ui.router.stateHelper',
   'drServices',
   'gettext',
+  'drFileUpload'
 ])
 
   .config(function(stateHelperProvider, gettext){
@@ -31,19 +32,19 @@ angular.module('drApp.prices', [
         children: [
           {
             name: 'taximeter',
-            title: gettext("Photo"),
+            title: gettext("Taximeter"),
             sideMenu: false,
             skipAllow: true,
             url: "/taximeter",
             templateUrl: getComponentTemplatePath('prices.taximeter'),
           },
           {
-            name: 'tariff',
-            title: gettext("Tariff"),
+            name: 'tariffs',
+            title: gettext("Tariffs"),
             sideMenu: false,
             skipAllow: false,
-            url: "/tariff",
-            templateUrl: getComponentTemplatePath('prices.tariff'),
+            url: "/tariffs",
+            templateUrl: getComponentTemplatePath('prices.tariffs'),
           },
           {
             name: 'summary',
@@ -58,13 +59,23 @@ angular.module('drApp.prices', [
 
   })
 
-  .controller('pricesCtrl', function ($scope, $rootScope, $state, $filter, $timeout) {
+  .controller('pricesCtrl', function ($scope, $rootScope, $state, $filter, $timeout, gettextCatalog) {
+
+    $scope.tariffs = $scope.user.tariffs;
 
     var addingNewTariff = false;
 
-    $scope.newTariff = {};
+    var resetNewTariff = function() {
+      $scope.newTariff = {
+        name: gettextCatalog.getString('Tariff') + ' ' + ($scope.tariffs.length + 1),
+      };
+    }
 
-    $scope.tariffs = [
+    if (angular.isUndefined($scope.newTariff)) {
+      resetNewTariff();
+    }
+
+/*    $scope.tariffs = [
 
       {
         name: 'Tariff 1',
@@ -80,7 +91,7 @@ angular.module('drApp.prices', [
       },
 
     ];
-
+*/
     angular.forEach($scope.tariffs, function(tariff){
       tariff.editing = false;
     });
@@ -88,7 +99,7 @@ angular.module('drApp.prices', [
     $scope.addNewTariff = function() {
       if (angular.isDefined($scope.newTariff)) {
         $scope.tariffs.push($scope.newTariff);
-        $scope.newTariff = {};
+        resetNewTariff();
         addingNewTariff = false;
       }
     }
@@ -118,15 +129,15 @@ angular.module('drApp.prices', [
     }
   })
 
-  .service('pricesValidator', function () {
+  .service('pricesValidator', function (User) {
     var service = this;
 
     var isTaximeterValid = function(user) {
-      return true;
+      return false;
     }
 
     var isTariffValid = function(user) {
-      return true;
+      return angular.isArray(user.tariffs) && user.tariffs.length > 0;
     }
 
       // Public API

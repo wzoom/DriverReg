@@ -1,0 +1,37 @@
+<div class="dr-file-upload">
+  <!--
+  1. No file - BtnSelect
+  2. Selected & Uploading - BtnCancel BtnSelectOther
+  3. Fully uploaded file - BtnSelectOther
+  -->
+
+  <input ng-file-select="{ fieldName: uploaderName }" type="file" name="{{uploaderName}}" id="{{uploaderName}}" ng-model="theModel" class="btn btn-default hidden" />
+  <div class="upload-set center-block" data-ng-show="showPreview">
+    <div class="fileinput-preview thumbnail" data-ng-show="uploaderItem && uploader.isHTML5" data-ng-thumb="{ file: uploaderItem.file, height: 200 }"></div>
+    <div class="fileinput-preview thumbnail" data-ng-hide="uploaderItem"><img ng-src="{{previewSrc}}" alt="photo" /></div>
+  </div>
+
+  <div ng-show="invalidFile" class="text-danger" translate>The selected file cannot be uploaded. Only JPEG, PNG or GIF image files are allowed.</div>
+
+  <button ng-hide="uploaderItem"  class="btn btn-primary" ng-click="openFileSelect()" translate>Select file</button>
+
+  <div class="buttons" ng-show="uploaderItem">
+    <div class="upload-set center-block">
+    </div>
+
+    <div class="file-name"><span class="glyphicon glyphicon-file"></span> {{uploaderItem.file.name}}</div>
+    <div ng-show="uploaderItem.isError" class="text-danger" translate>There was an error while uploading the file.</div>
+
+    <div class="progress" ng-show="uploaderItem.isReady || uploaderItem.isUploading">
+      <div class="progress-bar" role="progressbar" aria-valuenow="{{uploaderItem.progress}}" aria-valuemin="0" aria-valuemax="100" data-ng-style="{ 'width': uploaderItem.progress + '%' }">
+        {{uploaderItem.progress + '%'}}
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-danger" ng-click="cancelUploaderItem()" ng-hide="uploaderItem.isUploaded">
+      <span class="glyphicon glyphicon-remove"></span> <span translate>Cancel</span>
+    </button>
+
+    <button class="btn btn-primary" ng-click="openFileSelectOther()" translate>Select other file</button>
+  </div>
+</div>

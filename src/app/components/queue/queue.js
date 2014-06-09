@@ -1,58 +1,31 @@
 'use strict';
 
-drApp.controller('queueCtrl', function ($scope, $state, $fileUploader, $timeout) {
-  // Creates a uploader
-  var uploader = $scope.uploader = $fileUploader.create({
-    scope: $scope,
+var drUploader = angular.module('drUploader', ['ngResource', 'angularFileUpload']);
+
+drUploader.factory('Uploader', function ($fileUploader) {
+  var uploader = $fileUploader.create({
+    //scope: $scope,
     url: 'http://api-media-eudev.jelastic.dogado.eu/api-media/v1/images?token=1MSnljapQdv7COEmb0DTY766D%2BCEXgTuHopnrgjccio%3D',
     formData: [
       {tag: 'miro'}
-    ]
+    ],
+    autoUpload: true,
   });
 
-  $scope.openSelect = function() {
-    var myLink = document.getElementById('hide-button');
-    myLink.click();
-  };
-
-  $scope.shower = false;
-
-  $scope.setHider = function() {
-    // uploader.progress == 100 || uploader.isUploading}
-    if ($scope.uploader.isUploading) $scope.shower = true;
-    if ($scope.uploader.progress == 100) {
-      //$scope.shower = true;
-      $timeout(function(){
-        $scope.shower = false;
-      }, 20000);
-    }
-  };
-
-  $scope.hider = function() {
-    $scope.shower = false;
-  };
-
-  $scope.$watch(function() {
-    $scope.setHider();
-  });
-
-  // ADDING FILTERS
-
-  // Images only
+  // Filter Images only
   uploader.filters.push(function(item /*{File|HTMLInputElement}*/) {
-    console.log('DDD =>', item);
     var type = uploader.isHTML5 ? item.type : '/' + item.value.slice(item.value.lastIndexOf('.') + 1);
     type = '|' + type.toLowerCase().slice(type.lastIndexOf('/') + 1) + '|';
     return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
   });
 
 
-  // REGISTER HANDLERS
+  // Events
 
   uploader.bind('afteraddingfile', function (event, item) {
     item.formData[0].tag = item.file.name;
-    console.info('After adding a file', event);
-    console.info('After adding a file', item);
+    console.info('After adding a file EVENT', event);
+    console.info('After adding a file ITEM', item);
   });
 
   uploader.bind('whenaddingfilefailed', function (event, item) {
@@ -94,10 +67,45 @@ drApp.controller('queueCtrl', function ($scope, $state, $fileUploader, $timeout)
   uploader.bind('completeall', function (event, items) {
     console.info('Complete all', items);
   });
+
+  return uploader;
 });
 
 
-drApp.directive('ngThumb', function($window) {
+drUploader.controller('queueCtrl', function ($scope, $timeout, Uploader) {
+  // Creates a uploader
+  var uploader = Uploader;
+
+  $scope.openSelect = function() {
+    var myLink = document.getElementById('hide-button');
+    myLink.click();
+  };
+
+  $scope.shower = false;
+
+  $scope.setHider = function() {
+    // uploader.progress == 100 || uploader.isUploading}
+    if (uploader.isUploading) $scope.shower = true;
+    if (uploader.progress == 100) {
+      //$scope.shower = true;
+      $timeout(function(){
+        $scope.shower = false;
+      }, 20000);
+    }
+  };
+
+  $scope.hider = function() {
+    $scope.shower = false;
+  };
+
+  $scope.$watch(function() {
+    $scope.setHider();
+  });
+
+});
+
+
+drUploader.directive('ngThumb', function($window) {
     var helper = {
       support: !!($window.FileReader && $window.CanvasRenderingContext2D),
       isFile: function(item) {
@@ -141,13 +149,3 @@ drApp.directive('ngThumb', function($window) {
       }
     };
   });
-
-// It is attached to <input type="file"> element like <ng-file-select="options">
-drApp.directive('drUploader', function($fileUploader) {
-  return {
-    templateUrl: 'components/queue/queue.element.html',
-    link: function(scope, element) {
-      scope.fileTag = element.attr('id');
-    }
-  };
-});
