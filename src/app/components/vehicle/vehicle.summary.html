@@ -1,18 +1,13 @@
-<div class="help-block">Your almost done with the Vehicle section, here's what we have so far.</div>
-
-<div class="clearfix">
-    <div class="thumbnail col-xs-12 col-md-4">
-    </div>
-    <div class="col-xs-12 col-md-8">
-
-    </div>
-</div>
+<div class="help-block">Outstanding you're almost half way done you cloud review the information you entered about your car below.</div>
 
 <div class="clearfix">
     <div class="col-xs-12 col-md-4">
-        <div class="text-line center-block text-center">{{user.firstName}} {{user.lastName}}</div>
-        <div class="text-line center-block text-center">{{user.phone}}</div>
-        <div class="text-line center-block text-center">{{user.gender}}</div>
+        <div class="text-line center-block text-center"><strong>{{user.car.make}} {{user.car.model}} ({{user.car.year}})</strong></div>
+        <div class="text-line center-block text-center"><span translate>Color: </span>{{user.car.color}}</div>
+        <div class="text-line center-block text-center"><span translate>Engine size: </span>{{user.car.size}}</div>
+        <div class="text-line center-block text-center"><span translate>Number seats: </span>{{user.car.seats}}</div>
+        <div class="text-line center-block text-center"><span translate>Luggage capacity: </span>{{user.car.luggage}}</div>
+        <div class="text-line center-block text-center"><span translate>Handicap Accessible: </span>{{user.car.handicap}}</div>
     </div>
     <div class="col-xs-12 col-md-8">
 

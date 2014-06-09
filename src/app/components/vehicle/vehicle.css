@@ -1,11 +1,16 @@
 .car-make label {
   margin-bottom: 5px;
+  display: inline-block;
 }
 
 .car-color .color {
-  width: 60px;
-  height: 60px;
-  margin: 0 10px 20px;
+  width: 55px;
+  height: 55px;
+  margin: 15px 15px 0px 0px;
+}
+
+.car-color .color.last {
+    margin-right: 0px;
 }
 
 .car-color .color.selected {
@@ -14,13 +19,58 @@
   line-height: 1.5em;
 }
 
+.car-color span.glyphicon {
+    width: 60px;
+    height: 60px;
+    color: #fff;
+}
+
+.car-color span.glyphicon.glyphicon-black {
+    color: #000;
+}
+
 .car-color .color.black { background-color: black; }
-.car-color .color.blue { background-color: #0072b9; }
-.car-color .color.brown { background-color: #633429; }
+.car-color .color.blue { background-color: blue; }
+.car-color .color.brown { background-color: brown; }
 .car-color .color.green { background-color: green; }
-.car-color .color.orange { background-color: #ebb52d; }
+.car-color .color.orange { background-color: orange; }
 .car-color .color.purple { background-color: purple; }
-.car-color .color.red { background-color: #ff003c; }
+.car-color .color.red { background-color: red; }
 .car-color .color.silver { background-color: silver; }
 .car-color .color.white { background-color: white; }
-.car-color .color.yellow { background-color: #ffee74; }
+.car-color .color.yellow { background-color: yellow; }
+
+.car-make-selector {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    padding: 0px 15px 15px;
+    background-color: #fff;
+    margin-top: 50px;
+    top: 0;
+    left: 0;
+}
+
+.car-make-selector.active {
+    display: block;
+    z-index: 99;
+}
+
+.car-make-mark-element {
+    position: relative;
+}
+
+.car-make-mark-element input {
+    padding-right: 30px;
+    float: left;
+}
+
+.car-make-mark-element span {
+    float: right;
+    position: absolute;
+    pointer-events: none;
+    padding: 10px 12px;
+    margin-left: -38px;
+}

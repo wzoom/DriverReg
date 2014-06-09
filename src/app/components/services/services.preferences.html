@@ -1,0 +1,49 @@
+<div data-ng-show="setDefaultServices()">
+    <div class="form-group">
+        <label class="control-label btn-line" translate>Payment with Card</label>
+        <div class="btn-group pull-right" data-ng-model="user.services.card" bs-radio-group required>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="Yes"><span translate>Yes</span></label>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="No"><span translate>No</span></label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label btn-line" translate>Onboard Wifi</label>
+        <div class="btn-group pull-right" data-ng-model="user.services.wifi" bs-radio-group required>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="Yes"><span translate>Yes</span></label>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="No"><span translate>No</span></label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label btn-line" translate>Air-conditioning</label>
+        <div class="btn-group pull-right" data-ng-model="user.services.air" bs-radio-group required>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="Yes"><span translate>Yes</span></label>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="No"><span translate>No</span></label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label btn-line" translate>Child seat</label>
+        <div class="btn-group pull-right" data-ng-model="user.services.child" bs-radio-group required>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="Yes"><span translate>Yes</span></label>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="No"><span translate>No</span></label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label btn-line" translate>Smoking onboard</label>
+        <div class="btn-group pull-right" data-ng-model="user.services.smoke" bs-radio-group required>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="Yes"><span translate>Yes</span></label>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="No"><span translate>No</span></label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label btn-line" translate>Animal transport</label>
+        <div class="btn-group pull-right" data-ng-model="user.services.animal" bs-radio-group required>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="Yes"><span translate>Yes</span></label>
+            <label class="btn btn-default"><input type="radio" class="btn btn-default" value="No"><span translate>No</span></label>
+        </div>
+    </div>
+</div>

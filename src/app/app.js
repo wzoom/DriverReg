@@ -40,6 +40,7 @@ drApp.controller('drAppCtrl', function(
   ) {
 
   $scope.state = $state;
+  $scope.Math = window.Math;
 
   $scope.user =  $localStorage.user || User;
 
@@ -101,9 +102,11 @@ drApp.controller('drAppCtrl', function(
         output['showBar'] = true;
       }
 
-      if (output['absolute'] > 1) output['percent'] = (100 * ((output['absolute'] -1) / output['total']));
+      if (output['absolute'] > 1) output['percent'] = Math.round((100 * ((output['absolute'] -1) / output['total'])));
 
     }
+
+    if (angular.isDefined(stepObject.data) && angular.isDefined(stepObject.data.isNeutral)) output['percent'] = 100;
 
     return output;
   };
@@ -145,6 +148,8 @@ drApp.controller('drAppCtrl', function(
       return state.name != '' && state.sideMenu == true && angular.isDefined(state.redirectTo);
     });
 
+
+
     filteredItems.forEach(function(filteredItem, index) {
       var filteredItemProgress = $scope.getProgress(filteredItem.name).percent;
       if (filteredItemProgress >= 100) {
@@ -155,6 +160,9 @@ drApp.controller('drAppCtrl', function(
         }
       }
     });
+
+    var orderBy = $filter('orderBy');
+    filteredItems =orderBy(filteredItems, 'weight', false);
 
     return filteredItems;
   };
@@ -181,6 +189,7 @@ drApp.controller('drAppCtrl', function(
   // Last main empty step
   $scope.lastMainStep = function() {
     var lastEmptyMainStep = [];
+
 
     $scope.mainItems.some(function(item) {
       var itemProgress = $scope.getProgress(item.name).percent;

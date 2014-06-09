@@ -18,6 +18,11 @@ a {
     cursor: pointer;
 }
 
+.btn-line {
+    height: 34px;
+    line-height: 34px;
+}
+
 .btn-margin-left {
     margin-left: 15px;
 }

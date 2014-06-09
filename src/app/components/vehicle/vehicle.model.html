@@ -2,6 +2,7 @@
 <div class="form-group">
   <label class="control-label">Model</label>
   <span class="label label-danger" ng-show="regForm.model.$invalid && !regForm.model.$pristine">Required</span>
+  <span class="label label-danger" ng-show="regForm.model.$error.minlength" translate>Too short.</span>
   <input type="text" name="model" data-ng-model="user.car.model" class="form-control" data-ng-minlength="3" required autofocus />
 </div>
 

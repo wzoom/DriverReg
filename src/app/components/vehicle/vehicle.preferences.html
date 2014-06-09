@@ -1,10 +1,19 @@
-<div class="help-block">Are you a driver for one of our local partners?</div>
+<div class="help-block" translate="">A few more details and we are done.</div>
 
-<div class="form-group">
-    <div data-ng-model="user.dispatchingCompany" bs-radio-group>
-        <label class="btn btn-default btn-lg btn-block"><input type="radio" class="btn btn-default" value="en">Sedop Taxi</label>
-        <label class="btn btn-default btn-lg btn-block"><input type="radio" class="btn btn-default" value="cs">Kuryr Taxi</label>
-    </div>
+<div class="form-group" data-ng-show="setDefaultSeats()">
+    <label class="control-label" translate>Number of seats</label>
+    <div data-range-slider data-min="1" data-max="16" data-step="1" data-ng-model="user.car.seats" data-model-max="user.car.seats" data-pin-handle="min"></div>
 </div>
 
-<div class="help-block">Displaying a dispatching company make you more creditable for passenger and gives the dispatching company access to your data.</div>
+<div class="form-group" data-ng-show="setDefaultLuggage()">
+    <label class="control-label" translate>Luggage Accesible</label>
+    <div data-range-slider data-min="1" data-max="16" data-step="1" data-ng-model="user.car.luggage" data-model-max="user.car.luggage" data-pin-handle="min"></div>
+</div>
+
+<div class="form-group" data-ng-show="setDefaultHandicap()">
+    <label class="control-label btn-line" translate>Handicap Accessible</label>
+    <div class="btn-group pull-right" data-ng-model="user.car.handicap" bs-radio-group required>
+        <label class="btn btn-default"><input type="radio" class="btn btn-default" value="Yes"><span translate>Yes</span></label>
+        <label class="btn btn-default"><input type="radio" class="btn btn-default" value="No"><span translate>No</span></label>
+    </div>
+</div>
