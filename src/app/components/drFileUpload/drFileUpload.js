@@ -6,14 +6,24 @@ angular.module('drFileUpload', ['angularFileUpload'])
 
     return {
       restrict: "EA",
+      scope: {
+        theModel: "=ngModel"
+      },
       templateUrl: 'components/drFileUpload/drFileUpload.html',
       replace: true,
       link: function(scope, element, attributes) {
+        scope.uploader = Uploader;
         var uploaderName = attributes.drFileUpload;
-        console.log('drFileUpload LINK:', element);
+        //console.log('drFileUpload LINK:', element);
+        delete attributes.id;
 
         scope.uploaderName = uploaderName;
         scope.uploaderItem = null;
+
+        scope.showPreview = angular.isDefined(attributes.preview);
+        scope.previewSrc = scope.showPreview ? attributes.preview : '';
+
+
         /*
         angular.forEach($fileUploader.queue, function(item) {
           if (item.alias == uploaderName) {
@@ -24,6 +34,23 @@ angular.module('drFileUpload', ['angularFileUpload'])
         scope.openFileSelect = function () {
           angular.element('input[name="'+ uploaderName + '"]').click();
         };
+
+        scope.openFileSelectOther = function() {
+          scope.cancelUploaderItem();
+          scope.openFileSelect();
+        }
+
+        scope.cancelUploaderItem = function () {
+          if (scope.uploaderItem.isUploaded || scope.uploaderItem.isUploading) {
+            scope.uploaderItem.cancel();
+          }
+          else {
+            scope.uploaderItem.cancel();
+          }
+
+          scope.uploaderItem = null;
+        };
+
 
         Uploader.bind('afteraddingfile', function (event, item) {
           //console.info('After adding a file', item);
