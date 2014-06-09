@@ -3,9 +3,9 @@
     <div class="">
 
       <div class="list-group">
-        <a data-ng-repeat="mainItem in mainItems | orderBy:'weight'" href="" class="list-group-item" data-ng-click="hideNavbar(); goToUnfinishedSubItem(mainItem)" data-ng-class="{'list-group-item-success' : getProgress(mainItem.name).percent >= 100, 'list-group-item-danger' : !mainItem.data.isNeutral && getProgress(mainItem.name).percent < 100}">
+        <a data-ng-repeat="mainItem in mainItems | orderBy:'weight'" href="" class="list-group-item" data-ng-click="hideNavbar(); goToUnfinishedSubItem(mainItem)" data-ng-class="{'list-group-item-success' : getProgress(mainItem.name).percent >= 100 && !mainItem.data.isNeutral, 'list-group-item-danger' : !mainItem.data.isNeutral && getProgress(mainItem.name).percent < 100 && getProgress(mainItem.name).percent > 0}">
           <span data-ng-show="getProgress(mainItem.name).percent >= 100 && !mainItem.data.isNeutral" class="glyphicon glyphicon-ok pull-right lead"></span>
-          <span data-ng-show="getProgress(mainItem.name).percent < 100 && !mainItem.data.isNeutral" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
+          <span data-ng-show="getProgress(mainItem.name).percent < 100 && getProgress(mainItem.name).percent > 0 && !mainItem.data.isNeutral" class="glyphicon glyphicon-exclamation-sign pull-right lead"></span>
 
           <h4 class="list-group-item-heading">{{mainItem.title | translate}}</h4>
 
