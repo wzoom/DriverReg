@@ -11,6 +11,7 @@ var drApp = angular.module('driverRegApp', [
   'drApp.services',
   'drApp.vehicle',
   'drApp.prices',
+  'drApp.licensing',
   'mgcrea.ngStrap',
   'drAnimations',
   'drFilters',
@@ -35,7 +36,8 @@ drApp.controller('drAppCtrl', function(
   aboutValidator,
   vehicleValidator,
   servicesValidator,
-  pricesValidator
+  pricesValidator,
+  licensingValidator
   ) {
 
   $scope.state = $state;
