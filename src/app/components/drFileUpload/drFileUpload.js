@@ -10,18 +10,41 @@ angular.module('drFileUpload', ['angularFileUpload'])
         theModel: "=ngModel",
       },
       templateUrl: 'components/drFileUpload/drFileUpload.html',
-      replace: true,
+      transclude: true,
       link: function(scope, element, attributes) {
-        scope.uploader = Uploader;
         var uploaderName = attributes.drFileUpload;
+
+        //scope.$watch(fileElement.attr)
+        //attributes.$observe('class', function(val){
+        //  element.find('.content').addClass(val);
+        //});
+
+        scope.uploader = Uploader;
         //console.log('drFileUpload LINK:', element);
         delete attributes.id;
+        //delete attributes.required;
+
+        scope.isFileRequired = attributes.required || false;
 
         scope.uploaderName = uploaderName;
         scope.uploaderItem = null;
 
+        scope.fileName = null;
+
         scope.showPreview = angular.isDefined(attributes.preview);
         scope.previewSrc = scope.showPreview ? attributes.preview : '';
+
+        scope.$watch('theModel', function(mediaFileModel) {
+          if (angular.isDefined(mediaFileModel) && mediaFileModel !== null) {
+            if (angular.isDefined(mediaFileModel.thumbnail) && angular.isDefined(mediaFileModel.thumbnail.href)) {
+              scope.previewSrc = mediaFileModel.thumbnail.href;
+            }
+            if (angular.isDefined(mediaFileModel.localFileName)) {
+              scope.fileName = mediaFileModel.localFileName;
+            }
+
+          }
+        });
 
         scope.openFileSelect = function () {
           scope.invalidFile = null;
@@ -29,7 +52,9 @@ angular.module('drFileUpload', ['angularFileUpload'])
         };
 
         scope.openFileSelectOther = function() {
-          scope.cancelUploaderItem();
+          if (angular.isDefined(scope.uploaderItem) && scope.uploaderItem !== null) {
+            scope.cancelUploaderItem();
+          }
           scope.openFileSelect();
         }
 
@@ -49,6 +74,7 @@ angular.module('drFileUpload', ['angularFileUpload'])
           //console.info('After adding a file', item);
           if (item.fieldName == uploaderName) {
             scope.uploaderItem = item;
+            scope.fileName = item.file.name;
           }
         });
 
@@ -60,11 +86,10 @@ angular.module('drFileUpload', ['angularFileUpload'])
 
         Uploader.bind('success', function (event, xhr, item, response) {
           if (item.fieldName == uploaderName) {
-            console.info('Success', response);
+            //console.info('Success', response);
             if (angular.isDefined(response.uuid)) {
               // Save the full Media API object to the model.
               scope.theModel = response;
-              scope.previewSrc = response.thumbnail.href;
             }
           }
         });
