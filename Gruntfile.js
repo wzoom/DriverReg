@@ -43,6 +43,7 @@ module.exports = function(grunt) {
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     src: {
       js: ['src/**/*.js'],
+      json: ['**/*.json'],
       //jsTpl: ['<%= distdir %>/templates/**/*.js'],
       //specs: ['test/**/*.spec.js'],
       //scenarios: ['test/**/*.scenario.js'],
@@ -74,7 +75,13 @@ module.exports = function(grunt) {
         files: [{
           dest: '<%= distdir %>/index.html',
           src : '<%= src.html %>',
-        }]
+        },
+          {
+            dest: '<%= distdir %>/json',
+            src : '<%= src.json %>',
+            expand: true,
+            cwd: 'src/app/components/'
+          }]
       },
       // Assets
       assets: {
