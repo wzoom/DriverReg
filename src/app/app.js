@@ -181,7 +181,7 @@ drApp.controller('drAppCtrl', function(
   $scope.setSkipStep = function() {
     if ($state.current.skipAllow == true && angular.isDefined($scope.currentMain) && angular.isDefined($scope.subItems)) {
       var validatorName = $scope.currentMain.name + 'Validator';
-      var valid = eval(validatorName).isStepValid($state.current.name, $scope.user ,true);
+      var valid = eval(validatorName).isStepValid($state.current.name, $scope.user, true);
       if (valid) $scope.setNextStep();
     }
   };
