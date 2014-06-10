@@ -11,12 +11,12 @@ var drApp = angular.module('driverRegApp', [
   'drApp.services',
   'drApp.vehicle',
   'drApp.prices',
+  'drApp.licensing',
   'mgcrea.ngStrap',
   'drAnimations',
   'drFilters',
   'drServices',
   'start',
-  'vr.directives.slider',
   'templates.app',
   'drUploader',
 ]);
@@ -36,11 +36,11 @@ drApp.controller('drAppCtrl', function(
   aboutValidator,
   vehicleValidator,
   servicesValidator,
-  pricesValidator
+  pricesValidator,
+  licensingValidator
   ) {
 
   $scope.state = $state;
-  $scope.Math = window.Math;
 
   $scope.user =  $localStorage.user || User;
 
@@ -98,11 +98,11 @@ drApp.controller('drAppCtrl', function(
           var valid = eval(validatorName).isStepValid(childrenItem.name, $scope.user);
           if (valid) output['absolute']++;
         });
-
-        output['showBar'] = true;
       }
 
       if (output['absolute'] > 1) output['percent'] = Math.round((100 * ((output['absolute'] -1) / output['total'])));
+
+      if (output['percent'] < 100) output['showBar'] = true;
 
     }
 
@@ -231,7 +231,7 @@ drApp.controller('drAppCtrl', function(
   };
 
   $scope.showStepTitle = function() {
-    if (angular.isDefined($scope.currentMain) && angular.isDefined($state.current) && ($scope.currentMain.title == $state.current.title)) {
+    if (angular.isDefined($scope.currentMain) && angular.isDefined($state.current) && ($scope.currentMain.name == $state.current.name)) {
       return false;
     }
 
@@ -241,7 +241,9 @@ drApp.controller('drAppCtrl', function(
   $scope.totalProgress = function() {
     var totalScore = 0;
     $scope.mainItems.some(function(mainItem) {
-      totalScore = totalScore + $scope.getProgress(mainItem).percent;
+      if (angular.isUndefined(mainItem.data)) {
+        totalScore = totalScore + $scope.getProgress(mainItem).percent;
+      }
     });
 
     var itemsNumber = $scope.mainItems.length;

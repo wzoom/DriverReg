@@ -21,13 +21,13 @@ angular.module('drApp.services', [
         sideMenu: true,
         skipAllow: true,
         url: "/services",
-        redirectTo: 'services.pickup',
+        redirectTo: 'preferences',
         templateUrl: getComponentTemplatePath('services'),
         weight: 3,
         children: [
           {
             name: 'preferences',
-            title: "Preferences",
+            title: "Services",
             sideMenu: false,
             skipAllow: false,
             url: "/preferences",

@@ -5,7 +5,7 @@
     <span class="label label-danger" data-ng-show="regForm.year.$invalid && !regForm.year.$pristine" translate>Required</span>
     <span class="label label-danger" data-ng-show="regForm.year.$error.minlength" translate>Too short.</span>
     <span class="label label-danger" data-ng-show="regForm.year.$error.pattern" translate>Not correct year.</span>
-    <input type="text" name="year" data-ng-model="user.car.year" class="form-control" data-ng-pattern="/^[0-9]{1,4}$/" data-ng-minlength="4" required />
+    <input type="text" name="year" data-ng-model="user.car.year" class="form-control" data-ng-pattern="/^[0-9]{1,4}$/" data-ng-minlength="4" required autofocus />
 </div>
 
     <!--
