@@ -7,8 +7,7 @@
 
   <input ng-file-select="{ fieldName: uploaderName }" type="file" name="{{uploaderName}}" id="{{uploaderName}}" ng-model="theModel" class="btn btn-default hidden" />
   <div class="upload-set center-block" data-ng-show="showPreview">
-    <div class="fileinput-preview thumbnail" data-ng-show="uploaderItem && uploader.isHTML5" data-ng-thumb="{ file: uploaderItem.file, height: 200 }"></div>
-    <div class="fileinput-preview thumbnail" data-ng-hide="uploaderItem"><img ng-src="{{previewSrc}}" alt="photo" /></div>
+    <div class="fileinput-preview thumbnail" data-ng-show="showPreview"><img ng-src="{{previewSrc}}" alt="photo" /></div>
   </div>
 
   <div ng-show="invalidFile" class="text-danger" translate>The selected file cannot be uploaded. Only JPEG, PNG or GIF image files are allowed.</div>
