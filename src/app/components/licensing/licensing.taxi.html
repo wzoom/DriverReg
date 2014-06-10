@@ -1,0 +1,19 @@
+<div class="form-group" data-ng-show="licensingSettings.taxi.permitPhoto">
+    <label for="permitPhoto"><span translate>Taxi driver permit photo</span></label>
+    <p class="help-block" translate>Please upload photo of your taxi driver permit photo.</p>
+    <div id="permitPhoto" dr-file-upload="permitPhoto" data-ng-model="user.taxi.permitPhoto"></div>
+</div>
+
+<div class="form-group" data-ng-show="licensingSettings.taxi.licenseNumber">
+    <label for="licenseNumber" class="control-label" translate>License number </label>
+    <span class="label label-danger" ng-show="regForm.licenseNumber.$invalid && !regForm.licenseNumber.$pristine" translate>Required</span>
+    <span class="label label-danger" ng-show="regForm.licenseNumber.$error.minlength" translate>Too short.</span>
+    <input id="licenseNumber"  type="text" name="licenseNumber" data-ng-model="user.taxi.licenseNumber" class="form-control" data-ng-minlength="3" data-ng-required="licensingSettings.taxi.licenseNumber" />
+</div>
+
+<div class="form-group" data-ng-show="licensingSettings.taxi.expirationDate">
+    <label for="expirationDate" class="control-label" translate>Expiration date </label>
+    <span class="label label-danger" ng-show="regForm.expirationDate.$invalid && !regForm.expirationDate.$pristine" translate>Required</span>
+    <span class="label label-danger" ng-show="regForm.expirationDate.$error.minlength" translate>Too short.</span>
+    <input id="expirationDate" type="text" name="expirationDate" data-ng-model="user.taxi.expirationDate" class="form-control" data-ng-minlength="3" data-ng-required="licensingSettings.taxi.expirationDate" />
+</div>

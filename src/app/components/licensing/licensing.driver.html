@@ -1,0 +1,22 @@
+<div class="form-group" data-ng-show="licensingSettings.driver.licPhoto">
+    <label for="licPhoto"><span translate>License photo</span></label>
+    <p class="help-block" translate>Please upload photo of your driver license photo.</p>
+    <div id="licPhoto" dr-file-upload="licPhoto" data-ng-model="user.driver.licPhoto"></div>
+</div>
+
+<div class="form-group" data-ng-show="licensingSettings.driver.licenseNumber">
+    <label for="licenseNumber" class="control-label" translate>License number </label>
+    <span class="label label-danger" ng-show="regForm.licenseNumber.$invalid && !regForm.licenseNumber.$pristine" translate>Required</span>
+    <span class="label label-danger" ng-show="regForm.licenseNumber.$error.minlength" translate>Too short.</span>
+    <input id="licenseNumber"  type="text" name="licenseNumber" data-ng-model="user.driver.licenseNumber" class="form-control" data-ng-minlength="3" data-ng-required="licensingSettings.driver.licenseNumber" />
+</div>
+
+<div class="form-group" data-ng-show="licensingSettings.driver.expirationDate">
+    <label for="expirationDate" class="control-label" translate>Expiration date </label>
+    <span class="label label-danger" ng-show="regForm.expirationDate.$invalid && !regForm.expirationDate.$pristine" translate>Required</span>
+    <span class="label label-danger" ng-show="regForm.expirationDate.$error.minlength" translate>Too short.</span>
+    <input id="expirationDate" type="text" name="expirationDate" data-ng-model="user.driver.expirationDate" class="form-control" data-ng-minlength="3" data-ng-required="licensingSettings.driver.expirationDate" />
+</div>
+
+
+

@@ -21,6 +21,7 @@ drServices.factory('User', function () {
   user.fullNameVisible = 'yes';
   user.car = {};
   user.pickup = 5;
+  user.countryCode = 'cz';
 
   user.tariffs = [];
   user.fixedRateTariffNotifyMe = true;

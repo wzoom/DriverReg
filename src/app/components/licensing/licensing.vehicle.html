@@ -1,0 +1,15 @@
+<div class="help-block" translate>Are you a driver for one of our local partners?</div>
+
+<div class="form-group" data-ng-show="licensingSettings.permition.permit">
+    <label class="control-label" translate>License number </label>
+    <span class="label label-danger" ng-show="regForm.licneseNumber.$invalid && !regForm.firstName.$pristine" translate>Required</span>
+    <span class="label label-danger" ng-show="regForm.licneseNumber.$error.minlength" translate>Too short.</span>
+    <input type="text" name="licneseNumber" data-ng-model="user.licneseNumber" class="form-control" data-ng-minlength="3" required="{{licensingSettings.permition.permit}}" />
+</div>
+
+<div class="form-group" data-ng-show="licensingSettings.permition.license">
+    <label class="control-label" translate>Expiration date </label>
+    <span class="label label-danger" ng-show="regForm.expirationDate.$invalid && !regForm.lastName.$pristine" translate>Required</span>
+    <span class="label label-danger" ng-show="regForm.expirationDate.$error.minlength" translate>Too short.</span>
+    <input type="text" name="expirationDate" data-ng-model="user.expirationDate" class="form-control" data-ng-minlength="3" data-ng-required="licensingSettings.permition.license" />
+</div>

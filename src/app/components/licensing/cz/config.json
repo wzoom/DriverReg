@@ -1,0 +1,29 @@
+{
+  "driver": {
+    "title" : "Drivers license",
+    "skipScreen" : false,
+    "licPhoto" : true,
+    "licenseNumber" : true,
+    "expirationDate" : true
+  },
+  "taxi": {
+    "title" : "Taxi license",
+    "skipScreen" : false,
+    "permitPhoto" : true,
+    "licenseNumber" : true,
+    "expirationDate" : true
+  },
+  "conces": {
+    "skipScreen" : false,
+    "license" : true,
+    "idLicense" : true,
+    "licenseName": true,
+    "businessPhoto" : true,
+    "contract" : true
+  },
+  "vehicle": {
+    "skipScreen" : false,
+    "permit" : true,
+    "license" : true
+  }
+}
