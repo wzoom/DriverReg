@@ -4,13 +4,14 @@
 
 var drServices = angular.module('drServices', ['ngResource']);
 
+/*
 drServices.factory('Phone', ['$resource',
   function ($resource) {
     return $resource('phones/:phoneId.json', {}, {
       query: {method: 'GET', params: {phoneId: 'phones'}, isArray: true}
     });
   }]);
-
+*/
 
 drServices.factory('User', function () {
  var user = {};
@@ -24,6 +25,8 @@ drServices.factory('User', function () {
 
   user.tariffs = [];
   user.fixedRateTariffNotifyMe = true;
+
+  user.taximeterId = null;
 
   user.getFullName = function() {
     if (angular.isUndefined(this.firstName) || this.firstName == '') {
