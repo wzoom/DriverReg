@@ -67,7 +67,7 @@ angular.module('drApp.prices', [
 
     var resetNewTariff = function() {
       $scope.newTariff = {
-        name: gettextCatalog.getString('Tariff') + ' ' + ($scope.tariffs.length + 1),
+        name: gettextCatalog.getString('Tariff') + ' ' + (countNonEmptyArrayElements($scope.tariffs) + 1),
       };
     }
 
@@ -115,6 +115,8 @@ angular.module('drApp.prices', [
     $scope.removeTariff = function(removeKey) {
       if (angular.isDefined($scope.tariffs[removeKey])) {
         $scope.tariffs.splice(removeKey, 1);
+        resetNewTariff();
+
         return true;
       }
     }
@@ -133,11 +135,11 @@ angular.module('drApp.prices', [
     var service = this;
 
     var isTaximeterValid = function(user) {
-      return false;
+      return angular.isString(user.taximeterId) && user.taximeterId != '';
     }
 
-    var isTariffValid = function(user) {
-      return angular.isArray(user.tariffs) && user.tariffs.length > 0;
+    var isTariffsValid = function(user) {
+      return angular.isArray(user.tariffs) && countNonEmptyArrayElements(user.tariffs) > 0;
     }
 
       // Public API
@@ -150,7 +152,7 @@ angular.module('drApp.prices', [
 
       switch(stepName) {
         case 'taximeter': return isTaximeterValid(userObject);
-        case 'tariff': return isTariffValid(userObject);
+        case 'tariffs': return isTariffsValid(userObject);
         case 'summary': return true;
       }
 
@@ -159,3 +161,13 @@ angular.module('drApp.prices', [
 
     return service;
   });
+
+function countNonEmptyArrayElements(arr) {
+  var count = 0;
+  for (var i=arr.length; i>0; i--) {
+    if (typeof arr[i-1] !== "undefined")
+      count++;
+  }
+  return count;
+}
+

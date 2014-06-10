@@ -1,6 +1,7 @@
 <div class="help-block" translate>Enter the tariffs you have in your Taximeter.</div>
 <div class="help-block" translate>Add a new tariff or select a tariff to edit.</div>
 
+<input ng-model="forceFormValid" type="hidden" ng-required="tariffs.length === 0"/>
 
 <div class="list-group tariffs">
   <div data-ng-repeat="(key, tariff) in tariffs" class="list-group-item clearfix" data-ng-class="{'list-group-item-info' : tariff.editing}">
@@ -48,33 +49,32 @@
 
   </div>
 
-
   <!-- Add New Tariff -->
   <div class="list-group-item list-group-item-info" data-ng-class="" ng-show="isAddingNewTariff()">
     <ng-form name="addForm">
 
       <div class="form-group heading">
         <label translate>Tariff Name</label>
-        <input ng-model="newTariff.name" type="text" class="form-control" placeholder="Name" required>
+        <input ng-model="newTariff.name" type="text" class="form-control" placeholder="Name" ng-required="isAddingNewTariff()">
       </div>
 
       <div class="list-group-item-text clearfix">
         <div class="form-group clearfix">
           <div class="col-xs-4 text-center">
             <label for="tariffInitialNew" translate>Initial fee</label>
-            <input ng-model="newTariff.initial" type="number" class="form-control" id="tariffInitialNew" min="0" max="1000" required>
+            <input ng-model="newTariff.initial" type="number" class="form-control" id="tariffInitialNew" min="0" max="1000" ng-required="isAddingNewTariff()">
             <div class="symbol small text-muted">CZK</div>
           </div>
 
           <div class="col-xs-4 text-center">
             <label for="tariffPricePerKmNew" translate>Rate</label>
-            <input ng-model="newTariff.pricePerKm" type="number" class="form-control" id="tariffPricePerKmNew" min="0" max="1000" required>
+            <input ng-model="newTariff.pricePerKm" type="number" class="form-control" id="tariffPricePerKmNew" min="0" max="1000" ng-required="isAddingNewTariff()">
             <div class="symbol small text-muted">CZK/km</div>
           </div>
 
           <div class="col-xs-4 text-center">
             <label for="tariffWaitingNew" translate>Waiting</label>
-            <input ng-model="newTariff.waiting" type="number" class="form-control" id="tariffWaitingNew" min="0" max="1000" required>
+            <input ng-model="newTariff.waiting" type="number" class="form-control" id="tariffWaitingNew" min="0" max="1000" ng-required="isAddingNewTariff()">
             <div class="symbol small text-muted">CZK/min</div>
           </div>
         </div>
@@ -87,8 +87,6 @@
 
     </ng-form>
   </div>
-
-
 
 
 </div>

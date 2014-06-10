@@ -23,14 +23,6 @@ angular.module('drFileUpload', ['angularFileUpload'])
         scope.showPreview = angular.isDefined(attributes.preview);
         scope.previewSrc = scope.showPreview ? attributes.preview : '';
 
-
-        /*
-        angular.forEach($fileUploader.queue, function(item) {
-          if (item.alias == uploaderName) {
-            scope.uploaderItem = item;
-          }
-        });
-*/
         scope.openFileSelect = function () {
           scope.invalidFile = null;
           angular.element('input[name="'+ uploaderName + '"]').click();
@@ -66,48 +58,16 @@ angular.module('drFileUpload', ['angularFileUpload'])
           }
         });
 
-
-        /*
-        if(!$fileUploader.isHTML5) {
-          element.removeAttr('multiple');
-        }
-
-        element.bind('change', function() {
-          var data = $fileUploader.isHTML5 ? this.files : this;
-          var options = scope.$eval(attributes.ngFileSelect);
-
-          scope.$emit('file:add', data, options);
-
-          if($fileUploader.isHTML5 && element.attr('multiple')) {
-            element.prop('value', null);
+        Uploader.bind('success', function (event, xhr, item, response) {
+          if (item.fieldName == uploaderName) {
+            console.info('Success', response);
+            if (angular.isDefined(response.uuid)) {
+              // Save the full Media API object to the model.
+              scope.theModel = response;
+              scope.previewSrc = response.thumbnail.href;
+            }
           }
         });
-
-        element.prop('value', null); // FF fix
-        */
       }
     };
   });
-
-/*
-return {
-  restrict: "EA",
-  template: "<input type='file' />",
-  replace: true,
-  link: function (scope, element, attrs) {
-
-    var modelGet = $parse(attrs.fileInput);
-    var modelSet = modelGet.assign;
-    var onChange = $parse(attrs.onChange);
-
-    var updateModel = function () {
-      scope.$apply(function () {
-        modelSet(scope, element[0].files[0]);
-        onChange(scope);
-      });
-    };
-
-    element.bind('change', updateModel);
-  }
-};
-*/
