@@ -14,15 +14,17 @@
     </div>
 
     <div class="form-group">
-      <label for="priceList"><span translate>Price list</span></label>
-      <p class="help-block" translate>Please upload photo of your price list.</p>
-      <div id="priceList" dr-file-upload="priceList" ng-model="user.photos.priceList"></div>
+      <div id="priceList" dr-file-upload="priceList" ng-model="user.photos.priceList" required>
+        <label for="priceList"><span translate>Price list</span></label>
+        <p class="help-block" translate>Please upload photo of your price list.</p>
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="dashboardWithTaximeter" translate>Dashboard with taximeter</label>
-      <p class="help-block" translate>Please upload photo of your taxamiter on a car dashboard.</p>
-      <div id="dashboardWithTaximeter" dr-file-upload="dashboardWithTaximeter" ng-model="user.photos.dashboardWithTaximeter"></div>
+      <div id="dashboardWithTaximeter" dr-file-upload="dashboardWithTaximeter" ng-model="user.photos.dashboardWithTaximeter">
+        <label for="dashboardWithTaximeter" translate>Dashboard with taximeter</label>
+        <p class="help-block" translate>Please upload photo of your taxamiter on a car dashboard.</p>
+      </div>
     </div>
   </div>
 </div>
