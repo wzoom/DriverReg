@@ -11,16 +11,14 @@
     </div>
 </div>
 
-<!-- TODO data-ng-required="licensingSettings.vehicle.regSticker" -->
 <div class="form-group" data-ng-show="licensingSettings.vehicle.regSticker">
-    <div id="regSticker" dr-file-upload="regSticker" data-ng-model="user.vehicle.regSticker">
+    <div id="regSticker" dr-file-upload="regSticker" data-ng-model="user.vehicle.regSticker" data-ng-required="licensingSettings.vehicle.regSticker">
         <label for="regSticker"><span translate>Sticker of vehicle registration</span></label>
     </div>
 </div>
 
-<!-- TODO data-ng-required="licensingSettings.vehicle.sideEmblem" -->
 <div class="form-group" data-ng-show="licensingSettings.vehicle.sideEmblem">
-    <div id="sideEmblem" dr-file-upload="sideEmblem" data-ng-model="user.vehicle.sideEmblem">
+    <div id="sideEmblem" dr-file-upload="sideEmblem" data-ng-model="user.vehicle.sideEmblem" data-ng-required="licensingSettings.vehicle.sideEmblem>
         <label for="sideEmblem"><span translate>Side and city emblem</span></label>
     </div>
 </div>
