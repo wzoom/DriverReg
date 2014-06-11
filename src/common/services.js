@@ -21,7 +21,7 @@ drServices.factory('User', function () {
   user.lastName = null;
   user.fullNameVisible = 'yes';
   user.pickup = 5;
-  user.countryCode = 'cz';
+  user.countryCode = 'pl';
   user.car = {};
   user.conces = {};
   user.driver = {};
