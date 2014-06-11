@@ -1,15 +1,14 @@
-<div class="help-block" translate>Are you a driver for one of our local partners?</div>
+<div class="clearfix">
+    <div class="col-xs-12 col-md-4">
+        <div class="text-line center-block text-center" data-ng-show="user.driver.licenseNumber && user.driver.expirationDate"><span translate>Driver license:</span> {{user.driver.licenseNumber}} ({{user.driver.expirationDate}})</div>
+        <div class="text-line center-block text-center" data-ng-show="user.taxi.licenseNumber && user.taxi.expirationDate"><span translate>Taxi permit:</span> {{user.taxi.licenseNumber}} ({{user.taxi.expirationDate}})</div>
 
-<div class="form-group" data-ng-show="licensingSettings.permition.permit">
-    <label class="control-label" translate>License number </label>
-    <span class="label label-danger" ng-show="regForm.licneseNumber.$invalid && !regForm.firstName.$pristine" translate>Required</span>
-    <span class="label label-danger" ng-show="regForm.licneseNumber.$error.minlength" translate>Too short.</span>
-    <input type="text" name="licneseNumber" data-ng-model="user.licneseNumber" class="form-control" data-ng-minlength="3" required="{{licensingSettings.permition.permit}}" />
-</div>
+        <hr data-ng-show="user.conces.idLicense">
+        <div class="text-line center-block text-center" data-ng-show="user.conces.idLicense"><span translate>Concessionary:</span> {{user.conces.idLicense}}</div>
+        <div class="text-line center-block text-center" data-ng-show="user.conces.licenseName"><span translate>Name on concessionary:</span> {{user.conces.licenseName}}</div>
 
-<div class="form-group" data-ng-show="licensingSettings.permition.license">
-    <label class="control-label" translate>Expiration date </label>
-    <span class="label label-danger" ng-show="regForm.expirationDate.$invalid && !regForm.lastName.$pristine" translate>Required</span>
-    <span class="label label-danger" ng-show="regForm.expirationDate.$error.minlength" translate>Too short.</span>
-    <input type="text" name="expirationDate" data-ng-model="user.expirationDate" class="form-control" data-ng-minlength="3" data-ng-required="licensingSettings.permition.license" />
+        <hr data-ng-show="user.conces.idLicense">
+        <div class="text-line center-block text-center" data-ng-show="user.conces.idLicense"><span translate>Vehicle registration:</span> {{user.vehicle.registration}}</div>
+
+    </div>
 </div>

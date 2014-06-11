@@ -102,9 +102,7 @@ angular.module('drApp.licensing', [
     var isDriverValid = function(user) {
       if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.driver)) return false;
 
-      // TODO - Waiting to file model
-      //if (angular.isUndefined(user.driver.licPhoto) && service.licensingSettings.driver.licPhoto) return false;
-
+      if (angular.isUndefined(user.driver.licPhoto) && service.licensingSettings.driver.licPhoto) return false;
       if (angular.isUndefined(user.driver.licenseNumber) && service.licensingSettings.driver.licenseNumber) return false;
       if (angular.isUndefined(user.driver.expirationDate) && service.licensingSettings.driver.expirationDate) return false;
 
@@ -115,7 +113,7 @@ angular.module('drApp.licensing', [
       if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.taxi)) return false;
 
       // TODO - Waiting to file model
-      //if (angular.isUndefined(user.taxi.permitPhoto) && service.licensingSettings.taxi.permitPhoto) return false;
+      if (angular.isUndefined(user.taxi.permitPhoto) && service.licensingSettings.taxi.permitPhoto) return false;
 
       if (angular.isUndefined(user.taxi.licenseNumber) && service.licensingSettings.taxi.licenseNumber) return false;
       if (angular.isUndefined(user.taxi.expirationDate) && service.licensingSettings.taxi.expirationDate) return false;
@@ -127,15 +125,12 @@ angular.module('drApp.licensing', [
       if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.conces) ) return false;
 
       if (angular.isUndefined(user.conces.license) && service.licensingSettings.conces.license) return false;
-
-      // TODO - Waiting to file model
-      //if (angular.isUndefined(user.conces.businessPhoto) && service.licensingSettings.conces.businessPhoto) return false;
+      if (angular.isUndefined(user.conces.businessPhoto) && service.licensingSettings.conces.businessPhoto) return false;
       if (angular.isUndefined(user.conces.idLicense) && service.licensingSettings.conces.idLicense) return false;
 
-      if (user.conces.license) {
-        if (angular.isUndefined(user.conces.licenseName) && service.licensingSettings.conces.licenseName && !conces.license) return false;
-        // TODO - Waiting to file model
-        //if (angular.isUndefined(user.conces.contract) && service.licensingSettings.conces.contract) return false;
+      if (user.conces.license == false) {
+        if (angular.isUndefined(user.conces.licenseName) && service.licensingSettings.conces.licenseName) return false;
+        if (angular.isUndefined(user.conces.contract) && service.licensingSettings.conces.contract) return false;
       }
 
       return true;
@@ -145,10 +140,9 @@ angular.module('drApp.licensing', [
       if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.vehicle)) return false;
       if (angular.isUndefined(user.vehicle.registration) && service.licensingSettings.vehicle.registration) return false;
 
-      // TODO - Waiting to file model
-      // if (angular.isUndefined(user.vehicle.registrationPhoto) && service.licensingSettings.vehicle.registrationPhoto) return false;
-      // if (angular.isUndefined(user.vehicle.regSticker) && service.licensingSettings.vehicle.regSticker) return false;
-      // if (angular.isUndefined(user.vehicle.sideEmblem) && service.licensingSettings.vehicle.sideEmblem) return false;
+      if (angular.isUndefined(user.vehicle.registrationPhoto) && service.licensingSettings.vehicle.registrationPhoto) return false;
+      if (angular.isUndefined(user.vehicle.regSticker) && service.licensingSettings.vehicle.regSticker) return false;
+      if (angular.isUndefined(user.vehicle.sideEmblem) && service.licensingSettings.vehicle.sideEmblem) return false;
 
       return true;
     };

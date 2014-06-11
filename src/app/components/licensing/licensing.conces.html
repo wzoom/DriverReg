@@ -7,7 +7,7 @@
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.conces.businessPhoto">
-    <div id="businessPhoto" dr-file-upload="businessPhoto" data-ng-model="user.conces.businessPhoto">
+    <div id="businessPhoto" dr-file-upload="businessPhoto" data-ng-model="user.conces.businessPhoto" data-ng-required="licensingSettings.conces.businessPhoto">
         <label for="businessPhoto"><span translate>Taxi driver permit photo</span></label>
         <p class="help-block" translate>Please upload photo of your taxi driver permit photo.</p>
     </div>
@@ -24,7 +24,7 @@
     <label for="licenseName" class="control-label" translate>Name on license </label>
     <span class="label label-danger" ng-show="regForm.licenseName.$invalid && !regForm.licenseName.$pristine" translate>Required</span>
     <span class="label label-danger" ng-show="regForm.licenseName.$error.minlength" translate>Too short.</span>
-    <input id="licenseName" type="text" name="licenseName" data-ng-model="user.conces.licenseName" class="form-control" data-ng-minlength="3" data-ng-required="licensingSettings.conces.licenseName && !user.conces.license" />
+    <input id="licenseName" type="text" name="licenseName" data-ng-model="user.conces.licenseName" class="form-control" data-ng-minlength="3" data-ng-required="!user.conces.license && licensingSettings.conces.licenseName" />
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.conces.contract && !user.conces.license">

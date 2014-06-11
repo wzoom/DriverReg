@@ -20,9 +20,13 @@ drServices.factory('User', function () {
   user.firstName = null;
   user.lastName = null;
   user.fullNameVisible = 'yes';
-  user.car = {};
   user.pickup = 5;
   user.countryCode = 'cz';
+  user.car = {};
+  user.conces = {};
+  user.driver = {};
+  user.vehicle = {};
+  user.conces.license = true;
 
   user.tariffs = [];
   user.fixedRateTariffNotifyMe = true;
