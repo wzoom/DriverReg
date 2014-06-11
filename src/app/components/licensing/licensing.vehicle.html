@@ -6,16 +6,19 @@
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.vehicle.registrationPhoto">
-    <label for="registrationPhoto"><span translate>Statement of vehicle registration</span></label>
-    <div id="registrationPhoto" dr-file-upload="registrationPhoto" data-ng-model="user.vehicle.registrationPhoto"></div>
+    <div id="registrationPhoto" dr-file-upload="registrationPhoto" data-ng-model="user.vehicle.registrationPhoto">
+        <label for="registrationPhoto"><span translate>Statement of vehicle registration</span></label>
+    </div>
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.vehicle.regSticker">
-    <label for="regSticker"><span translate>Sticker of vehicle registration</span></label>
-    <div id="regSticker" dr-file-upload="regSticker" data-ng-model="user.vehicle.regSticker"></div>
+    <div id="regSticker" dr-file-upload="regSticker" data-ng-model="user.vehicle.regSticker">
+        <label for="regSticker"><span translate>Sticker of vehicle registration</span></label>
+    </div>
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.vehicle.sideEmblem">
-    <label for="sideEmblem"><span translate>Side and city emblem</span></label>
-    <div id="sideEmblem" dr-file-upload="sideEmblem" data-ng-model="user.vehicle.sideEmblem"></div>
+    <div id="sideEmblem" dr-file-upload="sideEmblem" data-ng-model="user.vehicle.sideEmblem">
+        <label for="sideEmblem"><span translate>Side and city emblem</span></label>
+    </div>
 </div>

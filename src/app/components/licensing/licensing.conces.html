@@ -7,9 +7,10 @@
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.conces.businessPhoto">
-    <label for="businessPhoto"><span translate>Taxi driver permit photo</span></label>
-    <p class="help-block" translate>Please upload photo of your taxi driver permit photo.</p>
-    <div id="businessPhoto" dr-file-upload="businessPhoto" data-ng-model="user.conces.businessPhoto"></div>
+    <div id="businessPhoto" dr-file-upload="businessPhoto" data-ng-model="user.conces.businessPhoto">
+        <label for="businessPhoto"><span translate>Taxi driver permit photo</span></label>
+        <p class="help-block" translate>Please upload photo of your taxi driver permit photo.</p>
+    </div>
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.conces.idLicense">
@@ -27,7 +28,8 @@
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.conces.contract && !user.conces.license">
-    <label for="contract"><span translate>Copy of contract</span></label>
-    <p class="help-block" translate>Please upload copy of your contract.</p>
-    <div id="contract" dr-file-upload="contract" data-ng-model="user.conces.contract"></div>
+    <div id="contract" dr-file-upload="contract" data-ng-model="user.conces.contract">
+        <label for="contract"><span translate>Copy of contract</span></label>
+        <p class="help-block" translate>Please upload copy of your contract.</p>
+    </div>
 </div>

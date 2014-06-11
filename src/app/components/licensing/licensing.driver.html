@@ -1,7 +1,8 @@
 <div class="form-group" data-ng-show="licensingSettings.driver.licPhoto">
-    <label for="licPhoto"><span translate>License photo</span></label>
-    <p class="help-block" translate>Please upload photo of your driver license photo.</p>
-    <div id="licPhoto" dr-file-upload="licPhoto" data-ng-model="user.driver.licPhoto"></div>
+    <div id="licPhoto" dr-file-upload="licPhoto" data-ng-model="user.driver.licPhoto">
+        <label for="licPhoto"><span translate>License photo</span></label>
+        <p class="help-block" translate>Please upload photo of your driver license photo.</p>
+    </div>
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.driver.licenseNumber">
