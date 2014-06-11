@@ -8,6 +8,7 @@ angular.module('drFileUpload', ['angularFileUpload'])
       restrict: "EA",
       scope: {
         theModel: "=ngModel",
+        isFileRequired: "&ngRequired",
       },
       templateUrl: 'components/drFileUpload/drFileUpload.html',
       transclude: true,
@@ -24,7 +25,6 @@ angular.module('drFileUpload', ['angularFileUpload'])
         delete attributes.id;
         //delete attributes.required;
 
-        scope.isFileRequired = attributes.required || false;
 
         scope.uploaderName = uploaderName;
         scope.uploaderItem = null;
