@@ -102,15 +102,15 @@ angular.module('drApp.prices', [
         resetNewTariff();
         addingNewTariff = false;
       }
-    }
+    };
 
     $scope.isAddingNewTariff = function() {
       return addingNewTariff || !$scope.tariffs.length || !$scope.newTariff
-    }
+    };
 
     $scope.setAddingNewTariff = function(state) {
       return addingNewTariff = !!state;
-    }
+    };
 
     $scope.removeTariff = function(removeKey) {
       if (angular.isDefined($scope.tariffs[removeKey])) {
@@ -119,7 +119,7 @@ angular.module('drApp.prices', [
 
         return true;
       }
-    }
+    };
 
     $scope.disableEditing = function(key) {
       if (angular.isDefined($scope.tariffs[key])) {
@@ -128,7 +128,24 @@ angular.module('drApp.prices', [
         }, 0);
 
       }
-    }
+    };
+
+    $scope.getPhotoState = function(name) {
+      if (angular.isObject($scope.user.photos[name])) {
+        if (angular.isDefined($scope.user.photos[name].uuid) && $scope.user.photos[name].uuid != ''){
+          return $scope.user.photos[name].localFileName;
+        }
+      }
+      else {
+        for(var i = 0; i<Uploader.queue.length; i++) {
+          if (Uploader.queue[i].fieldName == name) {
+            return Uploader.queue[i].isUploaded || Uploader.queue[i].progress;
+          }
+        }
+      }
+      return false;
+    };
+
   })
 
   .service('pricesValidator', function (User) {
