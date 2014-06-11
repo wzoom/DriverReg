@@ -1,0 +1,29 @@
+{
+  "driver": {
+    "skipScreen" : false,
+    "licPhoto" : true,
+    "licenseNumber" : true,
+    "expirationDate" : true
+  },
+  "taxi": {
+    "skipScreen" : false,
+    "permitPhoto" : true,
+    "licenseNumber" : true,
+    "expirationDate" : false
+  },
+  "conces": {
+    "skipScreen" : true,
+    "license" : false,
+    "idLicense" : false,
+    "licenseName": false,
+    "businessPhoto" : false,
+    "contract" : false
+  },
+  "vehicle": {
+    "skipScreen" : false,
+    "registration" : true,
+    "registrationPhoto" : false,
+    "sideEmblem" : true,
+    "regSticker" : true
+  }
+}

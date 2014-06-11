@@ -10,7 +10,7 @@
           <h4 class="list-group-item-heading">{{mainItem.title | translate}}</h4>
 
           <p data-ng-show="getProgress(mainItem.name).percent < 100 && !mainItem.data.isNeutral" class="list-group-item-text small" translate>{{getProgress(mainItem.name).percent}}% filled in.</p>
-          <p data-ng-show="getProgress(mainItem.name).percent >= 100 && !mainItem.data.isNeutral" class="list-group-item-text text-danger small" translate>Almost done.</p>
+          <p data-ng-show="getProgress(mainItem.name).percent >= 100 && !mainItem.data.isNeutral" class="list-group-item-text text-danger small" translate>Done</p>
         </a>
 
       </div>

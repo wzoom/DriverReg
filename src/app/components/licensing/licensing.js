@@ -101,6 +101,7 @@ angular.module('drApp.licensing', [
 
     var isDriverValid = function(user) {
       if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.driver)) return false;
+      if (angular.isUndefined(user.driver.skipScreen) && (user.driver.skipScreen == true)) return true;
 
       if (angular.isUndefined(user.driver.licPhoto) && service.licensingSettings.driver.licPhoto) return false;
       if (angular.isUndefined(user.driver.licenseNumber) && service.licensingSettings.driver.licenseNumber) return false;
@@ -111,6 +112,7 @@ angular.module('drApp.licensing', [
 
     var isTaxiValid = function(user) {
       if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.taxi)) return false;
+      if (angular.isUndefined(user.taxi.skipScreen) && (user.taxi.skipScreen == true)) return true;
 
       // TODO - Waiting to file model
       if (angular.isUndefined(user.taxi.permitPhoto) && service.licensingSettings.taxi.permitPhoto) return false;
@@ -123,6 +125,7 @@ angular.module('drApp.licensing', [
 
     var isConcesValid = function(user) {
       if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.conces) ) return false;
+      if (angular.isUndefined(user.conces.skipScreen) && (user.conces.skipScreen == true)) return true;
 
       if (angular.isUndefined(user.conces.license) && service.licensingSettings.conces.license) return false;
       if (angular.isUndefined(user.conces.businessPhoto) && service.licensingSettings.conces.businessPhoto) return false;
@@ -138,8 +141,9 @@ angular.module('drApp.licensing', [
 
     var isVehicleValid = function(user) {
       if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.vehicle)) return false;
-      if (angular.isUndefined(user.vehicle.registration) && service.licensingSettings.vehicle.registration) return false;
+      if (angular.isUndefined(user.vehicle.skipScreen) && (user.vehicle.skipScreen == true)) return true;
 
+      if (angular.isUndefined(user.vehicle.registration) && service.licensingSettings.vehicle.registration) return false;
       if (angular.isUndefined(user.vehicle.registrationPhoto) && service.licensingSettings.vehicle.registrationPhoto) return false;
       if (angular.isUndefined(user.vehicle.regSticker) && service.licensingSettings.vehicle.regSticker) return false;
       if (angular.isUndefined(user.vehicle.sideEmblem) && service.licensingSettings.vehicle.sideEmblem) return false;
