@@ -1,7 +1,9 @@
 <div class="form-group" data-ng-show="licensingSettings.taxi.permitPhoto">
-    <label for="permitPhoto"><span translate>Taxi driver permit photo</span></label>
-    <p class="help-block" translate>Please upload photo of your taxi driver permit photo.</p>
-    <div id="permitPhoto" dr-file-upload="permitPhoto" data-ng-model="user.taxi.permitPhoto"></div>
+
+    <div id="permitPhoto" dr-file-upload="permitPhoto" data-ng-model="user.taxi.permitPhoto">
+        <label for="permitPhoto"><span translate>Taxi driver permit photo</span></label>
+        <p class="help-block" translate>Please upload photo of your taxi driver permit photo.</p>
+    </div>
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.taxi.licenseNumber">

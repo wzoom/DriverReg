@@ -23,7 +23,9 @@
   },
   "vehicle": {
     "skipScreen" : false,
-    "permit" : true,
-    "license" : true
+    "registration" : true,
+    "registrationPhoto" : true,
+    "sideEmblem" : false,
+    "regSticker" : false
   }
 }

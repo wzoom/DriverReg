@@ -124,21 +124,33 @@ angular.module('drApp.licensing', [
     };
 
     var isConcesValid = function(user) {
-      if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.driver)) return false;
+      if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.conces) ) return false;
+
+      if (angular.isUndefined(user.conces.license) && service.licensingSettings.conces.license) return false;
 
       // TODO - Waiting to file model
-      //if (angular.isUndefined(user.driver.licPhoto) && service.licensingSettings.driver.licPhoto) return false;
+      //if (angular.isUndefined(user.conces.businessPhoto) && service.licensingSettings.conces.businessPhoto) return false;
+      if (angular.isUndefined(user.conces.idLicense) && service.licensingSettings.conces.idLicense) return false;
 
-      return false;
+      if (user.conces.license) {
+        if (angular.isUndefined(user.conces.licenseName) && service.licensingSettings.conces.licenseName && !conces.license) return false;
+        // TODO - Waiting to file model
+        //if (angular.isUndefined(user.conces.contract) && service.licensingSettings.conces.contract) return false;
+      }
+
+      return true;
     };
 
     var isVehicleValid = function(user) {
-      if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.driver)) return false;
+      if (angular.isUndefined(service.licensingSettings) || angular.isUndefined(user.vehicle)) return false;
+      if (angular.isUndefined(user.vehicle.registration) && service.licensingSettings.vehicle.registration) return false;
 
       // TODO - Waiting to file model
-      //if (angular.isUndefined(user.driver.licPhoto) && service.licensingSettings.driver.licPhoto) return false;
+      // if (angular.isUndefined(user.vehicle.registrationPhoto) && service.licensingSettings.vehicle.registrationPhoto) return false;
+      // if (angular.isUndefined(user.vehicle.regSticker) && service.licensingSettings.vehicle.regSticker) return false;
+      // if (angular.isUndefined(user.vehicle.sideEmblem) && service.licensingSettings.vehicle.sideEmblem) return false;
 
-      return false;
+      return true;
     };
 
     // Public API
