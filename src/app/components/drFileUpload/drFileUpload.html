@@ -11,13 +11,7 @@
   <div ng-show="invalidFile" class="text-danger" translate>The selected file cannot be uploaded. Only JPEG, PNG or GIF image files are allowed.</div>
   <div ng-show="uploaderItem && uploaderItem.isError" class="text-danger" translate>There was an error while uploading the file.</div>
 
-
-  <div class="file-name" ng-show="fileName"><span class="glyphicon glyphicon-file"></span> {{fileName}}</div>
-
-  <div class="progress" ng-show="uploaderItem && (uploaderItem.isReady || uploaderItem.isUploading)">
-    <div class="progress-bar" role="progressbar" aria-valuenow="{{uploaderItem.progress}}" aria-valuemin="0" aria-valuemax="100" data-ng-style="{ 'width': uploaderItem.progress + '%' }">
-      <span class="sr-only">{{uploaderItem.progress + '%'}}</span>
-    </div>
+  <div class="file-name" ng-show="fileName"><span class="glyphicon glyphicon-file"></span> {{fileName}} <span class="label label-default" ng-show="uploaderItem && (uploaderItem.isReady || uploaderItem.isUploading || uploaderItem.isUploaded)" ng-class="{'label-success': uploaderItem && uploaderItem.isUploaded}">{{uploaderItem.progress}}%</span>
   </div>
 
   <div class="buttons">
