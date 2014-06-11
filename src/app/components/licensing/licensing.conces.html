@@ -14,9 +14,9 @@
 
 <div class="form-group" data-ng-show="licensingSettings.conces.idLicense">
     <label for="idLicense" class="control-label" translate>Taxi ID on license</label>
-    <span class="label label-danger" ng-show="regForm.idLicense.$invalid && !regForm.idLicenser.$pristine" translate>Required</span>
+    <span class="label label-danger" ng-show="regForm.idLicense.$invalid && !regForm.idLicense.$pristine" translate>Required</span>
     <span class="label label-danger" ng-show="regForm.idLicense.$error.minlength" translate>Too short.</span>
-    <input id="idLicense"  type="text" name="idLicense" data-ng-model="user.conces.idLicenser" class="form-control" data-ng-minlength="3" data-ng-required="licensingSettings.conces.idLicense" />
+    <input id="idLicense"  type="text" name="idLicense" data-ng-model="user.conces.idLicense" class="form-control" data-ng-minlength="3" data-ng-required="licensingSettings.conces.idLicense" />
 </div>
 
 <div class="form-group" data-ng-show="licensingSettings.conces.licenseName && !user.conces.license">
