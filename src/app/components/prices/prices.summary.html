@@ -1,21 +1,43 @@
-<div class="help-block" translate>Your almost done with the About you section, here's what we have so far.</div>
+<div class="help-block" translate>You are almost done with the Prices section, here's what we have so far.</div>
 
 <div class="clearfix">
-    <div class="thumbnail col-xs-12 col-md-4">
-        <img src="images/default.jpg" alt="default-avatar">
-    </div>
-    <div class="col-xs-12 col-md-8">
+  <dl class="dl-horizontal">
+    <dt><span translate>Taximeter Id</span>:</dt>
+    <dd>{{user.taximeterId}}&nbsp;</dd>
 
-    </div>
+    <dt><span translate>Displayed name</span>:</dt>
+    <dd>{{getFullName()}}&nbsp;</dd>
+
+    <dt><span translate>Price List Photo</span>:</dt>
+    <dd>{{getPhotoState('priceList')}}&nbsp;</dd>
+
+    <dt><span translate>Taximeter Dashboard Photo</span>:</dt>
+    <dd>{{getPhotoState('dashboardWithTaximeter')}}&nbsp;</dd>
+  </dl>
 </div>
 
-<div class="clearfix">
-    <div class="col-xs-12 col-md-4">
-        <div class="text-line center-block text-center">{{user.firstName}} {{user.lastName}}</div>
-        <div class="text-line center-block text-center">{{user.phone}}</div>
-        <div class="text-line center-block text-center">{{user.gender}}</div>
-    </div>
-    <div class="col-xs-12 col-md-8">
+<h2 class="list-group-item-heading clearfix" translate>Tariffs</h2>
+<div class="list-group tariffs">
+  <div data-ng-repeat="(key, tariff) in tariffs" class="list-group-item clearfix">
+    <h3 class="list-group-item-heading clearfix"><span ng-hide="tariff.editing">{{tariff.name}}</span></h3>
 
+    <div class="list-group-item-text">
+      <div class="form-group">
+        <div class="col-xs-4 text-center">
+          <div class="label label-default">{{tariff.initial | currency:''}}</div>
+          <div class="symbol small text-muted">CZK</div>
+        </div>
+
+        <div class="col-xs-4 text-center">
+          <div class="label label-default">{{tariff.pricePerKm | currency:''}}</div>
+          <div class="symbol small text-muted">CZK/km</div>
+        </div>
+
+        <div class="col-xs-4 text-center">
+          <div class="label label-default">{{tariff.waiting | currency:''}}</div>
+          <div class="symbol small text-muted">CZK/min</div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
