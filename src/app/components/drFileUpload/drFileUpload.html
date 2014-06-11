@@ -2,7 +2,7 @@
 
   <div ng-transclude class="content"></div>
 
-  <input ng-file-select="{ fieldName: uploaderName }" type="file" name="{{uploaderName}}" id="{{uploaderName}}" ng-model="theModel" class="btn btn-default hidden" ng-required="isFileRequired" />
+  <input ng-file-select="{ fieldName: uploaderName }" type="file" name="{{uploaderName}}" id="{{uploaderName}}" ng-model="theModel" class="btn btn-default hidden" ng-required="isFileRequired()" />
 
   <div class="file-upload-preview" data-ng-show="showPreview">
     <div class="thumbnail" data-ng-show="showPreview"><img ng-src="{{previewSrc}}" alt="photo" /></div>

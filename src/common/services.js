@@ -27,29 +27,12 @@ drServices.factory('User', function () {
   user.driver = {};
   user.vehicle = {};
   user.conces.license = true;
+  user.languagesSpoken = null;
 
   user.tariffs = [];
   user.fixedRateTariffNotifyMe = true;
 
   user.taximeterId = null;
 
-  user.getFullName = function() {
-    if (angular.isUndefined(this.firstName) || this.firstName == '') {
-      return '';
-    }
-
-    if (angular.isUndefined(this.lastName) || this.lastName == '') {
-      return this.firstName;
-    }
-
-    if (this.fullNameVisible == 'yes') {
-      return this.firstName + ' ' + this.lastName;
-    }
-    else {
-      return this.firstName + ' ' + this.lastName.charAt(0) + '.';
-    }
-  }
-
   return user;
 });
-

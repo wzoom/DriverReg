@@ -58,6 +58,14 @@ angular.module('drApp.about', [
             },
           },
           {
+            name: 'phone',
+            title: gettext("Phone"),
+            sideMenu: false,
+            skipAllow: false,
+            url: "/phone",
+            templateUrl: getComponentTemplatePath('about.phone'),
+          },
+          {
             name: 'language',
             title: gettext("Language"),
             sideMenu: false,
@@ -91,6 +99,25 @@ angular.module('drApp.about', [
 )
 
 .controller('aboutCtrl', function ($scope, $rootScope, $state, $filter) {
+  $scope.iso_languages = iso_languages;
+  var user = $scope.user;
+
+  $scope.getFullName = function() {
+    if (angular.isUndefined(user.firstName) || user.firstName == '') {
+      return '';
+    }
+
+    if (angular.isUndefined(user.lastName) || user.lastName == '') {
+      return this.firstName;
+    }
+
+    if (user.fullNameVisible == 'yes') {
+      return user.firstName + ' ' + user.lastName;
+    }
+    else {
+      return user.firstName + ' ' + user.lastName.charAt(0) + '.';
+    }
+  }
 
 })
 
@@ -115,6 +142,12 @@ angular.module('drApp.about', [
   var isGenderValid = function(user) {
     if (angular.isUndefined(user.gender)) return false;
     if (user.gender == null) return false;
+    return true;
+  }
+
+  var isPhoneValid = function(user) {
+    if (angular.isUndefined(user.phone) || user.phone == '') return false;
+    if (user.phone.length < 10) return false;
     return true;
   }
 
@@ -143,6 +176,7 @@ angular.module('drApp.about', [
       case 'photo': return isPhotoValid(userObject, skipStep);
       case 'name': return isNameValid(userObject);
       case 'gender': return isGenderValid(userObject);
+      case 'phone': return isPhoneValid(userObject);
       case 'language': return isLanguageValid(userObject);
       case 'dispatch': return isDispachingValid(userObject, skipStep);
       // TODO - change to false and add attribute to $state so that validation can be disabled for certain steps
