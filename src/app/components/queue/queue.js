@@ -76,11 +76,6 @@ drUploader.controller('queueCtrl', function ($scope, $timeout, Uploader) {
   // Creates a uploader
   var uploader = Uploader;
 
-  $scope.openSelect = function() {
-    var myLink = document.getElementById('hide-button');
-    myLink.click();
-  };
-
   $scope.shower = false;
 
   $scope.setHider = function() {
@@ -104,7 +99,7 @@ drUploader.controller('queueCtrl', function ($scope, $timeout, Uploader) {
 
 });
 
-
+/*
 drUploader.directive('ngThumb', function($window) {
     var helper = {
       support: !!($window.FileReader && $window.CanvasRenderingContext2D),
@@ -149,3 +144,4 @@ drUploader.directive('ngThumb', function($window) {
       }
     };
   });
+*/
